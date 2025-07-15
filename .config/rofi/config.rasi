@@ -1,0 +1,152 @@
+configuration { 
+
+ timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+/**
+ * Catppuccin Mocha Rofi Theme
+ * Colors: https://github.com/catppuccin/catppuccin#-palette
+ */
+
+* {
+    /* Catppuccin Mocha Colors */
+    base:   #1e1e2e;
+    mantle: #181825;
+    crust:  #11111b;
+    
+    text:     #cdd6f4;
+    subtext1: #bac2de;
+    subtext0: #a6adc8;
+    
+    overlay2: #9399b2;
+    overlay1: #7f849c;
+    overlay0: #6c7086;
+    
+    surface2: #585b70;
+    surface1: #45475a;
+    surface0: #313244;
+    
+    blue:    #89b4fa;
+    lavender:#b4befe;
+    sapphire:#74c7ec;
+    sky:     #89dceb;
+    teal:    #94e2d5;
+    green:   #a6e3a1;
+    yellow:  #f9e2af;
+    peach:   #fab387;
+    maroon:  #eba0ac;
+    red:     #f38ba8;
+    mauve:   #cba6f7;
+    pink:    #f5c2e7;
+    flamingo:#f2cdcd;
+    rosewater:#f5e0dc;
+
+    /* Theme Variables */
+    bg-color: @mantle;
+    fg-color: @text;
+    fgp-color: @overlay0;
+    hl-color: @mauve;
+    hlt-color: @crust;
+    alt-color: @surface0;
+    wbg-color: @base;
+    border-color: @surface1;
+    
+    /* Layout */
+    font: "Figtree 13";
+    g-spacing: 10px;
+    g-margin: 0;
+    b-radius: 12px;
+    g-padding: 8px;
+    w-border: 1px solid;
+    w-padding: 12px;
+}
+
+configuration {
+    modi: "drun";
+    show-icons: true;
+    display-drun: "";
+    icon-theme: "Papirus-Dark";
+}
+
+listview {
+    columns: 1;
+    lines: 7;
+    fixed-height: true;
+    fixed-columns: true;
+    cycle: false;
+    scrollbar: false;
+    border: 0px solid;
+}
+
+window {
+    transparency: "real";
+    width: 450px;
+    border-radius: @b-radius;
+    background-color: @wbg-color;
+    border: @w-border;
+    border-color: @border-color;
+    padding: @w-padding;
+}
+
+prompt {
+    text-color: @lavender;
+}
+
+inputbar {
+    children: ["prompt", "entry"];
+    spacing: @g-spacing;
+}
+
+entry {
+    placeholder: "Search Apps";
+    text-color: @fg-color;
+    placeholder-color: @fgp-color;
+}
+
+mainbox {
+    spacing: @g-spacing;
+    margin: @g-margin;
+    padding: @g-padding;
+    children: ["inputbar", "listview", "message"];
+}
+
+element {
+    spacing: @g-spacing;
+    margin: @g-margin;
+    padding: @g-padding;
+    border: 0px solid;
+    border-radius: @b-radius;
+    background-color: transparent;
+    text-color: @fg-color;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @fg-color;
+}
+
+element alternate.normal {
+    background-color: @alt-color;
+    text-color: @fg-color;
+}
+
+element selected.active {
+    background-color: @hl-color;
+    text-color: @hlt-color;
+}
+
+element selected.normal {
+    background-color: @hl-color;
+    text-color: @hlt-color;
+}
+
+message {
+    background-color: transparent;
+    border: 0px solid;
+}
