@@ -1,0 +1,30 @@
+{
+  "layer": "top",
+  "position": "top",
+  "modules-left": ["custom/arch", "hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["pulseaudio", "backlight"],
+
+  "custom/arch": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "rofi -show drun"
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip": false
+   },
+
+  "pulseaudio": {
+    "format": " {volume}%",
+    "scroll-step": 1,
+    "max-volume": 150,
+    "on-click": "pavucontrol"
+  },
+
+  "backlight": {
+    "format": " {percent}%",
+    "scroll-step": 5
+  }
+}

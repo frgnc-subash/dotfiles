@@ -1,0 +1,40 @@
+* {
+  border: none;
+  font-family: "Caskaydia Cove Nerd Font", monospace;
+  font-weight: 700;
+  font-size: 14px;
+  color: #cdd6f4; /* catppuccin mocha text */
+}
+
+window#waybar {
+  background-color: rgba(30, 30, 46, 0.7); /* reduced alpha from 0.9 to 0.7 for more transparency */
+  border-radius: 12px;
+  margin: 5px 15px;
+  padding: 0 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+#custom-arch {
+  color: #89b4fa; /* blue */
+  font-size: 18px;
+  padding: 0 12px;
+  font-weight: 900;
+}
+
+#pulseaudio {
+  color: #f38ba8; /* red */
+  padding: 0 10px;
+  font-weight: 700;
+}
+
+#backlight {
+  color: #f9e2af; /* yellow */
+  padding: 0 10px;
+  font-weight: 700;
+}
+
+#clock {
+  font-weight: 900;
+  color: #a6e3a1; /* green */
+  padding: 0 15px;
+}
