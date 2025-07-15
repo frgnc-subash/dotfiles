@@ -1,0 +1,21 @@
+
+
+#------------------------------------
+#  ____  __.__  __    __          
+# |    |/ _|__|/  |__/  |_ ___.__.
+# |      < |  \   __\   __<   |  |
+# |    |  \|  ||  |  |  |  \___  |
+# |____|__ \__||__|  |__|  / ____|
+#         \/               \/     
+#------------------------------------
+
+
+window_padding_width  10
+font_size 14
+font_family CaskaydiaCove Nerd Font
+
+
+# BEGIN_KITTY_THEME
+# Tokyo Night
+include current-theme.conf
+# END_KITTY_THEME
