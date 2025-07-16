@@ -3,7 +3,7 @@
   "position": "top",
   "modules-left": ["custom/arch", "hyprland/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["pulseaudio", "backlight"],
+  "modules-right": ["pulseaudio", "backlight", "battery"],
 
   "custom/arch": {
     "format": "",
@@ -26,5 +26,18 @@
   "backlight": {
     "format": " {percent}%",
     "scroll-step": 5
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-charging": "{icon} {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-full": " {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "tooltip": false
   }
 }

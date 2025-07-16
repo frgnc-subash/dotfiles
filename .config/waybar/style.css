@@ -3,11 +3,11 @@
   font-family: "Caskaydia Cove Nerd Font", monospace;
   font-weight: 700;
   font-size: 14px;
-  color: #cdd6f4; /* catppuccin mocha text */
+  color: #cdd6f4;
 }
 
 window#waybar {
-  background-color: rgba(30, 30, 46, 0.7); /* reduced alpha from 0.9 to 0.7 for more transparency */
+  background-color: rgba(30, 30, 46, 0.7);
   border-radius: 12px;
   margin: 5px 15px;
   padding: 0 10px;
@@ -15,26 +15,44 @@ window#waybar {
 }
 
 #custom-arch {
-  color: #89b4fa; /* blue */
+  color: #89b4fa;
   font-size: 18px;
   padding: 0 12px;
   font-weight: 900;
 }
 
 #pulseaudio {
-  color: #f38ba8; /* red */
+  color: #f38ba8;
   padding: 0 10px;
   font-weight: 700;
 }
 
 #backlight {
-  color: #f9e2af; /* yellow */
+  color: #f9e2af;
   padding: 0 10px;
   font-weight: 700;
 }
 
 #clock {
   font-weight: 900;
-  color: #a6e3a1; /* green */
+  color: #a6e3a1;
   padding: 0 15px;
+}
+
+#battery {
+  color: #94e2d5;
+  padding: 0 10px;
+  font-weight: 700;
+}
+
+#battery.plugged, #battery.full {
+  color: #a6e3a1;
+}
+
+#battery.warning {
+  color: #fab387;
+}
+
+#battery.critical {
+  color: #f38ba8;
 }
