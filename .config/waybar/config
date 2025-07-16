@@ -3,7 +3,7 @@
   "position": "top",
   "modules-left": ["custom/arch", "hyprland/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["pulseaudio", "backlight", "battery"],
+  "modules-right": ["network", "bluetooth", "pulseaudio", "backlight", "battery"],
 
   "custom/arch": {
     "format": "",
@@ -14,7 +14,7 @@
   "clock": {
     "format": "{:%H:%M}",
     "tooltip": false
-   },
+  },
 
   "pulseaudio": {
     "format": " {volume}%",
@@ -30,7 +30,7 @@
 
   "battery": {
     "format": "{icon} {capacity}%",
-    "format-charging": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
     "format-full": " {capacity}%",
     "format-icons": ["", "", "", "", ""],
@@ -38,6 +38,28 @@
       "warning": 30,
       "critical": 15
     },
-    "tooltip": false
+    "tooltip": false,
+    "interval": 1,
+    "on-update": "echo"
+  },
+
+  "network": {
+    "format": "",
+    "format-wifi": "",
+    "format-ethernet": "",
+    "format-disconnected": "!",
+    "tooltip-format": "{ifname}: {essid}",
+    "tooltip-format-wifi": "Connected to {essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "Ethernet {ifname}",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "nm-connection-editor"
+  },
+
+  "bluetooth": {
+    "format": "!",
+    "format-connected": "...",
+    "tooltip-format": "Bluetooth",
+    "tooltip-format-connected": "Connected to {device_alias}",
+    "on-click": "blueman-manager"
   }
 }
