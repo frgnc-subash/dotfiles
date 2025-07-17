@@ -48,7 +48,7 @@ autoload -Uz colors && colors
 ###############
 ### ALIASES ###
 ###############
-alias gay="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
+alias gar="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 
