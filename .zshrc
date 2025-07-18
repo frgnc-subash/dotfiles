@@ -63,10 +63,11 @@ autoload -Uz colors && colors
 alias gar="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
-
+alias cat='bat'
 
 
 # Clear screen and show colorful Pokémon (no parsing, full colors)
 clear
 pokemon-colorscripts -r
+
 
