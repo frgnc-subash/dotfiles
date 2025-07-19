@@ -1,44 +1,35 @@
+# Temporarily disable instant prompt to debug
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
-#---------------------------------------------
+
+#----------------------------------------------
 #                    .__                   
 #     ________  _____|  |_________   ____  
 #     \___   / /  ___/  |  \_  __ \_/ ___\ 
 #      /    /  \___ \|   Y  \  | \/\  \___ 
 #  /\ /_____ \/____  >___|  /__|    \___  >
 #  \/       \/     \/     \/            \/ 
-#                                          
-#---------------------------------------------                                        
-                                         
-                                         
+# 
+#----------------------------------------------
 
-# Path to your Oh My Zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set your preferred Oh My Zsh theme
-ZSH_THEME="bira"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Plugins you want to load — keep them minimal for faster startup
 plugins=(git z sudo zsh-autosuggestions zsh-syntax-highlighting)
 
-# Source Oh My Zsh core
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# Show random Pokémon on startup (optional, comment out if slow)
-#pokemon-colorscripts -r
-
-# === NVM Lazy Loading Setup ===
 export NVM_DIR="$HOME/.nvm"
 
 load_nvm() {
-  unset -f node npm npx  # remove wrappers to avoid recursion
-  # Load NVM scripts
+  unset -f node npm npx
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 }
 
-# Define wrappers that trigger NVM loading only when node/npm/npx commands run
 node() {
   load_nvm
   node "$@"
@@ -52,22 +43,14 @@ npx() {
   npx "$@"
 }
 
-# Load zsh colors for syntax highlighting & prompt colors
 autoload -Uz colors && colors
 
-
-
-###############
-### ALIASES ###
-###############
 alias gay="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 alias cat='bat'
 
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Clear screen and show colorful Pokémon (no parsing, full colors)
 clear
-pokemon-colorscripts -r
-
-
+pokemon-colorscripts -r --no-title
