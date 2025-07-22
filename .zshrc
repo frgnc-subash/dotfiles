@@ -48,7 +48,7 @@ npx() {
 
 autoload -Uz colors && colors
 
-alias gay="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
+alias ola="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 alias cat='bat'
