@@ -9,22 +9,15 @@
 #----------------------------------------------
 
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
 #if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 #  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 #fi
 
 
 export ZSH="$HOME/.oh-my-zsh"
-
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
 plugins=(git z sudo zsh-autosuggestions zsh-syntax-highlighting)
-
 source $ZSH/oh-my-zsh.sh
-
 export NVM_DIR="$HOME/.nvm"
 
 load_nvm() {
@@ -48,16 +41,16 @@ npx() {
 
 autoload -Uz colors && colors
 
-alias ola="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
+alias tripal="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 alias cat='bat'
-
+#alias tripal="cat"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 clear
-pokemon-colorscripts -r  --no-title
-
+#pokemon-colorscripts -r  --no-title
+fastfetch
 
 #nvidia things
 export __NV_PRIME_RENDER_OFFLOAD=1
