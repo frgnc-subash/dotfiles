@@ -44,8 +44,8 @@ autoload -Uz colors && colors
 alias tripal="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
-alias cat='bat'
-#alias tripal="cat"
+alias cat='bat --paging=never --style=plain'
+#alias tripal="cat" 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 clear
