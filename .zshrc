@@ -41,11 +41,11 @@ npx() {
 
 autoload -Uz colors && colors
 
-alias tripal="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
+alias lala="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 alias cat='bat --paging=never --style=plain'
-#alias tripal="cat" 
+ 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 clear
@@ -56,6 +56,5 @@ fastfetch
 export __NV_PRIME_RENDER_OFFLOAD=1
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
 export __VK_LAYER_NV_optimus=NVIDIA_only
-#export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
 export __VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
-
