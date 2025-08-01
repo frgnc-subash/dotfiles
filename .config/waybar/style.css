@@ -9,11 +9,14 @@
 window#waybar {
   background-color: rgba(30, 30, 46, 0.7);
   border-radius: 8px;
-  margin: 10px 20px;
-  padding: 10px;
- /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);*/
+  /* Floating effect with margins */
+  margin: 10px 10px 0 10px; /* top right bottom left */
+  padding: 8px;
+  /* Shadow for depth */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
+/* ALL YOUR EXISTING STYLES BELOW - DON'T MODIFY THESE */
 #custom-arch {
   color: #89b4fa;
   font-size: 18px;

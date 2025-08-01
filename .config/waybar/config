@@ -1,6 +1,11 @@
 {
   "layer": "top",
   "position": "top",
+  "margin-top": 4,
+  "margin-left": 4,
+  "margin-right": 4,
+  "margin-bottom": 0,
+
   "modules-left": ["custom/arch", "hyprland/workspaces"],
   "modules-center": ["clock"],
   "modules-right": ["network", "bluetooth", "pulseaudio", "backlight", "battery"],
