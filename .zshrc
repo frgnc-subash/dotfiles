@@ -39,12 +39,33 @@ npx() {
   npx "$@"
 }
 
+###############
+### ALIASES ###
+###############
+
 autoload -Uz colors && colors
 
 alias lala="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 alias cat='bat --paging=never --style=plain'
+
+# Basic replacements
+alias ls='eza'
+alias ll='eza -l'                  # Long format
+alias la='eza -la'                 # Long format with hidden files
+alias lt='eza --tree'             # Tree view
+alias lg='eza --git -l'           # Git-aware long view
+alias l.='eza -la | grep "^\." '  # Only dotfiles
+alias lah='eza -lah'
+# Optional enhancements
+alias lsx='eza -l --icons'        # Long with icons (needs Nerd Font)
+alias lT='eza --tree -L 2'        # Tree with depth 2
+alias ld='eza -lD'                # List only directories
+
+eval "$(zoxide init zsh)"
+
+
  
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -58,3 +79,6 @@ export __GLX_VENDOR_LIBRARY_NAME=nvidia
 export __VK_LAYER_NV_optimus=NVIDIA_only
 export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
 export __VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
+
+
+eval "$(zoxide init --cmd cd zsh)"
