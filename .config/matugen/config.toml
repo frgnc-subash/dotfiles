@@ -1,0 +1,7 @@
+[config]
+# ...
+
+[templates.hyprland]
+input_path = '/home/axosis/.config/matugen/templates/hyprland-colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+post_hook = 'hyprctl reload'
