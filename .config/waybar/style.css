@@ -3,76 +3,89 @@
   font-family: "Caskaydia Cove Nerd Font", monospace;
   font-weight: 700;
   font-size: 14px;
-  color: #cdd6f4;
+  color: #ffffff; /* Default white text */
 }
 
 window#waybar {
-  background-color: rgba(30, 30, 46, 0.7);
-  border-radius: 8px;
-  margin: 10px 10px 0 10px;  
+  background-color: rgba(20, 20, 20, 0.35); /* Transparent dark glass */
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+  margin: 10px 10px 0 10px;
   padding: 8px;
 }
 
-
+/* Icon colors - bright and distinct */
 #custom-arch {
-  color: #89b4fa;
+  color: #3daee9; /* Bright Arch blue */
   font-size: 18px;
   padding: 0 12px;
   font-weight: 900;
 }
 
 #pulseaudio {
-  color: #f38ba8;
+  color: #ff5555; /* Strong red */
   padding: 0 10px;
   font-weight: 700;
 }
 
 #backlight {
-  color: #f9e2af;
+  color: #ffcc00; /* Bright yellow */
   padding: 0 10px;
   font-weight: 700;
 }
 
 #clock {
   font-weight: 900;
-  color: #a6e3a1;
+  color: #00ff9d; /* Neon green */
   padding: 0 15px;
 }
 
 #battery {
-  color: #94e2d5;
+  color: #00d4ff; /* Cyan */
   padding: 0 10px;
   font-weight: 700;
 }
 
 #battery.plugged, #battery.full, #battery.charging {
-  color: #a6e3a1;
+  color: #00ff9d; /* Green when charging/full */
 }
 
 #battery.warning {
-  color: #fab387;
+  color: #ffaa00; /* Orange warning */
 }
 
 #battery.critical {
-  color: #f38ba8;
+  color: #ff3333; /* Red critical */
 }
 
 #network {
-  color: #cba6f7;
+  color: #9d6bff; /* Violet */
   padding: 0 10px;
   font-weight: 700;
 }
 
 #network.disconnected {
-  color: #f38ba8;
+  color: #ff3333; /* Red when disconnected */
 }
 
 #bluetooth {
-  color: #89b4fa;
+  color: #3daee9; /* Blue */
   padding: 0 20px;
   font-weight: 700;
 }
 
 #bluetooth.connected {
-  color: #74c7ec;
+  color: #00bfff; /* Light blue when connected */
+}
+
+/* Glow on hover */
+#custom-arch:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#clock:hover,
+#battery:hover,
+#network:hover,
+#bluetooth:hover {
+  text-shadow: 0 0 6px currentColor;
 }
