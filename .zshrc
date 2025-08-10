@@ -63,14 +63,12 @@ alias lsx='eza -l --icons'        # Long with icons (needs Nerd Font)
 alias lT='eza --tree -L 2'        # Tree with depth 2
 alias ld='eza -lD'                # List only directories
 
-eval "$(zoxide init zsh)"
-
-
  
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 clear
 #pokemon-colorscripts -r  --no-title
+pokeget random --hide-name > ~/.cache/pokemon.txt
 fastfetch
 
 #nvidia things
@@ -82,3 +80,4 @@ export __VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
 
 
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(starship init zsh)"

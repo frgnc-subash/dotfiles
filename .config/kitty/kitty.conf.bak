@@ -10,12 +10,15 @@
 #------------------------------------
 
 
-window_padding_width  10
+window_padding_width  16
 font_size 14
 font_family CaskaydiaCove Nerd Font
+allow_remote_control yes
+
 
 
 # BEGIN_KITTY_THEME
-# Catppuccin-Mocha
+# Tomorrow Night Bright
 include current-theme.conf
 # END_KITTY_THEME
+
