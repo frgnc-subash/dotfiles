@@ -6,14 +6,14 @@
 
 window {
     background-color: rgba(0, 0, 0, 0.5); /* semi-transparent for glass effect */
-    background-image: url("/home/axosis/Pictures/Wallpapers/23.jpg");
+    background-image: url("/home/axosis/Pictures/Wallpapers/dark-waves.jpg");
     background-size: cover;
     background-position: center;
 }
 
 button {
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgb(255, 0, 255);
     color:aqua;
     background-color: rgba(0, 0, 0, 0.35);
     background-repeat: no-repeat;
@@ -31,7 +31,7 @@ button:focus,
 button:active {
     background-color:#181926;
     border-color: #ffffff;
-    box-shadow: 0 0 20px rgba(235, 160, 172, 0.7);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
     outline: none;
 }
 
