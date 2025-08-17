@@ -44,24 +44,33 @@ npx() {
 ###############
 
 autoload -Uz colors && colors
-
+# Git + config shortcuts
 alias lala="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
+
+# Better cat
 alias cat='bat --paging=never --style=plain'
 
-# Basic replacements
-alias ls='eza'
-alias ll='eza -l'                  # Long format
-alias la='eza -la'                 # Long format with hidden files
-alias lt='eza --tree'             # Tree view
-alias lg='eza --git -l'           # Git-aware long view
-alias l.='eza -la | grep "^\." '  # Only dotfiles
-alias lah='eza -lah'
-# Optional enhancements
-alias lsx='eza -l --icons'        # Long with icons (needs Nerd Font)
-alias lT='eza --tree -L 2'        # Tree with depth 2
-alias ld='eza -lD'                # List only directories
+# =========================
+# eza (modern ls) aliases
+# =========================
+
+# Replace default ls with icons
+alias ls='eza --icons'
+
+# Common variations
+alias ll='eza -l --icons'            # Long format
+alias la='eza -la --icons'           # Long + hidden files
+alias lah='eza -lah --icons'         # Long + all + human-readable sizes
+alias lt='eza --tree --icons'        # Tree view
+alias lg='eza -l --git --icons'      # Git-aware long view
+alias l.='eza -la --icons | grep "^\."'  # Only dotfiles
+
+# Extra helpers
+alias lsx='eza -l --icons'           # Long with icons
+alias lT='eza --tree -L 2 --icons'   # Tree with depth 2
+alias ld='eza -lD --icons'           # Only directories
 
  
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -5,17 +5,18 @@
 }
 
 window {
-    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent for glass effect */
-    background-image: url("/home/axosis/Pictures/Wallpapers/dark-waves.jpg");
+    background-color: rgba(41, 41, 41, 0.5); /* semi-transparent for glass effect */
+    /* background-image: url("/home/axosis/Pictures/Wallpapers/23.jpg"); */
     background-size: cover;
     background-position: center;
+    opacity: 1;
 }
 
 button {
     border-radius: 16px;
-    border: 1px solid rgb(255, 0, 255);
+    border: 1px solid grey;
     color:aqua;
-    background-color: rgba(0, 0, 0, 0.35);
+    background-color: rgba(6, 1, 20, 0.35);
     background-repeat: no-repeat;
     background-position: center 50%;
     background-size: 50px;
@@ -31,7 +32,7 @@ button:focus,
 button:active {
     background-color:#181926;
     border-color: #ffffff;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+    box-shadow: 0 0 20px rgb(255, 255, 255);
     outline: none;
 }
 
