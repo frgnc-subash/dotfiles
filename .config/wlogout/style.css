@@ -5,7 +5,7 @@
 }
 
 window {
-    background-color: rgba(41, 41, 41, 0.5); /* semi-transparent for glass effect */
+    background-color: #000000; /* semi-transparent for glass effect */
     /* background-image: url("/home/axosis/Pictures/Wallpapers/23.jpg"); */
     background-size: cover;
     background-position: center;
@@ -24,7 +24,7 @@ button {
     transition: all 0.2s ease;
     padding:10px  40px ;
     margin:10px 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); */
 }
 
 button:hover,
@@ -32,7 +32,7 @@ button:focus,
 button:active {
     background-color:#181926;
     border-color: #ffffff;
-    box-shadow: 0 0 20px rgb(255, 255, 255);
+    /* box-shadow: 0 0 20px rgb(255, 255, 255); */
     outline: none;
 }
 

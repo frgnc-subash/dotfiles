@@ -3,139 +3,128 @@
   font-family: "Caskaydia Cove Nerd Font", monospace;
   font-weight: 700;
   font-size: 14px;
-  color: #ffffff;
   min-height: 0;
 }
 
 window#waybar {
-  background-color: rgba(20, 20, 20, 0.35);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
-  margin: 10px 10px 0 10px;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* Workspaces styling */
-#workspaces {
-  padding: 0 4px;
+.modules-center {
   background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.modules-left {
+  background-color: rgba(30, 30, 46, 1);
+  border-radius: 16px;
+  padding: 0 4px;
+  margin: 0;
+}
+
+.modules-right {
+  background-color: rgba(30, 30, 46, 1);
+  border-radius: 16px;
+  padding: 0 4px;
+  margin: 0;
+}
+
+#workspaces {
+  background-color: rgba(30, 30, 46, 1);
+  border-radius: 16px;
+  padding: 0 4px;
+  margin: 0;
 }
 
 #workspaces button {
-  color: #ffffff;
-  background: transparent;
-  padding: 3px 6px;
-  margin: 4px 2px;
   background-color: #3daee9;
-  border-radius: 6px;
-  transition: all 0.3s ease;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 2px 8px;
+  margin: 4px 2px;
   min-width: 24px;
-  /* height: 24px; */
 }
 
 #workspaces button:hover {
-  color: #ffffff;
-  background: #006ba8;
+  background-color: #006ba8;
 }
 
 #workspaces button.active {
-  /* color: #00ff9d; */
-  background: #00df89;
-  font-weight: 900;
-  box-shadow: 0 0 6px #00bfff;
+  background-color: #00df89;
 }
+
 #workspaces button.active:hover {
-  /* color: #00ff9d; */
-  background: #0080aa;
+  background-color: #0080aa;
+}
+
+.modules-left > widget > *,
+.modules-right > widget > * {
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0 10px;
+  margin: 0;
+  box-shadow: none;
+}
+
+#clock {
+  background-color: rgba(30, 30, 46, 1);
+  color: #00ff9d;
   font-weight: 900;
-  box-shadow: 0 0 6px #00bfff;
-}
-
-#workspaces button.urgent {
-  color: #ff3333;
-  background: rgba(255, 51, 51, 0.15);
-}
-
-/* Module styling */
-.modules-left,
-.modules-center,
-.modules-right {
-  padding: 0 8px;
+  border-radius: 16px;
+  padding: 0 12px;
+  margin: 0 2px;
 }
 
 #custom-arch {
   color: #3daee9;
   font-size: 18px;
+  border-radius: 16px;
   padding: 0 12px;
-  margin: 4px 0;
+  margin: 4px 2px;
 }
 
 #pulseaudio {
   color: #ff5555;
-  padding: 0 10px;
-  margin: 4px 0;
 }
-
 #backlight {
   color: #ffcc00;
-  padding: 0 10px;
-  margin: 4px 0;
 }
-
-#clock {
-  font-weight: 900;
-  color: #00ff9d;
-  padding: 0 15px;
-  margin: 4px 0;
-}
-
 #battery {
   color: #00d4ff;
-  padding: 0 10px;
-  margin: 4px 0;
 }
-
-#battery.plugged,
-#battery.full,
 #battery.charging {
   color: #00ff9d;
 }
-
 #battery.warning {
   color: #ffaa00;
 }
-
 #battery.critical {
   color: #ff3333;
 }
-
 #network {
   color: #c52ef6;
-  padding: 0 10px;
-  margin: 4px 0;
 }
-
 #network.disconnected {
   color: #ff3333;
 }
-
 #bluetooth {
   color: #3daee9;
-  padding: 0 20px;
-  margin: 4px 0;
 }
-
 #bluetooth.connected {
   color: #00bfff;
 }
 
-/* Hover effects */
-#custom-arch:hover,
-#pulseaudio:hover,
-#backlight:hover,
-#clock:hover,
-#battery:hover,
-#network:hover,
-#bluetooth:hover {
-  text-shadow: 0 0 6px currentColor;
+.modules-left:hover,
+.modules-right:hover {
+  background-color: rgba(50, 50, 70, 1);
+}
+
+#clock:hover {
+  background-color: rgba(50, 50, 70, 1);
 }
