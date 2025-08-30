@@ -1,0 +1,98 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": "auto",
+  "width": "auto",
+  "margin-top": 4,
+  "margin-left": 4,
+  "margin-right": 4,
+  "margin-bottom": 0,
+  "spacing": 4,
+  "background": "rgba(0,0,0,0)",
+  "modules-left": [
+    "custom/arch",
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "network",
+    "bluetooth",
+    "pulseaudio",
+    "backlight",
+    "battery"
+  ],
+  "custom/arch": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "rofi -show drun"
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "active-only": false,
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10"
+    }
+  },
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip": false
+  },
+  "pulseaudio": {
+    "format": " {volume}%",
+    "scroll-step": 1,
+    "max-volume": 150,
+    "on-click": "pavucontrol"
+  },
+  "backlight": {
+    "format": " {percent}%",
+    "scroll-step": 1
+  },
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-full": " {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "tooltip": false,
+    "interval": 1
+  },
+  "network": {
+    "format": "",
+    "format-wifi": "",
+    "format-ethernet": "",
+    "format-disconnected": "!",
+    "tooltip-format": "{ifname}: {essid}",
+    "tooltip-format-wifi": "Connected to {essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "Ethernet {ifname}",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "nm-connection-editor"
+  },
+  "bluetooth": {
+    "format": "!",
+    "format-connected": "...",
+    "tooltip-format": "Bluetooth",
+    "tooltip-format-connected": "Connected to {device_alias}",
+    "on-click": "blueberry"
+  }
+}

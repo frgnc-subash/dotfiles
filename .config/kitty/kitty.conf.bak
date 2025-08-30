@@ -1,0 +1,10 @@
+# BEGIN_KITTY_THEME
+# Tomorrow Night Bright
+include current-theme.conf
+# END_KITTY_THEME
+
+window_padding_width		10
+font_family			mononoki
+font_size			13
+font_bold			auto
+font_italic			auto

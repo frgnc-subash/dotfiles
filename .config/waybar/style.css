@@ -1,0 +1,128 @@
+* {
+  border: none;
+  font-family: "mononoki", monospace;
+  font-weight: 700;
+  font-size: 13px; /* Slightly reduced */
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+  margin: 0;
+  padding: 0;
+}
+
+.modules-center {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.modules-left {
+  background-color: #24283b;
+  border-radius: 14px; /* Slightly reduced */
+  padding: 0 4px;
+  margin: 0;
+}
+
+.modules-right {
+  background-color: #24283b;
+  border-radius: 14px; /* Slightly reduced */
+  padding: 0 4px;
+  margin: 0;
+}
+
+#workspaces {
+  background-color: #24283b;
+  border-radius: 14px; /* Slightly reduced */
+  padding: 0 4px;
+  margin: 0;
+}
+
+#workspaces button {
+  background-color: #3daee9;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 2px 8px;
+  margin: 3px 2px; /* Slightly reduced margin */
+  min-width: 22px; /* Slightly reduced */
+}
+
+#workspaces button:hover {
+  background-color: #006ba8;
+}
+
+#workspaces button.active {
+  background-color: #00df89;
+}
+
+#workspaces button.active:hover {
+  background-color: #0080aa;
+}
+
+.modules-left > widget > *,
+.modules-right > widget > * {
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0 9px; /* Slightly reduced */
+  margin: 0;
+  box-shadow: none;
+}
+
+#clock {
+  background-color: #24283b;
+  color: #00ff9d;
+  font-weight: 900;
+  border-radius: 14px; /* Slightly reduced */
+  padding: 0 11px; /* Slightly reduced */
+  margin: 0 2px;
+}
+
+#custom-arch {
+  color: #3daee9;
+  font-size: 16px; /* Reduced from 18px */
+  border-radius: 14px; /* Slightly reduced */
+  padding: 0 11px; /* Slightly reduced */
+  margin: 3px 2px; /* Slightly reduced */
+}
+
+#pulseaudio {
+  color: #ff5555;
+}
+#backlight {
+  color: #ffcc00;
+}
+#battery {
+  color: #00d4ff;
+}
+#battery.charging {
+  color: #00ff9d;
+}
+#battery.warning {
+  color: #ffaa00;
+}
+#battery.critical {
+  color: #ff3333;
+}
+#network {
+  color: #c52ef6;
+}
+#network.disconnected {
+  color: #ff3333;
+}
+#bluetooth {
+  color: #3daee9;
+}
+#bluetooth.connected {
+  color: #00bfff;
+}
+
+.modules-left:hover,
+.modules-right:hover {
+  background-color: rgba(50, 50, 70, 1);
+}
+
+
