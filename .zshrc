@@ -66,7 +66,7 @@ alias lsx='eza -l --icons'           # Long with icons
 alias lT='eza --tree -L 2 --icons'   # Tree with depth 2
 alias ld='eza -lD --icons'           # Only directories
 alias bare='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-
+alias cmatrix='cmatrix -ba -u 2 -C blue'
 
 eval "$(fzf --zsh)"
 eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/themes/tokyo_night.omp.json)"
