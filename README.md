@@ -1,1 +1,1 @@
-#Hyprland .files
+Hyprland .files
