@@ -1,22 +1,16 @@
 @import "~/.config/rofi/colors.rasi"
 
-/**
- * Abuku Color Theme
- * User: Abuku
- * Copyright: Hayya U
- */
-
 
 configuration {
     modi:                       "drun,run";
-    font:                       "Iosevka 14";
-    show-icons:                 false;
-    icon-theme:                 "kora";
-    display-drun:               "∂";
-    display-run:                "∂";
+    font:                       "mononoki 14";
+    show-icons:                 true;
+    icon-theme:                 "Papirus";
+    display-drun:               "";
+    display-run:                "";
     display-filebrowser:        "FILES";
     display-window:             "WINDOW";
-	  drun-display-format:        "{name}";
+    drun-display-format:        "{name}";
     hover-select:               false;
     scroll-method:              1;
     me-select-entry:            "";
@@ -26,7 +20,7 @@ configuration {
 }
 
 window {
-    width:                        350px;
+    width:                        450px;
     x-offset:                     0px;
     y-offset:                     0px;
     spacing:                      0px;
@@ -34,7 +28,7 @@ window {
     margin:                       0px; 
     border:                       0px;
     border-color:                 transparent;
-    cursor:                       "default";
+    cursor:                       "Bibata-Modern-Ice";
     transparency:                 "real";
     location:                     center;
     anchor:                       center;
