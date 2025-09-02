@@ -3,8 +3,8 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
-#autoload -Uz _zinit
-#(( ${+_comps} )) && _comps[zinit]=_zinit
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
 
 autoload -Uz compinit && compinit
@@ -59,7 +59,7 @@ alias lah='eza -lah --icons'         # Long + all + human-readable sizes
 alias lt='eza --tree --icons'        # Tree view
 alias lg='eza -l --git --icons'      # Git-aware long view
 alias l.='eza -la --icons | grep "^\."'  # Only dotfiles
-alias ..='eza ..'
+alias ..='cd ..'
 
 # Extra helpers
 alias lsx='eza -l --icons'           # Long with icons
@@ -76,4 +76,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+#exports
 export PATH=$HOME/.config/hypr/scripts:$PATH
