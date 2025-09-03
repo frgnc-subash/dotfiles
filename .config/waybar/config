@@ -48,13 +48,13 @@
     "tooltip": false
   },
   "pulseaudio": {
-    "format": " {volume}%",
+    "format": "󰕾 {volume}%",
     "scroll-step": 1,
     "max-volume": 150,
     "on-click": "pavucontrol"
   },
   "backlight": {
-    "format": " {percent}%",
+    "format": "󰃠 {percent}%",
     "scroll-step": 1
   },
   "battery": {
@@ -63,16 +63,16 @@
     "format-plugged": " {capacity}%",
     "format-full": " {capacity}%",
     "format-icons": [
-      "󰁺", 
-      "󰁻", 
-      "󰁼", 
-      "󰁽", 
-      "󰁾", 
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
       "󰁿",
-      "󰂀", 
-      "󰂁", 
-      "󰂂", 
-      "󰁹"  
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
     ],
     "states": {
       "warning": 30,
