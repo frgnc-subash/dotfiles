@@ -1,14 +1,12 @@
 {
+  "$schema": "/etc/xdg/waybar/configSchema.json",
   "layer": "top",
   "position": "top",
-  "height": "auto",
-  "width": "auto",
+  "height": 26,
   "margin-top": 4,
   "margin-left": 4,
   "margin-right": 4,
   "margin-bottom": 0,
-  "spacing": 4,
-  "background": "rgba(0,0,0,0)",
   "modules-left": [
     "custom/arch",
     "hyprland/workspaces"
@@ -17,10 +15,9 @@
     "clock"
   ],
   "modules-right": [
-    "network",
-    "bluetooth",
     "pulseaudio",
     "backlight",
+    "network",
     "battery"
   ],
   "custom/arch": {
@@ -36,12 +33,14 @@
       "2": "2",
       "3": "3",
       "4": "4",
-      "5": "5",
-      "6": "6",
-      "7": "7",
-      "8": "8",
-      "9": "9",
-      "10": "10"
+      "5": "5"
+    },
+    "persistent_workspaces": {
+      "1": {},
+      "2": {},
+      "3": {},
+      "4": {},
+      "5": {}
     }
   },
   "clock": {
@@ -64,11 +63,16 @@
     "format-plugged": " {capacity}%",
     "format-full": " {capacity}%",
     "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      "󰁺", 
+      "󰁻", 
+      "󰁼", 
+      "󰁽", 
+      "󰁾", 
+      "󰁿",
+      "󰂀", 
+      "󰂁", 
+      "󰂂", 
+      "󰁹"  
     ],
     "states": {
       "warning": 30,
@@ -78,21 +82,14 @@
     "interval": 1
   },
   "network": {
-    "format": "",
-    "format-wifi": "",
-    "format-ethernet": "",
+    "format": "{ifname}",
+    "format-wifi": " {essid}",
+    "format-ethernet": " {ifname}",
     "format-disconnected": "!",
-    "tooltip-format": "{ifname}: {essid}",
+    "tooltip-format": "{ifname}",
     "tooltip-format-wifi": "Connected to {essid} ({signalStrength}%)",
     "tooltip-format-ethernet": "Ethernet {ifname}",
     "tooltip-format-disconnected": "Disconnected",
     "on-click": "nm-connection-editor"
-  },
-  "bluetooth": {
-    "format": "!",
-    "format-connected": "...",
-    "tooltip-format": "Bluetooth",
-    "tooltip-format-connected": "Connected to {device_alias}",
-    "on-click": "blueberry"
   }
 }

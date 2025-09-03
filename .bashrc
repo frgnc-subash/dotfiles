@@ -1,6 +1,4 @@
-#
-# ~/.bashrc
-#
+
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -63,3 +61,6 @@ git_info() {
 # Set PS1
 PS1="${BLUE} \u${RESET}|${PURPLE}\h${RESET}|${CYAN}\W${RESET} ${YELLOW}\$(git_info)${RESET}|
 ${GREEN}❯ ${RESET}"
+
+
+#eval "$(starship init bash)"
