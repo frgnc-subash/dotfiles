@@ -74,7 +74,7 @@ export NVM_DIR="$HOME/.nvm"
 
 #exports
 export PATH=$HOME/.config/hypr/scripts:$PATH
-export STARHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
 eval "$(fzf --zsh)"
 # eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/themes/tokyo_night.omp.json)"
