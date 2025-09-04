@@ -68,13 +68,15 @@ alias ld='eza -lD --icons'           # Only directories
 alias bare='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias cmatrix='cmatrix -ba -u 2 -C blue'
 
-eval "$(fzf --zsh)"
-eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/themes/tokyo_night.omp.json)"
-eval "$(zoxide init --cmd cd zsh)"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #exports
 export PATH=$HOME/.config/hypr/scripts:$PATH
+export STARHIP_CONFIG="$HOME/.config/starship/starship.toml"
+
+eval "$(fzf --zsh)"
+# eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/themes/tokyo_night.omp.json)"
+eval "$(zoxide init --cmd cd zsh)"
+eval "$(starship init zsh)"

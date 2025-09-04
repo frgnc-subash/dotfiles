@@ -1,6 +1,8 @@
+@import url("colors.css");
+
 * {
   border: none;
-  font-family: "Fira", monospace;
+  font-family: "FiraCode Nerd Font", monospace;
   font-weight: 700;
   font-size: 11px;
   min-height: 0;
@@ -10,34 +12,21 @@ window#waybar {
   background-color: transparent;
   border: none;
   box-shadow: none;
-  text-shadow: none;
   margin: 0;
   padding: 0;
 }
 
+.modules-left,
+.modules-right,
 .modules-center {
   background: transparent;
   padding: 0;
   margin: 0;
 }
 
-.modules-left {
-  background-color: transparent;
-  border-radius: 40px;
-  padding: 0;
-  margin: 0;
-}
-
-.modules-right {
-  background-color: transparent;
-  border-radius: 40px;
-  padding: 0;
-  margin: 0;
-}
-
 #custom-arch {
-  background-color: #24283b;
-  color: #3daee9;
+  background-color: @bg;
+  color: @blue;
   font-size: 12px;
   border-radius: 40px;
   padding: 0 8px;
@@ -45,9 +34,9 @@ window#waybar {
   min-height: 22px;
 }
 
-/* Workspace module */
+/* Workspace module with Pac-Man theme */
 #workspaces {
-  background-color: #24283b;
+  background-color: @bg;
   border-radius: 40px;
   padding: 0 3px;
   margin: 0;
@@ -55,47 +44,38 @@ window#waybar {
 }
 
 #workspaces button {
-  min-width: 22px;          /* ensures empty buttons are visible */
-  min-height: 20px;         /* enough height for visibility */
+  min-width: 22px;
+  min-height: 20px;
   padding: 0 6px;
   margin: 3px 1px;
-  font-size: 10px;
+  font-size: 13px;
   border-radius: 12px;
-  background-color: #24283b; /* default background for empty workspaces */
-  color: #888888;           /* gray for empty workspaces */
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: @bg;
+  color: @fg;
+  transition: all 0.2s ease-in-out;
   opacity: 0.8;
 }
 
 #workspaces button:hover {
-  background-color: #006ba8;
+  background-color: @blue;
+  color: #000000;
   opacity: 1;
-  color: #ffffff;
 }
 
 #workspaces button.active {
-  background-color: #00df89;
-  color: #ffffff;
+  background-color: @green;
+  color: #000000;
   opacity: 1;
   animation: pulse 0.5s ease-in-out;
 }
 
 #workspaces button.active:hover {
-  background-color: #0080aa;
-}
-
-.modules-left > widget > *,
-.modules-right > widget > * {
-  background-color: transparent;
-  border-radius: 40px;
-  padding: 0;
-  margin: 0;
-  box-shadow: none;
+  background-color: @cyan;
 }
 
 #clock {
-  background-color: #24283b;
-  color: #00ff9d;
+  background-color: @bg;
+  color: @green;
   font-weight: 900;
   border-radius: 40px;
   padding: 0 10px;
@@ -104,70 +84,71 @@ window#waybar {
   font-size: 11px;
 }
 
-/* All right modules with same color scheme */
+#network {
+  background-color: @bg;
+  border-radius: 40px;
+  padding: 0 6px;
+  margin: 0 2px;
+  min-height: 22px;
+  color: @cyan;
+  font-size: 13px; 
+  min-width: 22px;
+}
+
+#network.wifi {
+  color: @cyan;
+}
+
+#network.ethernet {
+  color: @blue;
+}
+
+#network.disconnected {
+  color: @red;
+}
+
+/* Right modules Tokyo Night */
 #pulseaudio,
 #backlight,
 #network,
-#bluetooth,
 #battery {
-  background-color: #24283b;
+  background-color: @bg;
   border-radius: 40px;
   padding: 0 10px;
   margin: 0 2px;
   min-height: 22px;
-  color: #3daee9;
+  color: @cyan;
   font-size: 11px;
 }
 
 #pulseaudio {
   min-width: 45px;
 }
-
 #backlight {
   min-width: 45px;
 }
-
-#network {
-  min-width: 30px;
-}
-
-#network.wifi {
-  min-width: 80px;
-}
-
-#network.disconnected {
-  color: #ff5555;
-}
-
-#bluetooth.connected {
-  color: #00ff9d;
-}
-
 #battery {
   min-width: 45px;
 }
-
 #battery.charging {
-  color: #00ff9d;
+  color: @green;
 }
-
 #battery.warning {
-  color: #ffcc00;
+  color: @yellow;
 }
-
 #battery.critical {
-  color: #ff5555;
+  color: @red;
 }
 
-/* Animation keyframes */
+/* Animation */
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(0, 223, 137, 0.4);
+    box-shadow: 0 0 0 0 rgba(158, 206, 106, 0.4);
   }
   70% {
-    box-shadow: 0 0 0 5px rgba(0, 223, 137, 0);
+    box-shadow: 0 0 0 6px rgba(158, 206, 106, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(0, 223, 137, 0);
+    box-shadow: 0 0 0 0 rgba(158, 206, 106, 0);
   }
 }

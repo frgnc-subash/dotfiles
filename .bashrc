@@ -26,41 +26,7 @@ alias ld='eza -lD --icons'           # Only directories
 alias bare='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias cmatrix='cmatrix -ba -u 2 -C blue'
 
-# Tokyo Night Bright colors
-RESET="\[\e[0m\]"
-BLUE="\[\e[38;5;75m\]"
-PURPLE="\[\e[38;5;141m\]"
-CYAN="\[\e[38;5;80m\]"
-GREEN="\[\e[38;5;120m\]"
-YELLOW="\[\e[38;5;226m\]"
-RED="\[\e[38;5;203m\]"
 
-# Function to show git branch and status
-git_info() {
-    local branch
-    local status
-    if git rev-parse --is-inside-work-tree &>/dev/null; then
-        branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
-        status=""
-        # staged changes
-        if ! git diff --cached --quiet 2>/dev/null; then
-            status+="+"
-        fi
-        # unstaged changes
-        if ! git diff --quiet 2>/dev/null; then
-            status+="*"
-        fi
-        # untracked files
-        if [ -n "$(git ls-files --others --exclude-standard 2>/dev/null)" ]; then
-            status+="!"
-        fi
-        echo "(${branch}${status})"
-    fi
-}
-
-# Set PS1
-PS1="${BLUE} \u${RESET}|${PURPLE}\h${RESET}|${CYAN}\W${RESET} ${YELLOW}\$(git_info)${RESET}|
-${GREEN}❯ ${RESET}"
-
-
-#eval "$(starship init bash)"
+#exports
+export STARHIP_CONFIG="$HOME/.config/starship/starship.toml"
+eval "$(starship init bash)"

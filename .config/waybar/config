@@ -29,18 +29,21 @@
     "format": "{icon}",
     "active-only": false,
     "format-icons": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5"
+      "default": "⬤",
+      "1": "󰮯",
+      "2": "󰮯",
+      "3": "󰮯",
+      "4": "󰮯",
+      "5": "󰮯"
     },
-    "persistent_workspaces": {
-      "1": {},
-      "2": {},
-      "3": {},
-      "4": {},
-      "5": {}
+    "persistent-workspaces": {
+      "*": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
     }
   },
   "clock": {
@@ -82,13 +85,11 @@
     "interval": 1
   },
   "network": {
-    "format": "{ifname}",
-    "format-wifi": " {essid}",
-    "format-ethernet": " {ifname}",
+    "format-wifi": "",
+    "format-ethernet": "",
     "format-disconnected": "!",
-    "tooltip-format": "{ifname}",
     "tooltip-format-wifi": "Connected to {essid} ({signalStrength}%)",
-    "tooltip-format-ethernet": "Ethernet {ifname}",
+    "tooltip-format-ethernet": "Ethernet connected",
     "tooltip-format-disconnected": "Disconnected",
     "on-click": "nm-connection-editor"
   }
