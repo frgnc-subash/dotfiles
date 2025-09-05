@@ -11,7 +11,7 @@ date-padding 1
 fill ''
 locale ''
 timezone ''
-date '%a %b %d'
+date '%a %b %d %Y %z' 
 mode clock
 view digital
 toggle active-bg
