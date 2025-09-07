@@ -47,8 +47,8 @@
       "text": "Label Text"
     },
     "mpris": {
-      "image-size": 72,
-      "image-radius": 8
+      "image-size": 64,
+      "image-radius": 6
     },
     "notifications": {
       "mode": "popup",
