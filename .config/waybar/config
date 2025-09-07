@@ -9,7 +9,8 @@
   "margin-bottom": 0,
   "modules-left": [
     "custom/arch",
-    "hyprland/workspaces"
+    "hyprland/workspaces",
+    "custom/swaync"
   ],
   "modules-center": [
     "clock"
@@ -17,8 +18,9 @@
   "modules-right": [
     "pulseaudio",
     "backlight",
+    "battery",
     "network",
-    "battery"
+    "power-profiles-daemon"
   ],
   "custom/arch": {
     "format": "",
@@ -83,6 +85,13 @@
     "tooltip": false,
     "interval": 1
   },
+  "custom/swaync": {
+    "format": "{}",
+    "exec": "~/.config/hypr/scripts/swaync-status.sh",
+    "on-click": "swaync-client -t",
+    "on-click-right": "swaync-client -d",
+    "interval": 5
+  },
   "network": {
     "format-wifi": "",
     "format-ethernet": "",
@@ -91,5 +100,16 @@
     "tooltip-format-ethernet": "Ethernet connected",
     "tooltip-format-disconnected": "Disconnected",
     "on-click": "nm-connection-editor"
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
   }
 }
