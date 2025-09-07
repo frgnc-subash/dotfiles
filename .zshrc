@@ -70,7 +70,7 @@ alias cmatrix='cmatrix -ba -u 2 -C blue'
 
 
 #autostarts
-fastfetch
+#fastfetch
 
 #exports
 export NVM_DIR="$HOME/.nvm"
