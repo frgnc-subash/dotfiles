@@ -71,7 +71,7 @@ alias wf-recorder="wf-recorder -a default -f $HOME/Videos/recording-$(date +'%Y%
 
 
 #autostarts
-#fastfetch
+#fastfetchqq
 
 #exports
 export NVM_DIR="$HOME/.nvm"
