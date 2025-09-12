@@ -34,7 +34,6 @@ window#waybar {
   min-height: 22px;
 }
 
-
 #workspaces {
   background-color: @bg;
   border-radius: 40px;
@@ -86,7 +85,8 @@ window#waybar {
 }
 
 #custom-swaync,
-#power-profiles-daemon {
+#power-profiles-daemon,
+#custom-hyprpicker {
   background-color: @bg;
   color: @green;
   font-weight: 900;
@@ -160,7 +160,6 @@ window#waybar {
 #custom-swaync.empty {
   opacity: 0.5;
 }
-
 
 @keyframes pulse {
   0% {

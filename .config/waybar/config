@@ -9,11 +9,12 @@
   "margin-bottom": 0,
   "modules-left": [
     "custom/arch",
-    "hyprland/workspaces",
-    "custom/swaync"
+    "hyprland/workspaces"
   ],
   "modules-center": [
-    "clock"
+    "custom/hyprpicker",
+    "clock",
+    "custom/swaync"
   ],
   "modules-right": [
     "pulseaudio",
@@ -55,6 +56,11 @@
   "clock": {
     "format": "{:%H:%M}",
     "tooltip": false
+  },
+  "custom/hyprpicker": {
+    "format": "󰌁",
+    "on-click": "hyprpicker -a -f hex",
+    "interval": 0
   },
   "pulseaudio": {
     "format": "󰕾 {volume}%",
