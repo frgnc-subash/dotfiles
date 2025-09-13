@@ -5,3 +5,5 @@
   <br>
   <code>Minimal</code> · <code>Tiling</code> · <code>Fast</code>
 </p>
+ 
+# Wallpapers are <a href="https://github.com/frgnc-subash/wallpapers">here</a> 

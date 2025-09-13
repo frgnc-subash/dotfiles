@@ -55,7 +55,10 @@
   },
   "clock": {
     "format": "{:%H:%M}",
-    "tooltip": false
+    "format-alt": "{:%a, %b %d}",
+    "tooltip": false,
+    "tooltip-format": "{:%A, %B %d, %Y}\nWeek: %V",
+    "on-click": "~/.config/hypr/scripts/toggle-date.sh"
   },
   "custom/hyprpicker": {
     "format": "󰌁",

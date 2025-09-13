@@ -1,3 +1,8 @@
+# ┌─┐┌┬┐┌─┐┬─┐┌─┐┬ ┬┬┌─┐
+# └─┐ │ ├─┤├┬┘└─┐├─┤│├─┘
+# └─┘ ┴ ┴ ┴┴└─└─┘┴ ┴┴┴  
+
+
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """[ ](fg:#0DF5FD) $directory $git_branch$git_status $time $cmd_duration\n$character"""
@@ -9,8 +14,8 @@ truncation_length = 1
 truncation_symbol = ""
 
 
-[character] 
-success_symbol = '[✧˚⋆.✦](bold green)'  
+[character]
+success_symbol = '[✧˚⋆.✦](bold blue)'
 
 
 [git_branch]
@@ -19,7 +24,7 @@ style = "fg:cyan"
 format = '[ $branch $symbol  ]($style)'
 
 [git_status]
-style = "fg:red" 
+style = "fg:red"
 format = '[($all_status$ahead_behind)]($style)'
 
 [time]
