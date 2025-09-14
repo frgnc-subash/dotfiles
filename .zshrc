@@ -72,7 +72,7 @@ alias lT='eza --tree -L 2 --icons'   # Tree with depth 2
 alias ld='eza -lD --icons'           # Only directories
 alias bare='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME --no-pager'
 alias cmatrix='cmatrix -ba -u 2 -C blue'
-#alias wf-recorder="wf-recorder -a default -f $HOME/Videos/recording-$(date +'%Y%m%d-%H%M%S').mp4"
+alias wf-recorder="wf-recorder -a default -f $HOME/Videos/recording-$(date +'%Y%m%d-%H%M%S').mp4"
 
 
 #autostarts

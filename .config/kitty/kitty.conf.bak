@@ -1,5 +1,10 @@
+# ┬┌─ ┬┌┬┐┌┬┐┬ ┬
+# ├┴┐ │ │  │ └┬┘
+# ┴ ┴ ┴ ┴  ┴  ┴ 
+
+
 # BEGIN_KITTY_THEME
-# Dark Pastel
+# Paul Millr
 include current-theme.conf
 # END_KITTY_THEME
 
@@ -8,4 +13,5 @@ font_family			mononoki
 font_size			14
 font_bold			auto
 font_italic			auto
-background_opacity 		0.75
+#background_opacity 		0.75
+cursor_shape			block

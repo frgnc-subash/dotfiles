@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WALLPAPER_DIR="$HOME/Pictures/wallpapers"
+WALLPAPER_DIR="$HOME/Pictures/wallpapers/wallpapers"
 INDEX_FILE="$HOME/.last_wallpaper_index"
 
 # Get all wallpapers sorted alphabetically
