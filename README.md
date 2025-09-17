@@ -6,7 +6,11 @@
   <code>Minimal</code> · <code>Tiling</code> · <code>Fast</code>
 </p>
  
- ### Preview
-<img src="/.assets/previews/preview-2.png" alt="preview-1" width="200"/>
+<h3 align="center">Previews</h3>
 
-Wallpapers are <a href="https://github.com/frgnc-subash/wallpapers">here</a> 
+<p align="center">
+  <img src=".assets/previews/preview-1.png" alt="preview-1" width="800"><br><br>
+  <img src=".assets/previews/preview-2.png" alt="preview-2" width="800">
+</p>
+
+Wallpapers are <a href="https://github.com/frgnc-subash/wallpapers">here</a>
