@@ -5,5 +5,7 @@
   <br>
   <code>Minimal</code> · <code>Tiling</code> · <code>Fast</code>
 </p>
- 
+ ### Preview
+ ![Project Logo](/.assets/previews/preview-2.png)
+
 Wallpapers are <a href="https://github.com/frgnc-subash/wallpapers">here</a> 
