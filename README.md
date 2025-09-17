@@ -15,4 +15,4 @@
   <img src=".assets/previews/preview-2.png" alt="preview-2" width="800">
 </p>
 
---Wallpapers are <a href="https://github.com/frgnc-subash/wallpapers">here</a>
+Wallpapers are <a href="https://github.com/frgnc-subash/wallpapers">here</a>
