@@ -62,7 +62,7 @@ alias ll='eza -l --icons'            # Long format
 alias la='eza -la --icons'           # Long + hidden files
 alias lah='eza -lah --icons'         # Long + all + human-readable sizes
 alias lt='eza --tree --icons'        # Tree view
-alias lg='eza -l --git --icons'      # Git-aware long view
+alias lg='eza -l --git --icons'      # Git-aware lozzng view
 alias l.='eza -la --icons | grep "^\."'  # Only dotfiles
 alias ..='cd ..'
 
