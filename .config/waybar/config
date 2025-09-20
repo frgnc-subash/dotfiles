@@ -77,9 +77,9 @@
   },
   "battery": {
     "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-full": " {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-full": " {capacity}%",
     "format-icons": [
       "󰁺",
       "󰁻",
@@ -108,7 +108,7 @@
   },
   "network": {
     "format-wifi": "",
-    "format-ethernet": "",
+    "format-ethernet": "󰈀",
     "format-disconnected": "!",
     "tooltip-format-wifi": "Connected to {essid} ({signalStrength}%)",
     "tooltip-format-ethernet": "Ethernet connected",
