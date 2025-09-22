@@ -1,84 +1,72 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
-    	"source": "~/.config/fastfetch/images/bocchi.png",
-    	"type": "kitty",
-    	"height": 10,
-    	"padding": {
-    		"top": 1
-    	}
+        "padding": {
+            "top": 2
+        },
+        "type": "small"
     },
     "display": {
-        "separator": " "
+        "separator": " -> "
     },
     "modules": [
+        "break",
         {
-            "key": "╭────────────╮",
-            "type": "custom"
-        },
-        {
-            "key": "│ {#31}👤  user   {#keys}│",
             "type": "title",
-            "format": "{user-name}"
+            "keyWidth": 10,
+			"format": "         {6}{7}{8}"
         },
         {
-            "key": "│ {#32}󰇅  hname   {#keys}│",
-            "type": "title",
-            "format": "{host-name}"
+            "type": "custom",
+            "format": " ─────────────────────────── "
         },
         {
-            "key": "│ {#33}󰅐  uptime  {#keys}│",
-            "type": "uptime"
-        },
-     
-        {
-            "key": "│ {#35}⚙︎  kernel  {#keys}│",
-            "type": "kernel"
+            "type": "kernel",
+            "key": " ",
+            "keyColor": "yellow"
         },
         {
-            "key": "│ {#36}󰇄 desktop {#keys}│",
-            "type": "de"
+            "type": "wm",
+            "key": " ",
+            "keyColor": "blue"
         },
         {
-            "key": "│ {#31}  term    {#keys}│",
-            "type": "terminal"
+            "type": "shell",
+            "key": "$ ",
+            "keyColor": "yellow"
         },
         {
-            "key": "│ {#32}  shell   {#keys}│",
-            "type": "shell"
+            "type": "terminal",
+            "key": " ",
+            "keyColor": "blue"
+        },
+        
+        {
+            "type": "packages",
+            "key": "󰏖 ",
+            "keyColor": "yellow"
+        },
+        
+        {
+            "type": "memory",
+            "key": " ",
+            "keyColor": "magenta",
+            // format: used / total
+            "format": "{1} / {2}"
         },
         {
-            "key": "│ {#33}󰍛  cpu     {#keys}│",
-            "type": "cpu",
-            "showPeCoreCount": true
+            "type": "uptime",
+            "key": "󰔚 ",
+            "keyColor": "green"
         },
         {
-            "key": "│ {#34}󰉉  disk    {#keys}│",
-            "type": "disk",
-            "folders": "/"
+            "type": "custom",
+            "format": " ─────────────────────────── "
         },
         {
-            "key": "│ {#35}  memory  {#keys}│",
-            "type": "memory"
+            "type": "custom",
+            "format": "   \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m  \u001b[90m "
         },
-        {
-            "key": "│ {#36}󰩟  network {#keys}│",
-            "type": "localip",
-            "format": "{ipv4} ({ifname})"
-        },
-        {
-            "key": "├────────────┤",
-            "type": "custom"
-        },
-
-        {
-            "key": "│ {#39}  colors  {#keys}│",
-            "type": "colors",
-            "symbol": "circle"
-        },
-        {
-            "key": "╰────────────╯",
-            "type": "custom"
-        }
+		"break",
     ]
 }

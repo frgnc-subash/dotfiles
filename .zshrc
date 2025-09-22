@@ -76,6 +76,7 @@ alias wf-recorder="wf-recorder -a default -f $HOME/Videos/recording-$(date +'%Y%
 
 
 #autostarts
+#pokeget pikachu
 #fastfetch
 
 #exports
