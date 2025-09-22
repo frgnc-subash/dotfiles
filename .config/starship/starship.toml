@@ -5,7 +5,7 @@
 
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = """[ ](fg:#0DF5FD) $directory $git_branch$git_status $time $cmd_duration\n$character"""
+format = """[](fg:#7C9FF3) $directory $git_branch$git_status $time $cmd_duration\n$character"""
 
 [directory]
 style = "fg:#769ff0"
@@ -14,8 +14,8 @@ truncation_length = 1
 truncation_symbol = ""
 
 
-[character]
-success_symbol = '[✧˚⋆.✦](bold blue)'
+#[character]
+#success_symbol = '[](bold blue)'
 
 
 [git_branch]
