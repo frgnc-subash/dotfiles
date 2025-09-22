@@ -33,4 +33,4 @@ alias cmatrix='cmatrix -ba -u 2 -C blue'
 
 #exports
 eval "$(starship init bash)"
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export STARSHIP_CONFIG="$HOME/.config/starship/themes/end4.toml"
