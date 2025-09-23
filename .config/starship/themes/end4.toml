@@ -2,7 +2,7 @@
 # └─┐ │ ├─┤├┬┘└─┐├─┤│├─┘
 # └─┘ ┴ ┴ ┴┴└─└─┘┴ ┴┴┴  
 
-# Don't print a new line at the start of the prompt
+
 add_newline = false
 # Pipes ╰─ ╭─
 # Powerline symbols                                     
@@ -21,7 +21,7 @@ $character"""
 # Replace the "❯" symbol in the prompt with "➜"
 [character]                            # The name of the module we are configuring is "character"
 success_symbol = "[   ](bold fg:blue)"
-error_symbol = "[   ](bold fg:red)"
+error_symbol = "[  ✖ ](bold fg:red)"
 
 # Disable the package module, hiding it from the prompt completely
 [package]
@@ -29,7 +29,7 @@ disabled = true
 
 [git_branch]
 style = "bg: cyan"
-symbol = "󰘬"
+symbol = "󰊤"
 truncation_length = 12
 truncation_symbol = ""
 format = "󰜥 [](bold fg:cyan)[$symbol $branch(:$remote_branch)](fg:black bg:cyan)[ ](bold fg:cyan)"
@@ -40,19 +40,19 @@ tag_symbol = " "
 
 [git_state]
 format = '[\($state( $progress_current of $progress_total)\)]($style) '
-cherry_pick = "[🍒 PICKING](bold red)"
+cherry_pick = "[ PICKING](bold red)"
 
 [git_status]
 conflicted = " 🏳 "
-ahead = " 🏎💨 "
-behind = " 😰 "
-diverged = " 😵 "
-untracked = " 🤷 ‍"
-stashed = " 📦 "
-modified = " 📝 "
+ahead = " 󱞨 "
+behind = " 󱞦 "
+diverged = " 󰦻 "
+untracked = "  "
+stashed = "  "
+modified = "  "
 staged = '[++\($count\)](green)'
-renamed = " ✍️ "
-deleted = " 🗑 "
+renamed = " 󰑕 "
+deleted = " 󰗩 "
 
 [hostname]
 ssh_only = false
@@ -71,7 +71,7 @@ style = "bold dimmed green"
 
 [time]
 disabled = true
-format = '🕙[\[ $time \]]($style) '
+format = '󱑆[\[ $time \]]($style) '
 time_format = "%T"
 
 [username]
