@@ -11,9 +11,12 @@
  
 <h3></h3>
 <p align="center">
-   <img src=".assets/previews/preview-4.png" alt="preview-4" width="800">
-  <img src=".assets/previews/preview-1.png" alt="preview-1" width="800"><br><br>
-  <img src=".assets/previews/preview-2.png" alt="preview-2" width="800">
+  <img src=".assets/previews/preview-1.png" alt="preview-4" width="800">
+  <img src=".assets/previews/preview-2.png" alt="preview-4" width="800">
+  <img src=".assets/previews/preview-3.png" alt="preview-1" width="800">
+  <img src=".assets/previews/preview-4.png" alt="preview-2" width="800">
+  <img src=".assets/previews/preview-5.png" alt="preview-2" width="800">
+  <br><br>
 </p>
 
 Wallpapers are <a href="https://github.com/frgnc-subash/wallpapers">here</a>
