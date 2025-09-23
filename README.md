@@ -16,6 +16,8 @@
   <img src=".assets/previews/preview-3.png" alt="preview-3" width="800">
   <img src=".assets/previews/preview-4.png" alt="preview-4" width="800">
   <img src=".assets/previews/preview-5.png" alt="preview-5" width="800">
+  <img src=".assets/previews/preview-6.png" alt="preview-6" width="800">
+  <img src=".assets/previews/preview-7.png" alt="preview-7" width="800">
   <br><br>
 </p>
 
