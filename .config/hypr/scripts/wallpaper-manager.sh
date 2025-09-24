@@ -20,7 +20,7 @@ set_wallpaper() {
   swww img "$wallpaper" \
     --transition-type any \
     --transition-pos "$rand_pos" \
-    --transition-step 19 \
+    --transition-step 15 \
     --transition-fps 120
 
   # Save current wallpaper path
