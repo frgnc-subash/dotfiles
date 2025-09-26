@@ -1,4 +1,4 @@
-@import url("colors.css");
+@import "colors.css";
 
 * {
   border: none;
@@ -24,18 +24,8 @@ window#waybar {
   margin: 0;
 }
 
-#custom-arch {
-  background-color: @bg;
-  color: @blue;
-  font-size: 12px;
-  border-radius: 40px;
-  padding: 0 8px;
-  margin: 0 2px 0 0;
-  min-height: 22px;
-}
-
 #workspaces {
-  background-color: @bg;
+  background-color: @background;
   border-radius: 40px;
   padding: 0 3px;
   margin: 0;
@@ -49,32 +39,32 @@ window#waybar {
   margin: 3px 1px;
   font-size: 13px;
   border-radius: 12px;
-  background-color: @bg;
-  color: @fg;
+  background-color: @surface_container_low;
+  color: @on_surface;
   transition: all 0.2s ease-in-out;
   opacity: 0.8;
 }
 
 #workspaces button:hover {
-  background-color: @blue;
-  color: #000000;
+  background-color: @surface_container;
+  color: @on_surface;
   opacity: 1;
 }
 
 #workspaces button.active {
-  background-color: @green;
-  color: #000000;
+  background-color: @primary;
+  color: @on_primary;
   opacity: 1;
   animation: pulse 0.5s ease-in-out;
 }
 
 #workspaces button.active:hover {
-  background-color: @cyan;
+  background-color: @primary_fixed_dim;
 }
 
 #clock {
-  background-color: @bg;
-  color: @green;
+  background-color: @background;
+  color: @primary;
   font-weight: 900;
   border-radius: 40px;
   padding: 0 10px;
@@ -87,8 +77,8 @@ window#waybar {
 #custom-swaync,
 #power-profiles-daemon,
 #custom-hyprpicker {
-  background-color: @bg;
-  color: @green;
+  background-color: @background;
+  color: @primary;
   font-weight: 900;
   border-radius: 40px;
   padding: 0 10px;
@@ -97,32 +87,38 @@ window#waybar {
   font-size: 11px;
   min-width: 7px;
 }
+
 #network {
-  background-color: @bg;
+  background-color: @background;
   border-radius: 40px;
   padding: 0 6px;
   margin: 0 2px;
   min-height: 22px;
-  color: @cyan;
+  color: @secondary;
   font-size: 13px;
   min-width: 22px;
 }
 
 #network.wifi {
-  color: @cyan;
+  color: @secondary;
 }
 #network.ethernet {
-  color: @blue;
+  color: @tertiary;
 }
 #network.disconnected {
-  color: @red;
+  color: @error;
+}
+
+#window {
+  min-width: 0px;
+  color: @on_surface;
 }
 
 #pulseaudio,
 #backlight,
 #network,
 #battery {
-  background-color: @bg;
+  background-color: @background;
   border-radius: 40px;
   padding: 0 10px;
   margin: 0 2px;
@@ -131,30 +127,30 @@ window#waybar {
 }
 
 #pulseaudio {
-  color: @cyan;
+  color: @secondary;
   min-width: 45px;
 }
 #backlight {
-  color: @cyan;
+  color: @secondary;
   min-width: 45px;
 }
 
 #battery {
-  color: @cyan;
+  color: @secondary;
   min-width: 45px;
 }
 #battery.charging {
-  color: @green;
+  color: @primary;
 }
 #battery.warning {
-  color: @yellow;
+  color: @on_error_container;
 }
 #battery.critical {
-  color: @red;
+  color: @error;
 }
 
 #custom-swaync.dnd-enabled {
-  color: @yellow;
+  color: @on_error_container;
 }
 
 #custom-swaync.empty {
@@ -163,12 +159,12 @@ window#waybar {
 
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(158, 206, 106, 0.4);
+    box-shadow: 0 0 0 0 rgba(138, 214, 184, 0.4); /* @primary with opacity */
   }
   70% {
-    box-shadow: 0 0 0 6px rgba(158, 206, 106, 0);
+    box-shadow: 0 0 0 6px rgba(138, 214, 184, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(158, 206, 106, 0);
+    box-shadow: 0 0 0 0 rgba(138, 214, 184, 0);
   }
 }

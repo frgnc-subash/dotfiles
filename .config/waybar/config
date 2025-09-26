@@ -8,12 +8,12 @@
   "margin-right": 4,
   "margin-bottom": 0,
   "modules-left": [
-    "custom/arch",
-    "hyprland/workspaces"
+    "clock",
+    "hyprland/window"
   ],
   "modules-center": [
     "custom/hyprpicker",
-    "clock",
+    "hyprland/workspaces",
     "custom/swaync"
   ],
   "modules-right": [
@@ -23,11 +23,6 @@
     "network",
     "power-profiles-daemon"
   ],
-  "custom/arch": {
-    "format": "",
-    "tooltip": false,
-    "on-click": "rofi -show drun"
-  },
   "hyprland/workspaces": {
     "format": "{icon}",
     "active-only": false,
@@ -48,17 +43,21 @@
       "*": [
         1,
         2,
-        3,
-        4
+        3
       ]
     }
+  },
+  "hyprland/window": {
+    "max-length": 0,
+    "separate-outputs": true,
+    "icon": true
   },
   "clock": {
     "format": "{:%H:%M}",
     "format-alt": "{:%a, %b %d}",
     "tooltip": false,
     "tooltip-format": "{:%A, %B %d, %Y}\nWeek: %V",
-    "on-click": "~/.config/hypr/scripts/toggle-date.sh"
+    "on-click": "~/.config/waybar/scripts/toggle-date.sh"
   },
   "custom/hyprpicker": {
     "format": "󰌁",
@@ -101,7 +100,7 @@
   },
   "custom/swaync": {
     "format": "{}",
-    "exec": "~/.config/hypr/scripts/swaync-status.sh",
+    "exec": "~/.config/waybar/scripts/swaync-status.sh",
     "on-click": "swaync-client -t",
     "on-click-right": "swaync-client -d",
     "interval": 5
