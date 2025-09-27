@@ -28,8 +28,8 @@ window#waybar {
   background-color: @background;
   border-radius: 40px;
   padding: 0 3px;
-  margin: 0;
-  transition: all 0.3s ease-in-out;
+  margin: 0 2px;
+  min-height: 26px;
 }
 
 #workspaces button {
@@ -75,6 +75,7 @@ window#waybar {
 }
 
 #custom-swaync,
+#network,
 #power-profiles-daemon,
 #custom-hyprpicker {
   background-color: @background;
@@ -86,17 +87,6 @@ window#waybar {
   min-height: 22px;
   font-size: 11px;
   min-width: 7px;
-}
-
-#network {
-  background-color: @background;
-  border-radius: 40px;
-  padding: 0 6px;
-  margin: 0 2px;
-  min-height: 22px;
-  color: @secondary;
-  font-size: 13px;
-  min-width: 22px;
 }
 
 #network.wifi {
@@ -112,32 +102,30 @@ window#waybar {
 #window {
   min-width: 0px;
   color: @on_surface;
+  min-height: 22px;
 }
 
 #pulseaudio,
 #backlight,
-#network,
 #battery {
   background-color: @background;
   border-radius: 40px;
-  padding: 0 10px;
+  padding: 0 11px;
   margin: 0 2px;
-  min-height: 22px;
+  min-height: 20px;
   font-size: 11px;
+  min-width: 36px;
 }
 
 #pulseaudio {
   color: @secondary;
-  min-width: 45px;
 }
 #backlight {
   color: @secondary;
-  min-width: 45px;
 }
 
 #battery {
   color: @secondary;
-  min-width: 45px;
 }
 #battery.charging {
   color: @primary;
@@ -159,7 +147,7 @@ window#waybar {
 
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(138, 214, 184, 0.4); /* @primary with opacity */
+    box-shadow: 0 0 0 0 rgba(138, 214, 184, 0.4);
   }
   70% {
     box-shadow: 0 0 0 6px rgba(138, 214, 184, 0);
