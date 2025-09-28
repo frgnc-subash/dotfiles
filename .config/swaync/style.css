@@ -1,9 +1,4 @@
-@define-color foreground rgb(192, 202, 245);
-@define-color background rgb(26, 27, 38);
-@define-color background-alpha rgba(26, 27, 38, 0.85);
-@define-color accent rgb(122, 162, 247);
-@define-color current-line rgb(36, 40, 59);
-@define-color comment rgb(92, 99, 112);
+@import "colors.css" 
 
 .notification-row {
   transition: all 200ms ease;
@@ -16,7 +11,7 @@
   border-radius: 6px;
   margin: 0;
   padding: 4px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 2px alpha(@shadow, 0.4);
   width: 100%;
 }
 
@@ -27,8 +22,8 @@
 }
 
 .close-button {
-  background: @current-line;
-  color: @foreground;
+  background: @surface_container_high;
+  color: @on_surface;
   border-radius: 50%;
   margin-top: 4px;
   margin-right: 6px;
@@ -37,26 +32,26 @@
 }
 
 .close-button:hover {
-  background: @comment;
+  background: @outline_variant;
 }
 
 .summary {
   font-size: 13px;
   font-weight: 600;
-  color: @foreground;
+  color: @on_surface;
   margin-bottom: 2px;
 }
 
 .time {
   font-size: 11px;
-  color: @foreground;
+  color: @on_surface_variant;
   margin-right: 6px;
 }
 
 .body {
   font-size: 12px;
   line-height: 1.2;
-  color: @foreground;
+  color: @on_surface_variant;
 }
 
 .notification-default-action,
@@ -65,14 +60,14 @@
   margin: 0;
   border-radius: 4px;
   font-size: 12px;
-  background: @current-line;
-  border: 1px solid @accent;
-  color: @foreground;
+  background: @surface_container_high;
+  border: 1px solid @primary;
+  color: @on_surface;
 }
 
 .notification-default-action:hover,
 .notification-action:hover {
-  background: @comment;
+  background: @surface_container_highest;
 }
 
 .body-image {
@@ -81,12 +76,12 @@
 }
 
 .control-center {
-  background: @background-alpha;
+  background: alpha(@surface, 0.9);
   border-radius: 8px;
   padding: 4px;
-  border: 1px solid @accent;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.6);
-  color: @foreground;
+  border: 1px solid @primary;
+  box-shadow: 0 1px 4px alpha(@shadow, 0.6);
+  color: @on_surface;
 }
 
 .control-center-list {
@@ -107,13 +102,13 @@
 }
 .widget-title > button {
   font-size: 12px;
-  color: @foreground;
-  background: @background;
-  border: 1px solid @accent;
+  color: @on_surface;
+  background: @surface;
+  border: 1px solid @primary;
   border-radius: 4px;
 }
 .widget-title > button:hover {
-  background: @current-line;
+  background: @surface_container_high;
 }
 
 .widget-dnd {
@@ -122,16 +117,16 @@
 }
 .widget-dnd > switch {
   border-radius: 4px;
-  background: @background;
-  border: 1px solid @accent;
+  background: @surface;
+  border: 1px solid @primary;
 }
 .widget-dnd > switch:checked {
-  background: @accent;
+  background: @primary;
 }
 .widget-dnd > switch slider {
-  background: @background;
+  background: @surface;
   border-radius: 4px;
-  border: 1px solid @foreground;
+  border: 1px solid @on_surface;
 }
 
 .widget-label {
@@ -145,8 +140,8 @@
   padding: 4px;
   margin: 4px;
   border-radius: 6px;
-  border: 1px solid @accent;
-  background: @background;
+  border: 1px solid @primary;
+  background: @surface;
   font-size: 0.85rem;
 }
 .widget-mpris-title {
