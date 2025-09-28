@@ -1,13 +1,17 @@
 [config]
 
 [config.wallpaper]
-
 set = false
-
 command = "swww"
-
-arguments = ["img", "--transition-type", "any"]
-
+arguments = [
+    "img",
+    "--transition-type",
+    "any",
+    "--transition-step",
+    "15",
+    "--transition-fps",
+    "120",
+]
 
 [templates.hyprland]
 input_path = '~/.config/matugen/themes/hyprland-colors.conf'
@@ -39,3 +43,14 @@ output_path = '~/.config/wlogout/colors.css'
 input_path = '~/.config/matugen/themes/colors.css'
 output_path = '~/.config/swaync/colors.css'
 post_hook = 'pkill swaync; swaync & disown'
+
+
+[templates.yazi]
+input_path = '~/.config/matugen/themes/yazi-theme.toml'
+output_path = '~/.config/yazi/theme.toml'
+
+
+[templates.btop]
+input_path = '~/.config/matugen/themes/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+

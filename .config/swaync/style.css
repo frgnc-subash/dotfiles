@@ -1,24 +1,24 @@
-@import "colors.css" 
+@import "colors.css";
 
 .notification-row {
   transition: all 200ms ease;
   margin: 2px 0;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .notification {
   transition: all 200ms ease;
-  border-radius: 6px;
+  border-radius: 8px;
   margin: 0;
   padding: 4px;
   box-shadow: 0 1px 2px alpha(@shadow, 0.4);
-  width: 100%;
+  /* width: 100%; */
 }
 
 .notification-content {
   background: transparent;
   padding: 2px 6px;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .close-button {
@@ -27,7 +27,7 @@
   border-radius: 50%;
   margin-top: 4px;
   margin-right: 6px;
-  min-width: 16px;
+  /* min-width: 16px; */
   min-height: 16px;
 }
 
@@ -58,7 +58,7 @@
 .notification-action {
   padding: 2px 6px;
   margin: 0;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 12px;
   background: @surface_container_high;
   border: 1px solid @primary;
@@ -72,12 +72,12 @@
 
 .body-image {
   margin-top: 4px;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .control-center {
   background: alpha(@surface, 0.9);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 4px;
   border: 1px solid @primary;
   box-shadow: 0 1px 4px alpha(@shadow, 0.6);
@@ -100,13 +100,15 @@
   margin: 4px;
   font-size: 1rem;
 }
+
 .widget-title > button {
   font-size: 12px;
   color: @on_surface;
   background: @surface;
   border: 1px solid @primary;
-  border-radius: 4px;
+  border-radius: 6px;
 }
+
 .widget-title > button:hover {
   background: @surface_container_high;
 }
@@ -115,23 +117,27 @@
   margin: 4px;
   font-size: 0.9rem;
 }
+
 .widget-dnd > switch {
-  border-radius: 4px;
+  border-radius: 6px;
   background: @surface;
   border: 1px solid @primary;
 }
+
 .widget-dnd > switch:checked {
   background: @primary;
 }
+
 .widget-dnd > switch slider {
   background: @surface;
-  border-radius: 4px;
+  border-radius: 6px;
   border: 1px solid @on_surface;
 }
 
 .widget-label {
   margin: 4px;
 }
+
 .widget-label > label {
   font-size: 0.9rem;
 }
@@ -139,15 +145,17 @@
 .widget-mpris-player {
   padding: 4px;
   margin: 4px;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid @primary;
   background: @surface;
   font-size: 0.85rem;
 }
+
 .widget-mpris-title {
   font-size: 1rem;
   font-weight: bold;
 }
+
 .widget-mpris-subtitle {
   font-size: 0.85rem;
 }
