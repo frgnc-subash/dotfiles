@@ -1,0 +1,41 @@
+[config]
+
+[config.wallpaper]
+
+set = false
+
+command = "swww"
+
+arguments = ["img", "--transition-type", "any"]
+
+
+[templates.hyprland]
+input_path = '~/.config/matugen/themes/hyprland-colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+post_hook = 'hyprctl reload'
+
+# [templates.kitty]
+# input_path = '~/.config/matugen/themes/kitty-colors.conf'
+# output_path = '~/.config/kitty/colors.conf'
+# post_hook = 'pkill -SIGUSR1 $(pgrep kitty)'
+
+[templates.rofi]
+input_path = '~/.config/matugen/themes/rofi-colors.rasi'
+output_path = '~/.config/rofi/colors.rasi'
+
+
+[templates.waybar]
+input_path = '~/.config/matugen/themes/colors.css'
+output_path = '~/.config/waybar/colors.css'
+post_hook = 'pkill waybar; waybar & disown'
+
+
+[templates.wlogout]
+input_path = '~/.config/matugen/themes/colors.css'
+output_path = '~/.config/wlogout/colors.css'
+
+
+[templates.swaync]
+input_path = '~/.config/matugen/themes/colors.css'
+output_path = '~/.config/swaync/colors.css'
+post_hook = 'pkill swaync; swaync & disown'
