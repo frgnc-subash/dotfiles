@@ -3,15 +3,6 @@
 [config.wallpaper]
 set = false
 command = "swww"
-arguments = [
-    "img",
-    "--transition-type",
-    "any",
-    "--transition-step",
-    "15",
-    "--transition-fps",
-    "120",
-]
 
 [templates.hyprland]
 input_path = '~/.config/matugen/themes/hyprland-colors.conf'

@@ -20,19 +20,19 @@ class WallpaperDock(Gtk.Window):
         super().__init__()
         
         # Borderless, transparent, always on top
-        self.set_title("WallpaperDock")        # Title
-        self.set_name("WallpaperDock")         #
+        self.set_title("WallpaperDock")
+        self.set_name("WallpaperDock")
         self.set_decorated(False)
         self.set_app_paintable(True)
         self.set_keep_above(True)
         self.set_type_hint(Gdk.WindowTypeHint.DOCK)
+
         # Screen geometry (Wayland safe)
         display = Gdk.Display.get_default()
         monitor = display.get_monitor_at_window(display.get_default_screen().get_root_window())
         geometry = monitor.get_geometry()
         width, height = geometry.width, geometry.height
 
-        # Initially set a small width; we will resize later based on number of thumbnails
         self.set_default_size(MAX_BAR_WIDTH, THUMBNAIL_HEIGHT + 20)
         self.move((width - MAX_BAR_WIDTH)//2, height - (THUMBNAIL_HEIGHT + 20))
 
@@ -56,7 +56,7 @@ class WallpaperDock(Gtk.Window):
         self.scrolled.set_min_content_height(THUMBNAIL_HEIGHT + 20)
         self.add(self.scrolled)
 
-        # Horizontal box for thumbnails (do NOT expand to full width)
+        # Horizontal box for thumbnails
         self.hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=15)
         self.hbox.set_halign(Gtk.Align.START)
         self.hbox.set_hexpand(False)
@@ -71,9 +71,8 @@ class WallpaperDock(Gtk.Window):
 
     def load_wallpapers(self):
         files = sorted([f for f in os.listdir(WALLPAPER_DIR)
-                        if f.lower().endswith((".jpg", ".png", ".jpeg",".gif"))])
+                        if f.lower().endswith((".jpg", ".png", ".jpeg", ".gif"))])
 
-        # Calculate dynamic width of the dock based on thumbnails
         bar_width = min(len(files) * (THUMBNAIL_WIDTH + 15), MAX_BAR_WIDTH)
         GLib.idle_add(self.set_default_size, bar_width, THUMBNAIL_HEIGHT + 20)
 
@@ -98,12 +97,16 @@ class WallpaperDock(Gtk.Window):
         return False
 
     def set_wallpaper(self, widget, filepath):
+        # Set wallpaper
         subprocess.Popen([
             "swww", "img", filepath,
             "--transition-type", "any",
             "--transition-step", "15",
             "--transition-fps", "120"
         ])
+
+        # Apply Matugen (updates Hyprland/Waybar/etc. via config.toml)
+        subprocess.Popen(["matugen", "image", filepath])
 
     def on_scroll_event(self, widget, event):
         adj = self.scrolled.get_hadjustment()
