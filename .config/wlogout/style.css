@@ -8,17 +8,17 @@
 }
 
 window {
-  background-color: @surface;
+  background-color: @source_color;
   background-size: cover;
   background-position: center;
   opacity: 1;
 }
 
 button {
-  border-radius: 16px;
+  border-radius: 4px;
   border: 1px solid @outline_variant;
-  color: @primary;
-  background-color: alpha(@surface_container_high, 0.6);
+  color: @on_surface;
+  background-color: alpha(@inverse_on_surface, 0.6);
   background-repeat: no-repeat;
   background-position: center 50%;
   background-size: 50px;
