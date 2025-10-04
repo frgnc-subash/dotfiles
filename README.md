@@ -17,7 +17,15 @@
 </p>
 
 ## Installation 
+Just clone this repo and copy or either symlink them as you like. Or if you dont want to clutter your home directory then clone inside the temp folder.
 
-```bash sudo pacman -S hyprland ``` 
+```
+cd /tmp
+
+git clone https://github.com/frgnc-subash/dotfiles.git
+```
+
+All the configurations must be do in <pre>/home/username/.config</pre> folder.
+
 
 Wallpapers are <a href="https://github.com/frgnc-subash/wallpapers">here</a>
