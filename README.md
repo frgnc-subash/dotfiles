@@ -95,7 +95,7 @@ My configurations include the following dependenecies and apps.
 
 #### After the installations configure the following.
 
-The default folder for my wallpapers are in the following driecotry.
+The default folder for my wallpapers are in the following directory.
 
 <pre>~/Pictures/wallpapers/wallpapers </pre>
 
@@ -109,6 +109,13 @@ You can change the directory for wallpapers in these scripts.
 Do similar changes for the **hyprlock** as well.
 
 <pre> ~/.config/hypr/hyprlock.conf</pre>
+
+Make sure to adjust some tweaks in **hyprland config** files according to your system. 
+
+<pre> 
+~/.config/hypr/hyprland.conf
+~/.config/hypr/conf/
+</pre>
 
 ## Extras
 
