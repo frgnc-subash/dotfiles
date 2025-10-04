@@ -114,13 +114,13 @@ Do similar changes for the **hyprlock** as well.
 My main inspiration is beauty of Linux.
 
 <ul style="list-style-type: none; padding-left: 0;">
-  <li>• <a href="https://github.com/mylinuxforwork/dotfiles" style="text-decoration: none;">ml4w</a></li>
-  <li>• <a href=https://github.com/end-4/dots-hyprland" style="text-decoration: none;">end4</a></li>
-  <li>• <a href="https://github.com/JaKooLit/Hyprland-Dots" style="text-decoration: none;">JaKooLit</a></li>
-  <li>• <a href="https://github.com/caelestia-dots/caelestia" style="text-decoration: none;">caelestia</a></li>
-  <li>• other creators at youtube<li>
+  <li><a href="https://github.com/mylinuxforwork/dotfiles" style="text-decoration: none;">ml4w</a></li>
+  <li><a href=https://github.com/end-4/dots-hyprland" style="text-decoration: none;">end4</a></li>
+  <li><a href="https://github.com/JaKooLit/Hyprland-Dots" style="text-decoration: none;">JaKooLit</a></li>
+  <li><a href="https://github.com/caelestia-dots/caelestia" style="text-decoration: none;">caelestia</a></li>
+  <li>other creators at youtube<li>
 </ul>
 
---- 
+
 
 Wallpapers are <a href="https://github.com/frgnc-subash/wallpapers">here</a> btw :3
