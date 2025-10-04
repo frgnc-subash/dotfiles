@@ -110,9 +110,9 @@ Do similar changes for the **hyprlock** as well.
 
 <pre> ~/.config/hypr/hyprlock.conf</pre>
 
-Make sure to adjust some tweaks in **hyprland config** files according to your system. 
+Also make sure to adjust some tweaks in **hyprland config** files specially monitor resolution and refresh rate according to your system.
 
-<pre> 
+<pre>
 ~/.config/hypr/hyprland.conf
 ~/.config/hypr/conf/
 </pre>
@@ -124,7 +124,7 @@ Make sure to adjust some tweaks in **hyprland config** files according to your s
 - <a href='https://madmalik.github.io/mononoki/' style="text-decoration:none">mononoki</a>
 - <a href='https://www.nerdfonts.com/font-downloads' style="text-decoration:none">Nerd Fonts</a>
 
-## Inspirations
+### Inspirations
 
 My main inspiration is beauty of Linux.
 
