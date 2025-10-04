@@ -110,6 +110,13 @@ Do similar changes for the **hyprlock** as well.
 
 <pre> ~/.config/hypr/hyprlock.conf</pre>
 
+## Extras
+
+### Fonts
+
+- <a href='https://madmalik.github.io/mononoki/' style="text-decoration:none">mononoki</a>
+- <a href='https://www.nerdfonts.com/font-downloads' style="text-decoration:none">Nerd Fonts</a>
+
 ## Inspirations
 
 My main inspiration is beauty of Linux.
