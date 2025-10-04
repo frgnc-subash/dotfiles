@@ -111,6 +111,7 @@ Do similar changes for the **hyprlock** as well.
 <pre> ~/.config/hypr/hyprlock.conf</pre>
 
 ## Inspirations
+
 My main inspiration is beauty of Linux.
 
 <ul style="list-style-type: none; padding-left: 0;">
@@ -118,9 +119,6 @@ My main inspiration is beauty of Linux.
   <li><a href=https://github.com/end-4/dots-hyprland" style="text-decoration: none;">end4</a></li>
   <li><a href="https://github.com/JaKooLit/Hyprland-Dots" style="text-decoration: none;">JaKooLit</a></li>
   <li><a href="https://github.com/caelestia-dots/caelestia" style="text-decoration: none;">caelestia</a></li>
-  <li>other creators at youtube<li>
 </ul>
-
-
 
 Wallpapers are <a href="https://github.com/frgnc-subash/wallpapers">here</a> btw :3
