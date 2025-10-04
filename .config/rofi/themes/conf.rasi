@@ -1,0 +1,123 @@
+* {
+    active-background: @primary;
+    active-foreground: @on-primary;
+    normal-background: @surface;
+    normal-foreground: @on-surface;
+    urgent-background: @error-container;
+    urgent-foreground: @on-error-container;
+
+    alternate-active-background: @surface-container-high;
+    alternate-active-foreground: @on-surface;
+    alternate-normal-background: @surface;
+    alternate-normal-foreground: @on-surface;
+    alternate-urgent-background: @surface;
+    alternate-urgent-foreground: @on-error-container;
+
+    selected-active-background: @inverse-primary;
+    selected-active-foreground: @on-surface;
+    selected-normal-background: @primary;
+    selected-normal-foreground: @on-primary;
+    selected-urgent-background: @error;
+    selected-urgent-foreground: @on-error;
+
+    background-color: @surface;
+    background: @surface;
+    foreground: @on-surface;
+    border-color: @surface;
+    spacing: 2;
+}
+
+#window {
+    background-color: @surface;
+    border: 0;
+    padding: 2.5ch;
+}
+
+#mainbox {
+    border: 0;
+    padding: 0;
+}
+
+#message {
+    border: 2px 0px 0px;
+    border-color: @surface;
+    padding: 1px;
+}
+
+#textbox {
+    text-color: @on-surface;
+}
+
+#textbox-prompt-colon {
+    text-color: @on-surface;
+}
+
+#element.normal.normal {
+    background-color: @surface;
+    text-color: @on-surface;
+}
+
+#element.normal.urgent {
+    background-color: @error-container;
+    text-color: @on-error;
+}
+
+#element.normal.active {
+    background-color: @primary;
+    text-color: @on-primary;
+}
+
+#element.selected.normal {
+    background-color: @primary;
+    text-color: @on-primary;
+}
+
+#element.selected.urgent {
+    background-color: @error;
+    text-color: @on-error;
+}
+
+#element.selected.active {
+    background-color: @inverse-primary;
+    text-color: @on-surface;
+}
+
+#element.alternate.normal {
+    background-color: @surface-container-high;
+    text-color: @on-surface;
+}
+
+#element.alternate.urgent {
+    background-color: @error-container;
+    text-color: @on-error;
+}
+
+#element.alternate.active {
+    background-color: @primary;
+    text-color: @on-primary;
+}
+
+#button {
+    text-color: @on-surface;
+}
+
+#button.selected {
+    background-color: @primary;
+    text-color: @on-primary;
+}
+
+#inputbar {
+    text-color: @on-surface;
+}
+
+#case-indicator {
+    text-color: @on-surface;
+}
+
+#entry {
+    text-color: @on-surface;
+}
+
+#prompt {
+    text-color: @on-surface;
+}

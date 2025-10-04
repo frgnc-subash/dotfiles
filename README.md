@@ -47,57 +47,55 @@ ls -la
 
 My configurations include the following dependenecies and apps.
 
-## Hyprland Setup Dependencies
-
 > 📌 **Note**  
 > Before installing these, make sure you have an AUR helper tool such as **yay** or **paru** installed.
 
-
-## Compulsory Dependencies
 ### Tools
-- **bat** – Cat clone with syntax highlighting  
-- **eza** – Modern replacement for `ls`  
-- **grim** – Screenshot tool for Wayland  
-- **hypridle** – Idle management for Hyprland  
-- **hyprland** – Dynamic tiling Wayland compositor  
-- **hyprlock** – Lock screen for Hyprland  
-- **hyprpicker** – Color picker for Hyprland  
-- **mpv** – Media player  
-- **nvim (LazyVim)** – Neovim with Lazy   
-- **rofi** – Application launcher  
-- **slurp** – Wayland selection tool for screenshots  
-- **swaync** – Notification daemon  
-- **swappy** – Screenshot annotation tool  
-- **waybar** – Status bar for Wayland  
-- **wlogout** – Logout/shutdown menu  
-- **zsh** – Shell  
-- **zoxide** – Smarter `cd` command  
 
+- **bat** – Cat clone with syntax highlighting
+- **eza** – Modern replacement for `ls`
+- **grim** – Screenshot tool for Wayland
+- **hypridle** – Idle management for Hyprland
+- **hyprland** – Dynamic tiling Wayland compositor
+- **hyprlock** – Lock screen for Hyprland
+- **hyprpicker** – Color picker for Hyprland
+- **mpv** – Media player
+- **nvim (LazyVim)** – Neovim with Lazy
+- **rofi** – Application launcher
+- **slurp** – Wayland selection tool for screenshots
+- **swaync** – Notification daemon
+- **swappy** – Screenshot annotation tool
+- **waybar** – Status bar for Wayland
+- **wlogout** – Logout/shutdown menu
+- **zsh** – Shell
+- **zoxide** – Smarter `cd` command
 
 ### Dependencies / Supporting Packages
-- **oh-my-posh** – Prompt theme for terminal  
-- **starship** – Cross-shell prompt  
-- **swww** – Wallpaper manager for Wayland  
-- **wf-recorder** – Screen recorder  
-- **xdg-desktop-portal-gtk** – GTK portal backend  
+
+- **oh-my-posh** – Prompt theme for terminal
+- **starship** – Cross-shell prompt
+- **swww** – Wallpaper manager for Wayland
+- **wf-recorder** – Screen recorder
+- **xdg-desktop-portal-gtk** – GTK portal backend
 - **xdg-desktop-portal-hyprland** – Hyprland backend portal
 
 ### Fun Utilities
-- **asciiquarium** – Aquarium in ASCII art  
-- **cbonsai** – Bonsai tree in terminal  
-- **cava** – Audio visualizer  
-- **cmatrix** – Matrix-style terminal effect  
-- **fastfetch** – System info fetcher  
-- **peaclock** – Minimalist clock  
-- **pokeget** – Generates Pokémon in terminal  
+
+- **asciiquarium** – Aquarium in ASCII art
+- **cbonsai** – Bonsai tree in terminal
+- **cava** – Audio visualizer
+- **cmatrix** – Matrix-style terminal effect
+- **fastfetch** – System info fetcher
+- **peaclock** – Minimalist clock
+- **pokeget** – Generates Pokémon in terminal
 - **yazi** – Terminal File Manager
 - **pipes.sh** – Generates random lines
 
+## Configurations
 
-### Configurations
 #### After the installations configure the following.
 
-The defauolt folder for my wallpapers are in the following driecotry.
+The default folder for my wallpapers are in the following driecotry.
 
 <pre>~/Pictures/wallpapers/wallpapers </pre>
 
@@ -108,12 +106,21 @@ You can change the directory for wallpapers in these scripts.
 ~/.config/hypr/scripts/wallpaperchanger.py
 </pre>
 
-Do similar  changes for the **hyprlock** as well.
+Do similar changes for the **hyprlock** as well.
+
 <pre> ~/.config/hypr/hyprlock.conf</pre>
 
+## Inspirations
+My main inspiration is beauty of Linux.
 
-<p align='center'>
-<img scr='/.assets/extras/pixel-dog.gif' alt='dog'>
-</p>
+<ul style="list-style-type: none; padding-left: 0;">
+  <li>• <a href="https://github.com/mylinuxforwork/dotfiles" style="text-decoration: none;">ml4w</a></li>
+  <li>• <a href=https://github.com/end-4/dots-hyprland" style="text-decoration: none;">end4</a></li>
+  <li>• <a href="https://github.com/JaKooLit/Hyprland-Dots" style="text-decoration: none;">JaKooLit</a></li>
+  <li>• <a href="https://github.com/caelestia-dots/caelestia" style="text-decoration: none;">caelestia</a></li>
+  <li>• other creators at youtube<li>
+</ul>
+
+--- 
 
 Wallpapers are <a href="https://github.com/frgnc-subash/wallpapers">here</a> btw :3
