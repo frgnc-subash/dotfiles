@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=32&pause=1000&color=00FFD1&background=00000000&center=true&vCenter=true&width=500&height=60&lines=frgnc-subash's+dots" alt="Typing SVG" /></a>
+  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=32&pause=1000&color=00FFD1&background=00000000&center=true&vCenter=true&width=500&height=60&lines=hyprland+dots" alt="Typing SVG" /></a>
   <p align="center">
   <sub><sup><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Activity/Sparkles.webp" alt="Sparkles" width="25" height="25"/></sup></sub>
   <a href="https://archlinux.org/" target="_blank" style="text-decoration:none;">
@@ -130,7 +130,7 @@ My main inspiration is beauty of Linux.
 
 <ul style="list-style-type: none; padding-left: 0;">
   <li><a href="https://github.com/mylinuxforwork/dotfiles" style="text-decoration: none;">ml4w</a></li>
-  <li><a href=https://github.com/end-4/dots-hyprland" style="text-decoration: none;">end4</a></li>
+  <li><a href="https://github.com/end-4/dots-hyprland" style="text-decoration: none;">end4</a></li>
   <li><a href="https://github.com/JaKooLit/Hyprland-Dots" style="text-decoration: none;">JaKooLit</a></li>
   <li><a href="https://github.com/caelestia-dots/caelestia" style="text-decoration: none;">caelestia</a></li>
 </ul>
