@@ -50,7 +50,7 @@ My configurations include the following dependenecies and apps.
 > 📌 **Note**  
 > Before installing these, make sure you have an AUR helper tool such as **yay** or **paru** installed.
 
-### Tools
+### Applications
 
 - **bat** – Cat clone with syntax highlighting
 - **eza** – Modern replacement for `ls`
@@ -59,6 +59,7 @@ My configurations include the following dependenecies and apps.
 - **hyprland** – Dynamic tiling Wayland compositor
 - **hyprlock** – Lock screen for Hyprland
 - **hyprpicker** – Color picker for Hyprland
+- kitty - Terminal
 - **mpv** – Media player
 - **nvim (LazyVim)** – Neovim with Lazy
 - **rofi** – Application launcher
@@ -90,6 +91,7 @@ My configurations include the following dependenecies and apps.
 - **pokeget** – Generates Pokémon in terminal
 - **yazi** – Terminal File Manager
 - **pipes.sh** – Generates random lines
+- zathura - File reader
 
 ## Configurations
 
