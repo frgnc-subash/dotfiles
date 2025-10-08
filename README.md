@@ -13,7 +13,7 @@
 </p>
 
 <p align='center'>
-<img src='/.assets/previews/preview-1.png' alt='preview1' width=100%>
+<img src='/.assets/previews/preview' alt='preview' width=100%>
 </p>
 
 ## Installation

@@ -27,34 +27,34 @@
     },
     {
       "type": "wm",
-      "key": " ",
+      "key": "󱂬 ",
       "keyColor": "cyan"
     },
     {
       "type": "shell",
-      "key": " ",
+      "key": "󰞷 ",
       "keyColor": "red"
     },
     {
       "type": "cpu",
-      "key": "󰍛 ",
+      "key": "󰻠 ",
       "keyColor": "blue"
     },
     {
       "type": "memory",
-      "key": " ",
+      "key": "󰍛 ",
       "keyColor": "magenta",
       "format": "{1} / {2}"
     },
     {
       "type": "disk",
-      "key": " ",
+      "key": "󰋊 ",
       "folders": "/",
       "keyColor": "green"
     },
     {
       "type": "uptime",
-      "key": "󰔚 ",
+      "key": "󰅐 ",
       "keyColor": "yellow"
     },
     {
