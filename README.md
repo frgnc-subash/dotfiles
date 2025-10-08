@@ -13,7 +13,7 @@
 </p>
 
 <p align='center'>
-<img src='/.assets/previews/preview' alt='preview' width=100%>
+<img src='/.assets/previews/preview.png' alt='preview' width=100%>
 </p>
 
 ## Installation
@@ -59,7 +59,7 @@ My configurations include the following dependenecies and apps.
 - **hyprland** – Dynamic tiling Wayland compositor
 - **hyprlock** – Lock screen for Hyprland
 - **hyprpicker** – Color picker for Hyprland
-- kitty - Terminal
+- **kitty** - Terminal
 - **mpv** – Media player
 - **nvim (LazyVim)** – Neovim with Lazy
 - **rofi** – Application launcher
@@ -91,7 +91,7 @@ My configurations include the following dependenecies and apps.
 - **pokeget** – Generates Pokémon in terminal
 - **yazi** – Terminal File Manager
 - **pipes.sh** – Generates random lines
-- zathura - File reader
+- **zathura** - File reader
 
 ## Configurations
 
