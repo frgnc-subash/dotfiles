@@ -3,12 +3,14 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
-        bigfile = { enabled = true },
+        bigfile = {
+            enabled = true
+        },
         dashboard = {
             enabled = true,
             width = 60,
             row = nil,
-            col = nil, 
+            col = nil,
             pane_gap = 4,
             autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
 
@@ -25,17 +27,54 @@ return {
 ░░░░░░   ░░░░░░  ░░░░░      ░░░░░░  ░░░░ ░░░░░ ░░░░░ ░░░░ ░░░░░ 
                 ]],
 
-
-                keys = {
-                    { icon = "󰈞 ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-                    { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-                    { icon = "󰭷 ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-                    { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-                    { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
-                    { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-                    { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-                    { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-                },
+                keys = {{
+                    icon = "󰈞 ",
+                    key = "f",
+                    desc = "Find File",
+                    action = ":lua Snacks.dashboard.pick('files')"
+                }, {
+                    icon = " ",
+                    key = "n",
+                    desc = "New File",
+                    action = ":ene | startinsert"
+                }, {
+                    icon = "󰭷 ",
+                    key = "g",
+                    desc = "Find Text",
+                    action = ":lua Snacks.dashboard.pick('live_grep')"
+                }, {
+                    icon = " ",
+                    key = "r",
+                    desc = "Recent Files",
+                    action = ":lua Snacks.dashboard.pick('oldfiles')"
+                }, {
+                    icon = " ",
+                    key = "c",
+                    desc = "Config",
+                    action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})"
+                }, {
+                    icon = " ",
+                    key = "s",
+                    desc = "Restore Session",
+                    section = "session"
+                }, {
+                    icon = "󰒲 ",
+                    key = "l",
+                    desc = "Lazy",
+                    action = ":Lazy",
+                    enabled = package.loaded.lazy ~= nil
+                }, {
+                    icon = "X ",
+                    key = "x",
+                    desc = "Lazy Extras",
+                    action = ":LazyExtras",
+                    enabled = package.loaded.lazy ~= nil
+                }, {
+                    icon = " ",
+                    key = "q",
+                    desc = "Quit",
+                    action = ":qa"
+                }}
             },
 
             formats = {
@@ -43,10 +82,20 @@ return {
                     if item.file and (item.icon == "file" or item.icon == "directory") then
                         return M.icon(item.file, item.icon)
                     end
-                    return { item.icon, width = 2, hl = "icon" }
+                    return {
+                        item.icon,
+                        width = 2,
+                        hl = "icon"
+                    }
                 end,
-                footer = { "%s", align = "center" },
-                header = { "%s", align = "center" },
+                footer = {
+                    "%s",
+                    align = "center"
+                },
+                header = {
+                    "%s",
+                    align = "center"
+                },
                 file = function(item, ctx)
                     local fname = vim.fn.fnamemodify(item.file, ":~")
                     fname = ctx.width and #fname > ctx.width and vim.fn.pathshorten(fname) or fname
@@ -59,29 +108,59 @@ return {
                         end
                     end
                     local dir, file = fname:match("^(.*)/(.+)$")
-                    return dir and {
-                        { dir .. "/", hl = "dir" },
-                        { file, hl = "file" },
-                    } or { { fname, hl = "file" } }
-                end,
+                    return dir and {{
+                        dir .. "/",
+                        hl = "dir"
+                    }, {
+                        file,
+                        hl = "file"
+                    }} or {{
+                        fname,
+                        hl = "file"
+                    }}
+                end
             },
 
-            sections = {
-                { section = "header" },
-                { section = "keys", gap = 1, padding = 1 },
-                { section = "startup" },
-            },
+            sections = {{
+                section = "header"
+            }, {
+                section = "keys",
+                gap = 1,
+                padding = 1
+            }, {
+                section = "startup"
+            }}
         },
 
-        explorer = { enabled = true },
-        indent = { enabled = true },
-        input = { enabled = true },
-        picker = { enabled = true },
-        notifier = { enabled = true },
-        quickfile = { enabled = true },
-        scope = { enabled = true },
-        scroll = { enabled = true },
-        statuscolumn = { enabled = false },
-        words = { enabled = true },
-    },
+        explorer = {
+            enabled = true
+        },
+        indent = {
+            enabled = true
+        },
+        input = {
+            enabled = true
+        },
+        picker = {
+            enabled = true
+        },
+        notifier = {
+            enabled = true
+        },
+        quickfile = {
+            enabled = true
+        },
+        scope = {
+            enabled = true
+        },
+        scroll = {
+            enabled = true
+        },
+        statuscolumn = {
+            enabled = false
+        },
+        words = {
+            enabled = true
+        }
+    }
 }

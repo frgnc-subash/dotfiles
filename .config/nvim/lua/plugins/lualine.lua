@@ -4,17 +4,17 @@ return {
     dependencies = {"nvim-tree/nvim-web-devicons"},
     opts = (function()
         local colors = {
-            BG = "#1C1F26",
-            FG = "#E6E6E6",
-            YELLOW = "#FFD966",
-            CYAN = "#4DD0E1",
-            DARKBLUE = "#3B5998",
-            GREEN = "#00FF87",
-            ORANGE = "#FFAA55",
-            VIOLET = "#C77DFF",
-            MAGENTA = "#FF6AC1",
-            BLUE = "#5FAEFF",
-            RED = "#FF5566"
+            BG = "#1F222A",
+            FG = "#FFFFFF",
+            YELLOW = "#FFE066",
+            CYAN = "#4FFFE1",
+            DARKBLUE = "#3B72FF",
+            GREEN = "#00FF99",
+            ORANGE = "#FFBB55",
+            VIOLET = "#C88DFF",
+            MAGENTA = "#FF77B5",
+            BLUE = "#66B2FF",
+            RED = "#FF6677"
         }
 
         local function get_mode_color()
