@@ -53,7 +53,7 @@ return {
                     desc = "Config",
                     action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})"
                 }, {
-                    icon = " ",
+                    icon = "󱍸 ",
                     key = "s",
                     desc = "Restore Session",
                     section = "session"
@@ -64,7 +64,7 @@ return {
                     action = ":Lazy",
                     enabled = package.loaded.lazy ~= nil
                 }, {
-                    icon = "X ",
+                    icon = " ",
                     key = "x",
                     desc = "Lazy Extras",
                     action = ":LazyExtras",
@@ -157,7 +157,7 @@ return {
             enabled = true
         },
         statuscolumn = {
-            enabled = false
+            enabled = true
         },
         words = {
             enabled = true

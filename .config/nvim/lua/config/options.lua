@@ -3,11 +3,9 @@
 -- Add any additional options here
 
 vim.g.autoformat = true
-vim.opt.guicursor = ""
+-- vim.opt.guicursor = ""
 vim.opt.number = true
 vim.opt.cursorline = true
 vim.opt.relativenumber = true
 vim.opt.shiftwidth = 4
 vim.g.autoformat = true
-vim.opt.guicursor = ""
-
