@@ -13,7 +13,7 @@ from gi.repository import Gtk, Gdk, GdkPixbuf, GLib
 # ---------------- CONFIG ----------------
 WALLPAPER_DIR = os.path.expanduser("~/Pictures/wallpapers/wallpapers")
 THUMBNAIL_WIDTH = 800
-THUMBNAIL_HEIGHT = 300
+THUMBNAIL_HEIGHT = 270
 SCROLL_SPEED = 150
 MAX_BAR_WIDTH = 1350 
 # ----------------------------------------
@@ -28,7 +28,6 @@ class WallpaperManager:
         while WallpaperManager._is_swww_transition_active():
             time.sleep(0.05)
 
-        # Set wallpaper using swww
         subprocess.Popen([
             "swww", "img", wallpaper,
             "--transition-type", "any",
@@ -117,14 +116,12 @@ class WallpaperDock(Gtk.Window):
             screen, style_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         )
 
- 
         self.scrolled = Gtk.ScrolledWindow()
         self.scrolled.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.NEVER)
         self.scrolled.set_propagate_natural_height(True)
         self.scrolled.set_min_content_height(THUMBNAIL_HEIGHT + 20)
         self.add(self.scrolled)
 
-       
         self.hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=15)
         self.hbox.set_halign(Gtk.Align.START)
         self.hbox.set_hexpand(False)
