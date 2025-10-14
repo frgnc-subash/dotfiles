@@ -80,7 +80,7 @@ My configurations include the following dependenecies and apps.
 - **xdg-desktop-portal-gtk** – GTK portal backend
 - **xdg-desktop-portal-hyprland** – Hyprland backend portal
 
-### Fun Utilities
+### Fun Utilities and Tools
 
 - **asciiquarium** – Aquarium in ASCII art
 - **cbonsai** – Bonsai tree in terminal
@@ -89,8 +89,9 @@ My configurations include the following dependenecies and apps.
 - **fastfetch** – System info fetcher
 - **peaclock** – Minimalist clock
 - **pokeget** – Generates Pokémon in terminal
-- **yazi** – Terminal File Manager
 - **pipes.sh** – Generates random lines
+- tmux - a terminal multiplexer
+- **yazi** – Terminal File Manager
 - **zathura** - File reader
 
 ## Configurations
