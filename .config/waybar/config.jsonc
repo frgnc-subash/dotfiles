@@ -110,7 +110,7 @@
     "interval": 5
   },
   "network": {
-    "format-wifi": "󰀂",
+    "format-wifi": "wifi",
     "format-ethernet": "󰈀",
     "format-disconnected": "󰯡",
     "tooltip-format-wifi": "Connected to {essid} ({signalStrength}%)",
