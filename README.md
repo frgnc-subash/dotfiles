@@ -90,7 +90,7 @@ My configurations include the following dependenecies and apps.
 - **peaclock** – Minimalist clock
 - **pokeget** – Generates Pokémon in terminal
 - **pipes.sh** – Generates random lines
-- tmux - a terminal multiplexer
+- tmux\*\* - a terminal multiplexer
 - **yazi** – Terminal File Manager
 - **zathura** - File reader
 
