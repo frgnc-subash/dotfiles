@@ -13,8 +13,8 @@ from gi.repository import Gtk, Gdk, GdkPixbuf, GLib
 # ---------------- CONFIG ----------------
 WALLPAPER_DIR = os.path.expanduser("~/Pictures/wallpapers/wallpapers")
 THUMBNAIL_WIDTH = 800
-THUMBNAIL_HEIGHT = 270
-SCROLL_SPEED = 150
+THUMBNAIL_HEIGHT = 240
+SCROLL_SPEED = 1000 
 MAX_BAR_WIDTH = 1350 
 # ----------------------------------------
 
@@ -22,33 +22,26 @@ class WallpaperManager:
     @staticmethod
     def set_wallpaper(wallpaper):
         """Set wallpaper with swww + matugen (from bash script)"""
-        rand_pos = f"{random.randint(1, 99)/100:.2f},{random.randint(1, 99)/100:.2f}"
-
- 
         while WallpaperManager._is_swww_transition_active():
             time.sleep(0.05)
 
         subprocess.Popen([
             "swww", "img", wallpaper,
             "--transition-type", "any",
-            "--transition-pos", rand_pos,
-            "--transition-step", "15",
-            "--transition-fps", "120"
+            "--transition-step", "30",
+            "--transition-fps", "90"
         ])
 
-       
         subprocess.Popen(["matugen", "image", wallpaper])
 
     @staticmethod
     def _is_swww_transition_active():
         """Check if swww transition is active"""
         try:
-          
             daemon_running = subprocess.run(["pgrep", "-x", "swww-daemon"], 
                                           capture_output=True).returncode == 0
             
             if daemon_running:
-               
                 result = subprocess.run(["swww", "query"], capture_output=True, text=True)
                 return "Transition: true" in result.stdout
             return False
@@ -59,7 +52,6 @@ class WallpaperManager:
     def cycle_wallpaper():
         """Cycle wallpaper randomly (from bash script)"""
         try:
-       
             wallpapers = []
             for ext in ('*.jpg', '*.png', '*.jpeg', '*.gif'):
                 wallpapers.extend(
@@ -72,10 +64,8 @@ class WallpaperManager:
                 print("No wallpapers found in directory")
                 return
             
-        
             wallpaper = random.choice(wallpapers)
             
-          
             WallpaperManager.set_wallpaper(wallpaper)
             print(f"Set wallpaper: {os.path.basename(wallpaper)}")
             
@@ -86,7 +76,6 @@ class WallpaperDock(Gtk.Window):
     def __init__(self):
         super().__init__()
         
-     
         self.set_title("WallpaperDock")
         self.set_name("WallpaperDock")
         self.set_decorated(False)
@@ -94,7 +83,6 @@ class WallpaperDock(Gtk.Window):
         self.set_keep_above(True)
         self.set_type_hint(Gdk.WindowTypeHint.DOCK)
 
-       
         display = Gdk.Display.get_default()
         monitor = display.get_monitor_at_window(display.get_default_screen().get_root_window())
         geometry = monitor.get_geometry()
@@ -103,7 +91,6 @@ class WallpaperDock(Gtk.Window):
         self.set_default_size(MAX_BAR_WIDTH, THUMBNAIL_HEIGHT + 20)
         self.move((width - MAX_BAR_WIDTH)//2, height - (THUMBNAIL_HEIGHT + 20))
 
-     
         screen = Gdk.Screen.get_default()
         css = b"""
         window {
@@ -130,7 +117,6 @@ class WallpaperDock(Gtk.Window):
         self.scrolled.add_events(Gdk.EventMask.SCROLL_MASK)
         self.scrolled.connect("scroll-event", self.on_scroll_event)
 
-  
         threading.Thread(target=self.load_wallpapers, daemon=True).start()
 
     def load_wallpapers(self):
@@ -205,7 +191,6 @@ def main():
     if len(sys.argv) > 1:
         handle_cli()
     else:
-      
         start_gui()
 
 if __name__ == "__main__":
