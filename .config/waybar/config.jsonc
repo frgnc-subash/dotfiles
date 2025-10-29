@@ -19,7 +19,7 @@
     "pulseaudio",
     "backlight",
     "battery",
-    "network",
+    "tray",
     "power-profiles-daemon"
   ],
   "hyprland/workspaces": {
@@ -109,15 +109,7 @@
     "on-click-right": "swaync-client -d",
     "interval": 5
   },
-  "network": {
-    "format-wifi": "wifi",
-    "format-ethernet": "󰈀",
-    "format-disconnected": "󰯡",
-    "tooltip-format-wifi": "Connected to {essid} ({signalStrength}%)",
-    "tooltip-format-ethernet": "Ethernet connected",
-    "tooltip-format-disconnected": "Disconnected",
-    "on-click": "nm-connection-editor"
-  },
+
   "power-profiles-daemon": {
     "format": "{icon}",
     "tooltip-format": "Power profile: {profile}\nDriver: {driver}",

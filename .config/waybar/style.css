@@ -75,7 +75,7 @@ window#waybar {
 }
 
 #custom-swaync,
-#network,
+#tray,
 #power-profiles-daemon,
 #custom-hyprpicker {
   background-color: @background;
@@ -144,5 +144,3 @@ window#waybar {
 #custom-swaync.empty {
   opacity: 0.5;
 }
-
-
