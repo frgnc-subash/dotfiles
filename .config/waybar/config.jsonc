@@ -16,10 +16,10 @@
     "custom/swaync"
   ],
   "modules-right": [
+    "tray",
     "pulseaudio",
     "backlight",
     "battery",
-    "tray",
     "power-profiles-daemon"
   ],
   "hyprland/workspaces": {
@@ -41,7 +41,7 @@
   "hyprland/window": {
     "max-length": 0,
     "separate-outputs": false,
-    "icon": true
+    "icon": true,
   },
   "clock": {
     "format": "{:%H:%M}",
@@ -102,6 +102,10 @@
     "tooltip": false,
     "interval": 1
   },
+"tray": {
+	"icon-size": 18,
+	"spacing": 2,
+},
   "custom/swaync": {
     "format": "{}",
     "exec": "~/.config/waybar/scripts/swaync-status.sh",

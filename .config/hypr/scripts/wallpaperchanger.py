@@ -53,7 +53,7 @@ class WallpaperManager:
         """Cycle wallpaper randomly (from bash script)"""
         try:
             wallpapers = []
-            for ext in ('*.jpg', '*.png', '*.jpeg', '*.gif'):
+            for ext in ('*.jpg', '*.png', '*.jpeg', '*.gif', '*.mp4', '*.webp'):
                 wallpapers.extend(
                     os.path.join(WALLPAPER_DIR, f) 
                     for f in os.listdir(WALLPAPER_DIR) 
