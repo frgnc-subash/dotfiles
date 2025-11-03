@@ -40,7 +40,7 @@
       "button-text": "Clear All"
     },
     "dnd": {
-      "text": "Do Not Disturb"
+      "text": "DND"
     },
     "label": {
       "max-lines": 5,

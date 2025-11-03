@@ -1,161 +1,194 @@
 @import "colors.css";
 
-.notification-row {
-  transition: all 200ms ease;
-  margin: 2px 0;
-  border-radius: 8px;
+* {
+  font-family: "Inter", "Noto Sans", sans-serif;
+  font-size: 12pt;
+  color: @on_surface;
+  background: transparent;
 }
 
 .notification {
-  transition: all 200ms ease;
-  border-radius: 8px;
-  margin: 0;
-  padding: 4px;
-  box-shadow: 0 1px 2px alpha(@shadow, 0.4);
-  /* width: 100%; */
-}
-
-.notification-content {
-  background: transparent;
-  padding: 2px 6px;
-  border-radius: 8px;
-}
-
-.close-button {
   background: @surface_container_high;
-  color: @on_surface;
-  border-radius: 50%;
-  margin-top: 4px;
-  margin-right: 6px;
-  /* min-width: 16px; */
-  min-height: 16px;
+  border-radius: 14px;
+  border: 1px solid @outline_variant;
+  padding: 10px 12px;
+  margin: 6px;
+  box-shadow: 0 2px 6px @shadow;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 }
 
-.close-button:hover {
-  background: @outline_variant;
-}
-
-.summary {
-  font-size: 13px;
-  font-weight: 600;
-  color: @on_surface;
-  margin-bottom: 2px;
-}
-
-.time {
-  font-size: 11px;
-  color: @on_surface_variant;
-  margin-right: 6px;
-}
-
-.body {
-  font-size: 12px;
-  line-height: 1.2;
-  color: @on_surface_variant;
-}
-
-.notification-default-action,
-.notification-action {
-  padding: 2px 6px;
-  margin: 0;
-  border-radius: 6px;
-  font-size: 12px;
-  background: @surface_container_high;
-  border: 1px solid @primary;
-  color: @on_surface;
-}
-
-.notification-default-action:hover,
-.notification-action:hover {
+.notification:hover {
   background: @surface_container_highest;
 }
 
-.body-image {
-  margin-top: 4px;
+.notification .icon,
+.notification .app-icon {
   border-radius: 8px;
+  margin-right: 10px;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.notification .content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.notification .title {
+  font-weight: 600;
+  color: @on_surface;
+}
+
+.notification .body {
+  color: @on_surface_variant;
+}
+
+.notification button.close-button {
+  background: transparent;
+  color: @on_surface_variant;
+  border: none;
+  border-radius: 50%;
+  font-size: 16pt;
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.notification button.close-button:hover {
+  background: @surface_variant;
+  color: @on_surface;
+  transform: scale(1.1);
+}
+
+.progressbar {
+  background: @surface_variant;
+  border-radius: 4px;
+}
+
+.progressbar > trough > progress {
+  background: @primary;
+  border-radius: 4px;
 }
 
 .control-center {
-  background: alpha(@surface, 0.9);
-  border-radius: 10px;
-  padding: 4px;
-  border: 1px solid @primary;
-  box-shadow: 0 1px 4px alpha(@shadow, 0.6);
-  color: @on_surface;
-}
-
-.control-center-list {
-  background: transparent;
-}
-
-.floating-notifications {
-  background: transparent;
-}
-
-.blank-window {
-  background: transparent;
+  background: @surface_container;
+  border-radius: 16px;
+  border: 1px solid @outline_variant;
+  box-shadow: 0 4px 10px @shadow;
+  padding: 8px;
 }
 
 .widget-title {
-  margin: 4px;
-  font-size: 1rem;
-}
-
-.widget-title > button {
-  font-size: 12px;
+  background: transparent;
   color: @on_surface;
-  background: @surface;
-  border: 1px solid @primary;
-  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14pt;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.widget-title > button:hover {
-  background: @surface_container_high;
+.widget-title button {
+  background: @outline_variant;
+  color: @primary;
+  border-radius: 10px;
+  padding: 6px 14px;
+  border: none;
+  font-weight: 500;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+}
+
+.widget-title button:hover {
+  background: @primary_container;
+  color: @on_primary_container;
+  transform: scale(1.05);
 }
 
 .widget-dnd {
-  margin: 4px;
-  font-size: 0.9rem;
+  background: @surface_container_high;
+  border-radius: 12px;
+  padding: 6px 10px;
+  margin: 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.widget-dnd > switch {
-  border-radius: 6px;
-  background: @surface;
-  border: 1px solid @primary;
+.widget-dnd label {
+  color: @on_surface;
+  font-weight: 500;
 }
 
-.widget-dnd > switch:checked {
+.widget-dnd switch {
+  background: @surface_variant;
+  border-radius: 10px;
+  min-width: 36px;
+  min-height: 18px;
+  padding: 2px;
+}
+
+.widget-dnd switch slider {
+  background: @on_surface_variant;
+  border-radius: 50%;
+  min-width: 14px;
+  min-height: 14px;
+}
+
+.widget-dnd switch:checked {
   background: @primary;
 }
 
-.widget-dnd > switch slider {
-  background: @surface;
-  border-radius: 6px;
-  border: 1px solid @on_surface;
+.widget-dnd switch:checked slider {
+  background: @on_primary;
 }
 
-.widget-label {
-  margin: 4px;
+.widget-mpris {
+  background: @surface_container_high;
+  border-radius: 12px;
+  padding: 8px;
+  margin: 6px 0;
 }
 
-.widget-label > label {
-  font-size: 0.9rem;
+.widget-mpris .title {
+  color: @on_surface;
+  font-weight: 500;
 }
 
-.widget-mpris-player {
-  padding: 4px;
-  margin: 4px;
-  border-radius: 8px;
-  border: 1px solid @primary;
-  background: @surface;
-  font-size: 0.85rem;
+.widget-mpris .artist {
+  color: @on_surface_variant;
+  font-size: 10pt;
 }
 
-.widget-mpris-title {
-  font-size: 1rem;
-  font-weight: bold;
+.widget-notifications {
+  background: transparent;
+  border-radius: 12px;
+  padding: 6px;
 }
 
-.widget-mpris-subtitle {
-  font-size: 0.85rem;
+.notification,
+.control-center {
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.dnd-active {
+  color: @error;
 }
