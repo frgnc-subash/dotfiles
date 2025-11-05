@@ -20,4 +20,3 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/themes/tokyo_night
 eval "$(zoxide init --cmd cd zsh)"
 #eval "$(starship init zsh)"
 
-. "$HOME/.local/bin/env"

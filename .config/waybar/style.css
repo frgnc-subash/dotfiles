@@ -73,6 +73,7 @@ window#waybar {
   font-size: 11px;
   min-width: 45px;
 }
+
 #tray {
   background-color: @background;
   color: @primary;
