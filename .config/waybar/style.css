@@ -110,6 +110,7 @@ window#waybar {
   min-width: 0px;
   color: @on_surface;
   min-height: 22px;
+  margin: 0px 4px;
 }
 
 #pulseaudio,
@@ -150,4 +151,11 @@ window#waybar {
 
 #custom-swaync.empty {
   opacity: 0.5;
+}
+
+#custom-cava {
+  /* font-size: 10px; */
+  margin: 0px 10px;
+  font-family: "CaskaydiaCove Nerd Font";
+  color: @tertiary;
 }

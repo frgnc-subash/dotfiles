@@ -6,16 +6,14 @@
   "margin-left": 4,
   "margin-right": 4,
   "margin-bottom": 0,
-  "modules-left": [
-    "clock",
-    "hyprland/window",
-  ],
+  "modules-left": ["clock", "hyprland/window"],
   "modules-center": [
     "custom/hyprpicker",
     "hyprland/workspaces",
     "custom/swaync"
   ],
   "modules-right": [
+    "custom/cava",
     "tray",
     "pulseaudio",
     "backlight",
@@ -31,18 +29,21 @@
       "active": "󰮯"
     },
     "persistent-workspaces": {
-      "*": [
-        1,
-        2,
-        3
-      ]
+      "*": [1, 2, 3]
     }
   },
   "hyprland/window": {
     "max-length": 0,
     "separate-outputs": false,
-    "icon": true,
+    "icon": true
   },
+
+  "custom/cava": {
+    "format": "{}",
+    "exec": "/home/axosis/.config/waybar/scripts/cava.sh||echo \"\"",
+    "return-type": "text"
+  },
+
   "clock": {
     "format": "{:%H:%M}",
     "format-alt": "{:%a, %b %d}",
@@ -58,11 +59,7 @@
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-icons": {
-      "default": [
-        "󰕾",
-        "󰖀",
-        "󰕾"
-      ],
+      "default": ["󰕾", "󰖀", "󰕾"],
       "muted": "󰖁"
     },
     "scroll-step": 1,
@@ -71,11 +68,7 @@
   },
   "backlight": {
     "format": "{icon} {percent}%",
-    "format-icons": [
-      "󰃞",
-      "󰃟",
-      "󰃠"
-    ],
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
     "scroll-step": 1
   },
   "battery": {
@@ -83,18 +76,7 @@
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
     "format-full": " {capacity}%",
-    "format-icons": [
-      "󰁺",
-      "󰁻",
-      "󰁼",
-      "󰁽",
-      "󰁾",
-      "󰁿",
-      "󰂀",
-      "󰂁",
-      "󰂂",
-      "󰁹"
-    ],
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     "states": {
       "warning": 30,
       "critical": 15
@@ -102,10 +84,10 @@
     "tooltip": false,
     "interval": 1
   },
-"tray": {
-	"icon-size": 18,
-	"spacing": 2,
-},
+  "tray": {
+    "icon-size": 18,
+    "spacing": 2
+  },
   "custom/swaync": {
     "format": "{}",
     "exec": "~/.config/waybar/scripts/swaync-status.sh",
