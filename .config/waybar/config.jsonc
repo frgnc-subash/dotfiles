@@ -6,19 +6,20 @@
   "margin-left": 4,
   "margin-right": 4,
   "margin-bottom": 0,
-  "modules-left": ["clock", "hyprland/window"],
+  "modules-left": ["clock",   "custom/cava","hyprland/window"  ],
   "modules-center": [
     "custom/hyprpicker",
     "hyprland/workspaces",
     "custom/swaync"
   ],
   "modules-right": [
-    "custom/cava",
+  
     "tray",
     "pulseaudio",
     "backlight",
     "battery",
-    "power-profiles-daemon"
+    "power-profiles-daemon",
+    "idle_inhibitor"
   ],
   "hyprland/workspaces": {
     "format": "{icon}",
@@ -33,11 +34,18 @@
     }
   },
   "hyprland/window": {
-    "max-length": 0,
+    "max-length": 30,
     "separate-outputs": false,
     "icon": true
   },
-
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "alive",
+      "deactivated": "dead"
+    },
+    "timeout": 30.5
+  },
   "custom/cava": {
     "format": "{}",
     "exec": "/home/axosis/.config/waybar/scripts/cava.sh||echo \"\"",

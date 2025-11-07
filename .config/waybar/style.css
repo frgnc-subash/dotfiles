@@ -84,7 +84,8 @@ window#waybar {
 
 #custom-swaync,
 #power-profiles-daemon,
-#custom-hyprpicker {
+#custom-hyprpicker,
+#idle_inhibitor {
   background-color: @background;
   color: @primary;
   font-weight: 900;
@@ -154,8 +155,10 @@ window#waybar {
 }
 
 #custom-cava {
-  /* font-size: 10px; */
-  margin: 0px 10px;
+  background-color: @background;
+  border-radius: 30px;
+  padding: 0px 6px;
+  margin: 0px 4px;
   font-family: "CaskaydiaCove Nerd Font";
   color: @tertiary;
 }

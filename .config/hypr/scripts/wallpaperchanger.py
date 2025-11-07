@@ -72,6 +72,25 @@ class WallpaperManager:
         except Exception as e:
             print(f"Error cycling wallpaper: {e}")
 
+    @staticmethod
+    def reload_waybar_and_cava():
+        """Reload Waybar and safely kill cava processes"""
+        try:
+            # Kill old Waybar & cava processes
+            subprocess.run(["pkill", "waybar"])
+            subprocess.run(["pkill", "-f", "/home/axosis/.config/waybar/scripts/cava.sh"])
+            subprocess.run(["pkill", "-f", "cava"])
+
+            # Start Waybar fresh
+            subprocess.Popen(["waybar"])
+
+            # Reload Hyprland config
+            subprocess.run(["hyprctl", "reload"])
+
+            print("Waybar and Cava reloaded successfully.")
+        except Exception as e:
+            print(f"Failed to reload Waybar/Cava: {e}")
+
 class WallpaperDock(Gtk.Window):
     def __init__(self):
         super().__init__()
@@ -171,12 +190,15 @@ def handle_cli():
             sys.exit(1)
     elif command == "gui":
         start_gui()
+    elif command == "reload_waybar":
+        WallpaperManager.reload_waybar_and_cava()
     elif command == "help":
         print("Wallpaper Manager Commands:")
-        print("  cycle      - Set a random wallpaper and apply Matugen colors")
-        print("  set <path> - Set a specific wallpaper and apply Matugen colors")
-        print("  gui        - Start the graphical wallpaper selector")
-        print("  help       - Show this help")
+        print("  cycle            - Set a random wallpaper and apply Matugen colors")
+        print("  set <path>       - Set a specific wallpaper and apply Matugen colors")
+        print("  gui              - Start the graphical wallpaper selector")
+        print("  reload_waybar    - Reload Waybar and Cava processes safely")
+        print("  help             - Show this help")
     else:
         WallpaperManager.cycle_wallpaper()
 

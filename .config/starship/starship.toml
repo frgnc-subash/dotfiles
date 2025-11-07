@@ -4,8 +4,19 @@
 
 
 "$schema" = 'https://starship.rs/config-schema.json'
+add_newline = false
+format = """[󱝂](fg:#7C9FF3) $username $directory $git_branch$git_status $time $cmd_duration\n$character"""
 
-format = """[](fg:#7C9FF3) $directory $git_branch$git_status $time $cmd_duration\n$character"""
+[username]
+show_always = true
+style_user = "bold fg:green"
+format = "[$user]($style)"
+
+
+[character]
+success_symbol = "[▶](bold fg:#7C9FF3)"
+error_symbol = "[▶](bold red)"
+vicmd_symbol = "[▶](bold yellow)"
 
 [directory]
 style = "fg:#769ff0"
@@ -13,15 +24,10 @@ format = "$path"
 truncation_length = 1
 truncation_symbol = ""
 
-
-#[character]
-#success_symbol = '[](bold blue)'
-
-
 [git_branch]
 symbol = ""
 style = "fg:cyan"
-format = '[ $branch $symbol  ]($style)'
+format = '[ $branch $symbol ]($style)'
 
 [git_status]
 style = "fg:red"
