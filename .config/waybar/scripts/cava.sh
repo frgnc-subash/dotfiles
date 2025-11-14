@@ -27,4 +27,3 @@ ascii_max_range = 7
 cava -p $config_file | while read -r line; do
     echo $line | sed $dict
 done
-

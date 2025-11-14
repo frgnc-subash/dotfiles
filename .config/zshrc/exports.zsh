@@ -1,4 +1,4 @@
-export STARSHIP_CONFIG="$HOME/.config/starship/themes/misc.toml"
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export PATH=$HOME/.config/hypr/scripts:$PATH
 export PATH=$PATH:/home/axosis/.spicetify
 # pnpm

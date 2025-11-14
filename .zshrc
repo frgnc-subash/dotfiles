@@ -15,6 +15,7 @@ source ~/.config/zshrc/exports.zsh
 source ~/.config/zshrc/aliases.zsh
 source ~/.config/zshrc/settings.zsh
 source ~/.config/zshrc/tmux.zsh
+source ~/.config/zshrc/extra.zsh
 
 eval "$(fzf --zsh)"
 eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/themes/tokyo_night.omp.json)"
