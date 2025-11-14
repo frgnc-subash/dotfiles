@@ -43,57 +43,6 @@ Since these are dotfiles make sure to see them using the command below.
 ls -la
 ```
 
-## Dependencies
-
-My configurations include the following dependenecies and apps.
-
-> 📌 **Note**  
-> Before installing these, make sure you have an AUR helper tool such as **yay** or **paru** installed.
-
-### Applications
-
-- **bat** – Cat clone with syntax highlighting
-- **eza** – Modern replacement for `ls`
-- **grim** – Screenshot tool for Wayland
-- **hypridle** – Idle management for Hyprland
-- **hyprland** – Dynamic tiling Wayland compositor
-- **hyprlock** – Lock screen for Hyprland
-- **hyprpicker** – Color picker for Hyprland
-- **kitty** - Terminal
-- **mpv** – Media player
-- **nvim (LazyVim)** – Neovim with Lazy
-- **rofi** – Application launcher
-- **slurp** – Wayland selection tool for screenshots
-- **swaync** – Notification daemon
-- **swappy** – Screenshot annotation tool
-- **waybar** – Status bar for Wayland
-- **wlogout** – Logout/shutdown menu
-- **zsh** – Shell
-- **zoxide** – Smarter `cd` command
-
-### Dependencies / Supporting Packages
-
-- **oh-my-posh** – Prompt theme for terminal
-- **starship** – Cross-shell prompt
-- **swww** – Wallpaper manager for Wayland
-- **wf-recorder** – Screen recorder
-- **xdg-desktop-portal-gtk** – GTK portal backend
-- **xdg-desktop-portal-hyprland** – Hyprland backend portal
-
-### Fun Utilities and Tools
-
-- **asciiquarium** – Aquarium in ASCII art
-- **cbonsai** – Bonsai tree in terminal
-- **cava** – Audio visualizer
-- **cmatrix** – Matrix-style terminal effect
-- **fastfetch** – System info fetcher
-- **peaclock** – Minimalist clock
-- **pokeget** – Generates Pokémon in terminal
-- **pipes.sh** – Generates random lines
-- **tmux** - a terminal multiplexer
-- **yazi** – Terminal File Manager
-- **zathura** - File reader
-
 ## Configurations
 
 #### After the installations configure the following.
@@ -106,7 +55,6 @@ You can change the directory for wallpapers in these scripts.
 
 <pre>
 ~/.config/hypr/scripts/wallpaper-manager.sh
-~/.config/hypr/scripts/wallpaperchanger.py
 </pre>
 
 Do similar changes for the **hyprlock** as well.
@@ -128,8 +76,6 @@ Also make sure to adjust some tweaks in **hyprland config** files specially moni
 - <a href='https://www.nerdfonts.com/font-downloads' style="text-decoration:none">Nerd Fonts</a>
 
 ### Inspirations
-
-My main inspiration is beauty of Linux.
 
 <ul style="list-style-type: none; padding-left: 0;">
   <li><a href="https://github.com/mylinuxforwork/dotfiles" style="text-decoration: none;">ml4w</a></li>
