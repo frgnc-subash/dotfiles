@@ -5,18 +5,32 @@
 
 "$schema" = 'https://starship.rs/config-schema.json'
 add_newline = false
-format = """[󱝂](fg:#7C9FF3) $username $directory $git_branch$git_status $time $cmd_duration\n$character"""
+format = """[󰁕](fg:blue) $directory\ 
+ $git_branch\
+ $git_status \
+ [](fg:yellow)\
+ $fill\
+ $lua\
+ $nodejs\
+ $rust\
+ $python\
+ $docker_context\   
+ $jobs\
+ $cmd_duration\
+ $line_break\
+ $character"""
 
 [username]
 show_always = true
-style_user = "bold fg:green"
+style_user = "bold fg:#00F5FF"
 format = "[$user]($style)"
 
+[fill]
+symbol = " "
 
 [character]
 success_symbol = "[▶](bold fg:#7C9FF3)"
 error_symbol = "[▶](bold red)"
-vicmd_symbol = "[▶](bold yellow)"
 
 [directory]
 style = "fg:#769ff0"
@@ -24,14 +38,36 @@ format = "$path"
 truncation_length = 1
 truncation_symbol = ""
 
+[jobs]
+symbol = "󱍸"
+
+[directory.substitutions]
+"Desktop" = " "
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+
 [git_branch]
-symbol = ""
+symbol = ""
 style = "fg:cyan"
 format = '[ $branch $symbol ]($style)'
 
 [git_status]
-style = "fg:red"
-format = '[($all_status$ahead_behind)]($style)'
+conflicted = " 🏳 "
+ahead = " 󱞨 "
+behind = " 󱞦 "
+diverged = " 󰦻 "
+untracked = "  "
+stashed = "  "
+modified = "  "
+staged = '[++\($count\)](green)'
+renamed = " 󰑕 "
+deleted = " 󰗩 "
+
+[git_commit]
+commit_hash_length = 4
+tag_symbol = "  "
 
 [time]
 disabled = true
@@ -46,10 +82,13 @@ format = "[󱤤 $duration]($style)"
 style = "fg:yellow"
 
 [nodejs]
-disabled = false
+symbol = " "
+
+[python]
+symbol = " "
+
 [rust]
-disabled = true
-[golang]
-disabled = true
-[php]
-disabled = true
+symbol = " "
+
+[lua]
+symbol = " "

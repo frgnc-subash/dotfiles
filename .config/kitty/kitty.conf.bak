@@ -2,27 +2,22 @@
 # ├┴┐ │ │  │ └┬┘
 # ┴ ┴ ┴ ┴  ┴  ┴ 
 
-window_padding_width		0
-line_height 1.0
-padding_top 0
-padding_bottom 0
-font_family			mononoki
-font_size			14			
-font_bold			auto
-font_italic			auto
-background_opacity		1
+window_padding_width		2
+
+font_family		JetBrainsMono Nerd Font	
+font_size			13			
+#background_opacity		0.5
 
 cursor_shape			block
 cursor_trail			1
 cursor_trail_decay		0.1 0.4
 cursor_trail_start_threshold	0
-cursor_blink			yes
 shell_integration		no-cursor
 #scrollback_indicator_indicator	0.0
 allow_remote_control		yes
 
 
 # BEGIN_KITTY_THEME
-# Tokyo Night Moon
+# Catppuccin-Mocha
 include current-theme.conf
 # END_KITTY_THEME

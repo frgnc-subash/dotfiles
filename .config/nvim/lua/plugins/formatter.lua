@@ -9,20 +9,15 @@ return {
       typescriptreact = { "prettierd", "prettier" },
       css = { "prettierd", "prettier" },
       html = { "prettierd", "prettier" },
-      json = { "prettierd", "prettier" },
       yaml = { "prettierd", "prettier" },
       markdown = { "prettierd", "prettier" },
 
-      -- Lua
       lua = { "stylua" },
 
-      -- Config files
       toml = { "taplo" },
 
-      -- Python
       python = { "black", "isort" },
 
-      -- Shell
       sh = { "shfmt" },
     },
   },
