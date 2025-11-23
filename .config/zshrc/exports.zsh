@@ -12,5 +12,4 @@ esac
 # opencode
 export PATH=/home/axosis/.opencode/bin:$PATH
 
-export EDITOR=nvim
-export VISUAL=nvim
+

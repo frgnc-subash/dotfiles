@@ -6,97 +6,103 @@ import threading
 import sys
 import random
 import time
+import hashlib
+from concurrent.futures import ThreadPoolExecutor
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk, GdkPixbuf, GLib
 
-# ---------------- CONFIG ----------------
+# ---------------- CONFIGURATION ----------------
 WALLPAPER_DIR = os.path.expanduser("~/Pictures/wallpapers/wallpapers")
-THUMBNAIL_WIDTH = 800
-THUMBNAIL_HEIGHT = 240
-SCROLL_SPEED = 1000 
-MAX_BAR_WIDTH = 1350 
-# ----------------------------------------
+CACHE_DIR = os.path.expanduser("~/.cache/wallpaper_dock")
+
+# -- DIMENSIONS --
+CENTER_W = 400
+CENTER_H = 225
+SIDE_W = 250
+SIDE_H = 140
+
+# Window constraints
+MAX_BAR_WIDTH = 1000
+TOTAL_WINDOW_HEIGHT = CENTER_H + 50 
+# -----------------------------------------------
+
+class Utils:
+    @staticmethod
+    def ensure_dir(directory):
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+    @staticmethod
+    def get_cache_path(filepath, width, height):
+        hash_str = hashlib.md5(f"{filepath}_{width}_{height}".encode()).hexdigest()
+        return os.path.join(CACHE_DIR, f"{hash_str}.png")
 
 class WallpaperManager:
     @staticmethod
     def set_wallpaper(wallpaper):
-        """Set wallpaper with swww + matugen (from bash script)"""
-        while WallpaperManager._is_swww_transition_active():
-            time.sleep(0.05)
-
-        subprocess.Popen([
-            "swww", "img", wallpaper,
-            "--transition-type", "any",
-            "--transition-step", "30",
-            "--transition-fps", "90"
-        ])
-
-        subprocess.Popen(["matugen", "image", wallpaper])
+        threading.Thread(target=WallpaperManager._set_wallpaper_thread, args=(wallpaper,)).start()
 
     @staticmethod
-    def _is_swww_transition_active():
-        """Check if swww transition is active"""
+    def _set_wallpaper_thread(wallpaper):
         try:
-            daemon_running = subprocess.run(["pgrep", "-x", "swww-daemon"], 
-                                          capture_output=True).returncode == 0
-            
-            if daemon_running:
-                result = subprocess.run(["swww", "query"], capture_output=True, text=True)
-                return "Transition: true" in result.stdout
-            return False
-        except:
-            return False
-
-    @staticmethod
-    def cycle_wallpaper():
-        """Cycle wallpaper randomly (from bash script)"""
-        try:
-            wallpapers = []
-            for ext in ('*.jpg', '*.png', '*.jpeg', '*.gif', '*.mp4', '*.webp'):
-                wallpapers.extend(
-                    os.path.join(WALLPAPER_DIR, f) 
-                    for f in os.listdir(WALLPAPER_DIR) 
-                    if f.lower().endswith(ext[1:])
-                )
-            
-            if not wallpapers:
-                print("No wallpapers found in directory")
-                return
-            
-            wallpaper = random.choice(wallpapers)
-            
-            WallpaperManager.set_wallpaper(wallpaper)
-            print(f"Set wallpaper: {os.path.basename(wallpaper)}")
-            
+            # Use a simpler transition to ensure speed
+            subprocess.Popen([
+                "swww", "img", wallpaper,
+                "--transition-type", "any",
+                "--transition-duration", "1.3",
+                "--transition-fps", "60"
+            ])
+            subprocess.Popen(["matugen", "image", wallpaper])
         except Exception as e:
-            print(f"Error cycling wallpaper: {e}")
+            print(f"Error setting wallpaper: {e}")
 
     @staticmethod
-    def reload_waybar_and_cava():
-        """Reload Waybar and safely kill cava processes"""
+    def get_wallpapers():
+        wallpapers = []
+        if not os.path.exists(WALLPAPER_DIR):
+            return []
+        valid_exts = ('.jpg', '.png', '.jpeg', '.gif', '.webp')
+        for f in os.listdir(WALLPAPER_DIR):
+            if f.lower().endswith(valid_exts):
+                wallpapers.append(os.path.join(WALLPAPER_DIR, f))
+        return sorted(wallpapers)
+
+class ImageLoader:
+    def __init__(self):
+        Utils.ensure_dir(CACHE_DIR)
+        self.executor = ThreadPoolExecutor(max_workers=4)
+        self.mem_cache = {}
+
+    def get_pixbuf(self, filepath, w, h, callback):
+        cache_key = (filepath, w, h)
+        if cache_key in self.mem_cache:
+            callback(self.mem_cache[cache_key])
+            return
+        self.executor.submit(self._load_worker, filepath, w, h, callback)
+
+    def _load_worker(self, filepath, w, h, callback):
+        cache_path = Utils.get_cache_path(filepath, w, h)
+        pixbuf = None
         try:
-            # Kill old Waybar & cava processes
-            subprocess.run(["pkill", "waybar"])
-            subprocess.run(["pkill", "-f", "/home/axosis/.config/waybar/scripts/cava.sh"])
-            subprocess.run(["pkill", "-f", "cava"])
+            if os.path.exists(cache_path):
+                pixbuf = GdkPixbuf.Pixbuf.new_from_file(cache_path)
+            else:
+                pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(filepath, w, h, False)
+                pixbuf.savev(cache_path, "png", [], [])
 
-            # Start Waybar fresh
-            subprocess.Popen(["waybar"])
-
-            # Reload Hyprland config
-            subprocess.run(["hyprctl", "reload"])
-
-            print("Waybar and Cava reloaded successfully.")
+            if pixbuf:
+                self.mem_cache[(filepath, w, h)] = pixbuf
+                GLib.idle_add(callback, pixbuf)
         except Exception as e:
-            print(f"Failed to reload Waybar/Cava: {e}")
+            print(f"Error loading {filepath}: {e}")
 
 class WallpaperDock(Gtk.Window):
     def __init__(self):
         super().__init__()
         
         self.set_title("WallpaperDock")
-        self.set_name("WallpaperDock")
+        self.set_wmclass("WallpaperDock", "WallpaperDock")
         self.set_decorated(False)
         self.set_app_paintable(True)
         self.set_keep_above(True)
@@ -104,116 +110,134 @@ class WallpaperDock(Gtk.Window):
 
         display = Gdk.Display.get_default()
         monitor = display.get_monitor_at_window(display.get_default_screen().get_root_window())
-        geometry = monitor.get_geometry()
-        width, height = geometry.width, geometry.height
+        geo = monitor.get_geometry()
+        
+        self.set_default_size(MAX_BAR_WIDTH, TOTAL_WINDOW_HEIGHT)
+        self.move((geo.width - MAX_BAR_WIDTH)//2, geo.height - TOTAL_WINDOW_HEIGHT)
 
-        self.set_default_size(MAX_BAR_WIDTH, THUMBNAIL_HEIGHT + 20)
-        self.move((width - MAX_BAR_WIDTH)//2, height - (THUMBNAIL_HEIGHT + 20))
-
+        # -- FIXED CSS --
         screen = Gdk.Screen.get_default()
         css = b"""
-        window {
-            background-color: rgba(0,0,0,0);
+        window { 
+            border-radius: 15px 15px 0 0; 
+            background-color: rgba(0,0,0,1.0);
+        }
+        button { 
+            background: transparent; 
+            box-shadow: none; 
+            padding: 2px; 
+            margin: 0; 
+            border-radius: 6px;
+        }
+        
+        /* Side Images */
+        #side_btn { 
+            opacity: 1.0; 
+            transition: opacity 0.2s; 
+            border: 2px solid transparent; 
+        }
+        #side_btn:hover { 
+            opacity: 1.0; 
+        }
+
+        /* Center Image - FIXED */
+        #center_btn { 
+            opacity: 1.0; 
+            transition: all 0.2s; 
+            border: 2px solid transparent; 
+        }
+        #center_btn:hover { 
+            /* Full border frame instead of underline */
+            border: 1px solid #ffffff; 
+            background-color: rgba(255,255,255,0.1);
         }
         """
         style_provider = Gtk.CssProvider()
         style_provider.load_from_data(css)
-        Gtk.StyleContext.add_provider_for_screen(
-            screen, style_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-        )
+        Gtk.StyleContext.add_provider_for_screen(screen, style_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
-        self.scrolled = Gtk.ScrolledWindow()
-        self.scrolled.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.NEVER)
-        self.scrolled.set_propagate_natural_height(True)
-        self.scrolled.set_min_content_height(THUMBNAIL_HEIGHT + 20)
-        self.add(self.scrolled)
+        self.wallpapers = WallpaperManager.get_wallpapers()
+        self.current_idx = 0
+        self.loader = ImageLoader()
+
+        if not self.wallpapers:
+            print("No wallpapers found.")
+            sys.exit(1)
 
         self.hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=15)
-        self.hbox.set_halign(Gtk.Align.START)
-        self.hbox.set_hexpand(False)
-        self.scrolled.add(self.hbox)
+        self.hbox.set_halign(Gtk.Align.CENTER)
+        self.hbox.set_valign(Gtk.Align.CENTER)
+        self.add(self.hbox)
 
-        self.scrolled.add_events(Gdk.EventMask.SCROLL_MASK)
-        self.scrolled.connect("scroll-event", self.on_scroll_event)
+        self.img_prev = Gtk.Image()
+        self.img_curr = Gtk.Image()
+        self.img_next = Gtk.Image()
+        
+        self.img_prev.set_size_request(SIDE_W, SIDE_H)
+        self.img_curr.set_size_request(CENTER_W, CENTER_H)
+        self.img_next.set_size_request(SIDE_W, SIDE_H)
 
-        threading.Thread(target=self.load_wallpapers, daemon=True).start()
+        self.btn_prev = self._make_btn(self.img_prev, "side_btn", -1)
+        self.btn_curr = self._make_btn(self.img_curr, "center_btn", 0)
+        self.btn_next = self._make_btn(self.img_next, "side_btn", 1)
 
-    def load_wallpapers(self):
-        files = sorted([f for f in os.listdir(WALLPAPER_DIR)
-                        if f.lower().endswith((".jpg", ".png", ".jpeg", ".gif"))])
+        self.hbox.pack_start(self.btn_prev, False, False, 0)
+        self.hbox.pack_start(self.btn_curr, False, False, 0)
+        self.hbox.pack_start(self.btn_next, False, False, 0)
 
-        bar_width = min(len(files) * (THUMBNAIL_WIDTH + 15), MAX_BAR_WIDTH)
-        GLib.idle_add(self.set_default_size, bar_width, THUMBNAIL_HEIGHT + 20)
+        self.add_events(Gdk.EventMask.SCROLL_MASK)
+        self.connect("scroll-event", self.on_scroll)
+        
+        self.update_view()
 
-        for file in files:
-            filepath = os.path.join(WALLPAPER_DIR, file)
-            try:
-                thumb = GdkPixbuf.Pixbuf.new_from_file_at_scale(
-                    filepath, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT, True
-                )
-                GLib.idle_add(self.add_thumbnail, thumb, filepath)
-            except Exception as e:
-                print(f"Failed to load {file}: {e}")
+    def _make_btn(self, image_widget, name, scroll_dir):
+        btn = Gtk.Button()
+        btn.set_name(name)
+        btn.set_image(image_widget)
+        if scroll_dir == 0:
+            btn.connect("clicked", self.on_center_click)
+        else:
+            btn.connect("clicked", lambda w: self.shift(scroll_dir))
+        return btn
 
-    def add_thumbnail(self, thumb, filepath):
-        image = Gtk.Image.new_from_pixbuf(thumb)
-        button = Gtk.Button()
-        button.set_image(image)
-        button.set_relief(Gtk.ReliefStyle.NONE)
-        button.connect("clicked", self.set_wallpaper, filepath)
-        self.hbox.pack_start(button, False, False, 0)
-        self.show_all()
-        return False
+    def shift(self, direction):
+        self.current_idx += direction
+        self.update_view()
 
-    def set_wallpaper(self, widget, filepath):
-        WallpaperManager.set_wallpaper(filepath)
-
-    def on_scroll_event(self, widget, event):
-        adj = self.scrolled.get_hadjustment()
-        if event.direction == Gdk.ScrollDirection.UP or event.delta_y < 0:
-            adj.set_value(max(adj.get_lower(), adj.get_value() - SCROLL_SPEED))
-        elif event.direction == Gdk.ScrollDirection.DOWN or event.delta_y > 0:
-            adj.set_value(min(adj.get_upper() - adj.get_page_size(), adj.get_value() + SCROLL_SPEED))
+    def on_scroll(self, widget, event):
+        if event.direction in (Gdk.ScrollDirection.DOWN, Gdk.ScrollDirection.RIGHT):
+            self.shift(1)
+        elif event.direction in (Gdk.ScrollDirection.UP, Gdk.ScrollDirection.LEFT):
+            self.shift(-1)
         return True
 
-def handle_cli():
-    """Handle command line arguments"""
-    command = sys.argv[1] if len(sys.argv) > 1 else "cycle"
-    
-    if command == "cycle":
-        WallpaperManager.cycle_wallpaper()
-    elif command == "set":
-        if len(sys.argv) > 2:
-            WallpaperManager.set_wallpaper(sys.argv[2])
-        else:
-            print("Usage: wallpaper_manager.py set <wallpaper-path>")
-            sys.exit(1)
-    elif command == "gui":
-        start_gui()
-    elif command == "reload_waybar":
-        WallpaperManager.reload_waybar_and_cava()
-    elif command == "help":
-        print("Wallpaper Manager Commands:")
-        print("  cycle            - Set a random wallpaper and apply Matugen colors")
-        print("  set <path>       - Set a specific wallpaper and apply Matugen colors")
-        print("  gui              - Start the graphical wallpaper selector")
-        print("  reload_waybar    - Reload Waybar and Cava processes safely")
-        print("  help             - Show this help")
-    else:
-        WallpaperManager.cycle_wallpaper()
+    def on_center_click(self, widget):
+        path = self.wallpapers[self.current_idx % len(self.wallpapers)]
+        WallpaperManager.set_wallpaper(path)
 
-def start_gui():
-    """Start the GUI application"""
-    win = WallpaperDock()
-    win.connect("destroy", Gtk.main_quit)
-    win.show_all()
-    Gtk.main()
+    def update_view(self):
+        n = len(self.wallpapers)
+        
+        i_prev = (self.current_idx - 1) % n
+        i_curr = (self.current_idx) % n
+        i_next = (self.current_idx + 1) % n
+
+        self.loader.get_pixbuf(self.wallpapers[i_prev], SIDE_W, SIDE_H, self.img_prev.set_from_pixbuf)
+        self.loader.get_pixbuf(self.wallpapers[i_curr], CENTER_W, CENTER_H, self.img_curr.set_from_pixbuf)
+        self.loader.get_pixbuf(self.wallpapers[i_next], SIDE_W, SIDE_H, self.img_next.set_from_pixbuf)
 
 def main():
-    if len(sys.argv) > 1:
-        handle_cli()
+    if len(sys.argv) > 1 and sys.argv[1] == "cycle":
+        try:
+            m = WallpaperManager()
+            w = m.get_wallpapers()
+            if w: m.set_wallpaper(random.choice(w))
+        except: pass
     else:
-        start_gui()
+        win = WallpaperDock()
+        win.connect("destroy", Gtk.main_quit)
+        win.show_all()
+        Gtk.main()
 
 if __name__ == "__main__":
     main()

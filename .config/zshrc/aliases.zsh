@@ -1,6 +1,6 @@
 #alias
 alias ls='ls --color'
-alias cat='bat --paging=never --style=plain'
+alias cat='bat --paging=never'
 alias ls='eza --icons'
 
 # Common variations

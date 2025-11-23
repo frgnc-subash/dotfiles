@@ -21,6 +21,7 @@ eval "$(fzf --zsh)"
 # eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/themes/tokyo_night.omp.json)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(starship init zsh)"
-
+export EDITOR=nvim
+export VISUAL=nvim
 
 . "$HOME/.local/bin/env"
