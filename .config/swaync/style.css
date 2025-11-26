@@ -62,10 +62,7 @@
   align-items: center;
   justify-content: center;
   align-self: center;
-  transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    transform 0.1s ease;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
 }
 
 .notification button.close-button:hover {
@@ -110,9 +107,7 @@
   padding: 6px 14px;
   border: none;
   font-weight: 500;
-  transition:
-    background 0.2s ease,
-    transform 0.1s ease;
+  transition: background 0.2s ease, transform 0.1s ease;
 }
 
 .widget-title button:hover {
@@ -184,9 +179,7 @@
 
 .notification,
 .control-center {
-  transition:
-    background 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .dnd-active {

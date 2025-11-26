@@ -4,7 +4,7 @@
 
 # r: region
 # s: screen
-#
+ 
 # c: clipboard
 # f: file
 # i: interactive

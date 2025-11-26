@@ -22,7 +22,7 @@ output_path = '~/.config/rofi/colors.rasi'
 [templates.waybar]
 input_path = '~/.config/matugen/themes/colors.css'
 output_path = '~/.config/waybar/colors.css'
-post_hook = 'pkill waybar; waybar & disown'
+post_hook = 'pkill waybar; waybar & disown; pkill cava.sh; pkill cava'
 
 
 [templates.wlogout]
@@ -36,9 +36,9 @@ output_path = '~/.config/swaync/colors.css'
 post_hook = 'pkill swaync; swaync & disown'
 
 
-[templates.yazi]
-input_path = '~/.config/matugen/themes/yazi-theme.toml'
-output_path = '~/.config/yazi/theme.toml'
+# [templates.yazi]
+# input_path = '~/.config/matugen/themes/yazi-theme.toml'
+# output_path = '~/.config/yazi/theme.toml'
 
 
 [templates.btop]

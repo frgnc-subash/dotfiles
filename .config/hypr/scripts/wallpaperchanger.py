@@ -46,11 +46,10 @@ class WallpaperManager:
     @staticmethod
     def _set_wallpaper_thread(wallpaper):
         try:
-            # Use a simpler transition to ensure speed
             subprocess.Popen([
                 "swww", "img", wallpaper,
                 "--transition-type", "any",
-                "--transition-duration", "1.3",
+                "--transition-duration", "1.5",
                 "--transition-fps", "60"
             ])
             subprocess.Popen(["matugen", "image", wallpaper])

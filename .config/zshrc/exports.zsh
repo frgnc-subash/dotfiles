@@ -9,7 +9,3 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# opencode
-export PATH=/home/axosis/.opencode/bin:$PATH
-
-
