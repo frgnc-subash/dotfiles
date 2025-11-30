@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 import gi
 import os
 import subprocess
@@ -16,13 +17,11 @@ from gi.repository import Gtk, Gdk, GdkPixbuf, GLib
 WALLPAPER_DIR = os.path.expanduser("~/Pictures/wallpapers/wallpapers")
 CACHE_DIR = os.path.expanduser("~/.cache/wallpaper_dock")
 
-# -- DIMENSIONS --
 CENTER_W = 400
 CENTER_H = 225
 SIDE_W = 250
 SIDE_H = 140
 
-# Window constraints
 MAX_BAR_WIDTH = 1000
 TOTAL_WINDOW_HEIGHT = CENTER_H + 50 
 # -----------------------------------------------

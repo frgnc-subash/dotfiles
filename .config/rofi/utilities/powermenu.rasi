@@ -84,7 +84,6 @@ prompt {
     text-color:                  @scrim;
 }
 
-/*****----- Message -----*****/
 message {
     enabled:                     true;
     margin:                      0px;

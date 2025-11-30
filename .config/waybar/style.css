@@ -109,7 +109,7 @@ window#waybar {
 
 #window {
   min-width: 0px;
-  color: @on_surface;
+  color: @secondary;
   min-height: 22px;
   margin: 0px 4px;
 }

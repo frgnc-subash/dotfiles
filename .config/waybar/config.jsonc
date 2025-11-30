@@ -6,14 +6,13 @@
   "margin-left": 4,
   "margin-right": 4,
   "margin-bottom": 0,
-  "modules-left": ["clock",   "custom/cava","hyprland/window"  ],
+  "modules-left": ["clock","custom/cava","hyprland/window"  ],
   "modules-center": [
     "custom/hyprpicker",
     "hyprland/workspaces",
     "custom/swaync"
   ],
   "modules-right": [
-  
     "tray",
     "pulseaudio",
     "backlight",
@@ -34,7 +33,7 @@
     }
   },
   "hyprland/window": {
-    "max-length":    25,
+    "max-length": 25,
     "separate-outputs": false,
     "icon": true
   },
