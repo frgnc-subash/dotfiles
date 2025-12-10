@@ -49,7 +49,7 @@ class WallpaperManager:
                 "swww", "img", wallpaper,
                 "--transition-type", "any",
                 "--transition-duration", "1.5",
-                "--transition-fps", "60"
+                "--transition-fps", "90"
             ])
             subprocess.Popen(["matugen", "image", wallpaper])
         except Exception as e:
