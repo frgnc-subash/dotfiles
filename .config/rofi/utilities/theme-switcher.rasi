@@ -1,0 +1,95 @@
+
+@import "~/.config/rofi/colors.rasi"
+
+* {
+    /* Map your variables to standard css properties */
+    background-color:            transparent;
+    text-color:                  @on-surface;
+    font:                        "GeistMono Nerd Font Propo Medium 11";
+    width:                       400px;
+    border-radius:               12px;
+    spacing:                     5px;
+}
+
+window {
+    background-color:            @surface;
+    border-radius:               12px;
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    padding:                     15px; /* More breathing room */
+}
+
+mainbox {
+    children:                    [ inputbar, listview ];
+    spacing:                     15px;
+}
+
+
+inputbar {
+    children:                    [ prompt, entry ];
+    background-color:            @surface-container-high;
+    border-radius:               8px;
+    padding:                     10px 12px;
+    spacing:                     10px;
+}
+
+prompt {
+    text-color:                  @primary;
+    background-color:            inherit;
+}
+
+entry {
+    placeholder:                 "Select a theme...";
+    placeholder-color:           @on-surface-variant; /* Muted text */
+    text-color:                  @on-surface;
+    background-color:            inherit;
+    cursor:                      text;
+}
+
+/* --- List View --- */
+listview {
+    columns:                     1;
+    lines:                       3; /* Perfect height for ~3-4 themes */
+    cycle:                       true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    fixed-height:                true;
+    spacing:                     5px;
+}
+
+/* --- Elements --- */
+element {
+    padding:                     10px 12px;
+    border-radius:               8px;
+    spacing:                     10px;
+    cursor:                      pointer;
+}
+
+/* Normal State */
+element normal.normal {
+    background-color:            transparent;
+    text-color:                  @on-surface;
+}
+
+element alternate.normal {
+    background-color:            transparent;
+    text-color:                  @on-surface;
+}
+
+/* Selected State - The "Better" part */
+element selected.normal {
+    background-color:            @outline; 
+    text-color:                  @scrim; 
+}
+
+element-icon {
+    size:                        20px;
+    cursor:                      inherit;
+}
+
+element-text {
+    vertical-align:              0.5;
+    highlight:                   None; /* Disable bold highlighting matching chars */
+    cursor:                      inherit;
+}

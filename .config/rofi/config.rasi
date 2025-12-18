@@ -132,7 +132,7 @@
 
 configuration {
     modi:                       "drun,run";
-    font:                       "mononoki 14";
+    font:                       "GeistMono Nerd Font Propo Medium 11";
     show-icons:                 true;
     icon-theme:                 "Papirus";
     display-drun:               " ";
@@ -188,7 +188,7 @@ inputbar {
 }
 
 entry {
-    placeholder: " what are searching...?";
+    placeholder: " whatch you searching...?";
     padding: 2px;
 }
 
