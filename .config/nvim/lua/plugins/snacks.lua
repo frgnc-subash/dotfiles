@@ -13,33 +13,26 @@ return {
       col = nil,
       pane_gap = 4,
       autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
-
       preset = {
         pick = nil,
         header = [[
-                                                 ███            
-                                                ░░░             
-  █████   ██████  ████████   ██████  ████████   ████  ████████  
- ███░░   ███░░███░░███░░███ ███░░███░░███░░███ ░░███ ░░███░░███ 
-░░█████ ░███████  ░███ ░░░ ░███ ░███ ░███ ░███  ░███  ░███ ░███ 
- ░░░░███░███░░░   ░███     ░███ ░███ ░███ ░███  ░███  ░███ ░███ 
- ██████ ░░██████  █████    ░░██████  ████ █████ █████ ████ █████
-░░░░░░   ░░░░░░  ░░░░░      ░░░░░░  ░░░░ ░░░░░ ░░░░░ ░░░░ ░░░░░ 
+⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⢘⡆⠀⠀⠀⣀⣤⣤⣤⣂⢀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣀⣆⠀⢀⢔⣾⣯⣶⣿⣿⣿⣿⣿⠛⠉⢉⠞⢀⣾⠀⠀⠀
+⠀⠀⠀⠉⠉⢹⣯⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣴⣿⡟⠀⠀⠀
+⢀⣄⣀⣠⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣥⣄⡀⠀
+⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⡄
+⠀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⠃⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⡉⠕⠀⠀
+⠘⠁⢸⣿⣿⣿⣿⣿⣿⡟⠏⠀⢰⣿⣿⣿⣿⣿⠈⢿⣿⣿⣷⡈⠂⠀⠀
+⠀⠀⢸⣿⣿⣿⣿⣿⡏⣀⣈⣥⣄⢻⣿⣿⣿⣿⣐⠈⣿⣿⣿⡧⠔⠀⠀
+⠀⠀⠈⠙⢿⡿⢿⣿⢧⠀⠁⢀⠠⠀⠟⠁⠈⠉⠛⠋⢿⡟⠁⠀⠀⠀⠀
+⠀⠀⠀⠀⢨⠐⡶⠝⢀⠤⠀⠀⠀⠀⠀⡀⠀⠀⠀⠢⣸⠁⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠓⠤⠍⠡⢄⡀⠀⠀⠀⠀⠀⠀⢀⡠⠔⠁⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢫⠀⠀⡖⠒⠋⠁⠀⠀⠀  ⠀⠀⠀ 
+⠀⠀⠀⠀⠀⠀⠀⢀⠎⠐⠠⢇⡀⠘⢇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢀⡴⠃⠀⠀⠀⠀⠈⠑⠂⠽⠮⠒⢄⡀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢀⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⡀⠀⠀⠀⠀⠀⠀
                 ]],
-
         keys = {
-          {
-            icon = "󰈞 ",
-            key = "f",
-            desc = "Find File",
-            action = ":lua Snacks.dashboard.pick('files')",
-          },
-          {
-            icon = " ",
-            key = "n",
-            desc = "New File",
-            action = ":ene | startinsert",
-          },
           {
             icon = "󰭷 ",
             key = "g",
@@ -59,23 +52,10 @@ return {
             action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
           },
           {
-            icon = "󱍸 ",
-            key = "s",
-            desc = "Restore Session",
-            section = "session",
-          },
-          {
             icon = "󰒲 ",
             key = "l",
             desc = "Lazy",
             action = ":Lazy",
-            enabled = package.loaded.lazy ~= nil,
-          },
-          {
-            icon = " ",
-            key = "x",
-            desc = "Lazy Extras",
-            action = ":LazyExtras",
             enabled = package.loaded.lazy ~= nil,
           },
           {
@@ -86,7 +66,6 @@ return {
           },
         },
       },
-
       formats = {
         icon = function(item)
           if item.file and (item.icon == "file" or item.icon == "directory") then
@@ -135,22 +114,12 @@ return {
             } }
         end,
       },
-
       sections = {
-        {
-          section = "header",
-        },
-        {
-          section = "keys",
-          gap = 1,
-          padding = 1,
-        },
-        {
-          section = "startup",
-        },
+        { section = "header" },
+        { section = "keys", gap = 1, padding = 1 },
+        { section = "startup" },
       },
     },
-
     explorer = {
       enabled = true,
     },
@@ -162,6 +131,15 @@ return {
     },
     picker = {
       enabled = true,
+      sources = {
+        explorer = {
+          layout = {
+            layout = {
+              width = 30, -- Adjust this value to make it wider or shorter
+            },
+          },
+        },
+      },
     },
     notifier = {
       enabled = true,
