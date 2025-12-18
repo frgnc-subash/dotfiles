@@ -1,117 +1,145 @@
 {
-  "layer": "top",
-  "position": "top",
-  "height": 26,
-  "margin-top": 4,
-  "margin-left": 4,
-  "margin-right": 4,
-  "margin-bottom": 0,
-  "modules-left": ["clock","custom/cava","hyprland/window"  ],
-  "modules-center": [
-    "custom/hyprpicker",
-    "hyprland/workspaces",
-    "custom/swaync"
-  ],
-  "modules-right": [
-    "tray",
-    "pulseaudio",
-    "backlight",
-    "battery",
-    "power-profiles-daemon",
-    "idle_inhibitor"
-  ],
-  "hyprland/workspaces": {
-    "format": "{icon}",
-    "active-only": false,
-    "format-icons": {
-      "default": "",
-      "urgent": "",
-      "active": "󰮯"
+    "layer": "top",
+    "position": "top",
+    "height": 26,
+    "margin-top": 4,
+    "margin-left": 4,
+    "margin-right": 4,
+    "margin-bottom": 0,
+    "modules-left": [
+        "clock",
+        "custom/cava",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "custom/hyprpicker",
+        "hyprland/workspaces",
+        "custom/swaync"
+    ],
+    "modules-right": [
+        "tray",
+        "pulseaudio",
+        "backlight",
+        "battery",
+        "power-profiles-daemon",
+        "idle_inhibitor"
+    ],
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "active-only": false,
+        "format-icons": {
+            "default": "",
+            "urgent": "",
+            "active": "󰮯"
+        },
+        "persistent-workspaces": {
+            "*": [
+                1,
+                2,
+                3
+            ]
+        }
     },
-    "persistent-workspaces": {
-      "*": [1, 2, 3]
+    "hyprland/window": {
+        "max-length": 25,
+        "separate-outputs": false,
+        "icon": true
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "alive",
+            "deactivated": "dead"
+        },
+        "timeout": 30.5
+    },
+    "custom/cava": {
+        "format": "{}",
+        "exec": "/home/axosis/.config/waybar/scripts/cava.sh||echo \"\"",
+        "return-type": "text"
+    },
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%a, %b %d}",
+        "tooltip": false,
+        "tooltip-format": "{:%A, %B %d, %Y}\nWeek: %V",
+        "on-click": "~/.config/waybar/scripts/toggle-date.sh"
+    },
+    "custom/hyprpicker": {
+        "format": "󰌁",
+        "on-click": "hyprpicker -a -f hex",
+        "interval": 0
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰖁 {volume}%",
+        "format-icons": {
+            "default": [
+                "󰕾",
+                "󰖀",
+                "󰕾"
+            ],
+            "default-muted": "󰖁",
+            "muted": "󰖁"
+        },
+        "scroll-step": 1,
+        "max-volume": 150,
+        "on-click-right": "pavucontrol",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    },
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": [
+            "󰃞",
+            "󰃟",
+            "󰃠"
+        ],
+        "scroll-step": 1
+    },
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-full": " {capacity}%",
+        "format-icons": [
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ],
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "tooltip": false,
+        "interval": 1
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 2
+    },
+    "custom/swaync": {
+        "format": "{}",
+        "exec": "~/.config/waybar/scripts/swaync-status.sh",
+        "on-click": "swaync-client -t",
+        "on-click-right": "swaync-client -d",
+        "interval": 5
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "󰈸",
+            "performance": "󰈸",
+            "balanced": "󰖧",
+            "power-saver": ""
+        }
     }
-  },
-  "hyprland/window": {
-    "max-length": 25,
-    "separate-outputs": false,
-    "icon": true
-  },
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "alive",
-      "deactivated": "dead"
-    },
-    "timeout": 30.5
-  },
-  "custom/cava": {
-    "format": "{}",
-    "exec": "/home/axosis/.config/waybar/scripts/cava.sh||echo \"\"",
-    "return-type": "text"
-  },
-
-  "clock": {
-    "format": "{:%H:%M}",
-    "format-alt": "{:%a, %b %d}",
-    "tooltip": false,
-    "tooltip-format": "{:%A, %B %d, %Y}\nWeek: %V",
-    "on-click": "~/.config/waybar/scripts/toggle-date.sh"
-  },
-  "custom/hyprpicker": {
-    "format": "󰌁",
-    "on-click": "hyprpicker -a -f hex",
-    "interval": 0
-  },
-  "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-icons": {
-      "default": ["󰕾", "󰖀", "󰕾"],
-      "muted": "󰖁"
-    },
-    "scroll-step": 1,
-    "max-volume": 150,
-    "on-click": "pavucontrol"
-  },
-  "backlight": {
-    "format": "{icon} {percent}%",
-    "format-icons": ["󰃞", "󰃟", "󰃠"],
-    "scroll-step": 1
-  },
-  "battery": {
-    "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-full": " {capacity}%",
-    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
-    "tooltip": false,
-    "interval": 1
-  },
-  "tray": {
-    "icon-size": 18,
-    "spacing": 2
-  },
-  "custom/swaync": {
-    "format": "{}",
-    "exec": "~/.config/waybar/scripts/swaync-status.sh",
-    "on-click": "swaync-client -t",
-    "on-click-right": "swaync-client -d",
-    "interval": 5
-  },
-
-  "power-profiles-daemon": {
-    "format": "{icon}",
-    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-    "tooltip": true,
-    "format-icons": {
-      "default": "",
-      "performance": "",
-      "balanced": "B",
-      "power-saver": "S"
-    }
-  }
 }
