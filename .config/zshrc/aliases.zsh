@@ -11,6 +11,7 @@ alias lt='eza --tree --icons'        # Tree view
 alias lg='eza -l --git --icons'      # Git-aware lozzng view
 alias l.='eza -la --icons | grep "^\."'  # Only dotfiles
 alias ..='cd ..'
+alias rm='rm -i'
 
 # Extra helpers
 alias lsx='eza -l --icons'           # Long with icons

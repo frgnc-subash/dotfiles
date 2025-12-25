@@ -48,8 +48,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "alive",
-            "deactivated": "dead"
+            "activated": "生きている",
+            "deactivated": "死んだ"
         },
         "timeout": 30.5
     },
@@ -138,8 +138,8 @@
         "format-icons": {
             "default": "󰈸",
             "performance": "󰈸",
-            "balanced": "󰖧",
-            "power-saver": ""
+            "balanced": "",
+            "power-saver": "󰔶"
         }
     }
 }

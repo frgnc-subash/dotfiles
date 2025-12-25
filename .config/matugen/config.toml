@@ -43,5 +43,5 @@ post_hook = 'pkill swaync; swaync & disown'
 
 [templates.btop]
 input_path = '~/.config/matugen/themes/btop.theme'
-output_path = '~/.config/btop/themes/matugen.theme'
+output_path = '~/.config/btop/themes/dynamic.theme'
 
