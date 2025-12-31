@@ -17,20 +17,31 @@ source = auto
 method = noncurses
 channels = mono
 
-[color]
-gradient = 1
-gradient_color_1 = '#3b3c59'
-gradient_color_2 = '#4b4464'
-gradient_color_3 = '#4b4464'
-gradient_color_4 = '#6d5276'
-gradient_color_5 = '#7f597e'
-gradient_color_6 = '#926184'
-gradient_color_7 = '#a4688a'
-gradient_color_8 = '#b6708e'
-gradient_color_9 = '#c87990'
-gradient_color_10 = "#ff002f"
-
+# [color]
+# gradient = 1
+# gradient_color_1 = '#3b3c59'
+# gradient_color_2 = '#4b4464'
+# gradient_color_3 = '#4b4464'
+# gradient_color_4 = '#6d5276'
+# gradient_color_5 = '#7f597e'
+# gradient_color_6 = '#926184'
+# gradient_color_7 = '#a4688a'
+# gradient_color_8 = '#b6708e'
+# gradient_color_9 = '#c87990'
+# gradient_color_10 = "#ff002f"
+#
 [smoothing]
 monstercat = 0
 waves = 0
 gravity = 100
+[color]
+gradient = 1
+
+gradient_color_1 = '#94e2d5'
+gradient_color_2 = '#89dceb'
+gradient_color_3 = '#74c7ec'
+gradient_color_4 = '#89b4fa'
+gradient_color_5 = '#cba6f7'
+gradient_color_6 = '#f5c2e7'
+gradient_color_7 = '#eba0ac'
+gradient_color_8 = '#f38ba8'
