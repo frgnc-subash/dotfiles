@@ -22,7 +22,7 @@ output_path = '~/.config/rofi/colors.rasi'
 [templates.waybar]
 input_path = '~/.config/matugen/themes/colors.css'
 output_path = '~/.config/waybar/colors.css'
-post_hook = 'pkill waybar; waybar & disown; pkill cava.sh; pkill cava'
+post_hook = 'pkill waybar; waybar & disown; pkill cava.sh;'
 
 
 [templates.wlogout]
