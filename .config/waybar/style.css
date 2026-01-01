@@ -66,6 +66,7 @@ window#waybar {
   background-color: @background;
   color: @primary;
   font-weight: 900;
+  border: 1px solid @outline;
   /* border-radius: 40px; */
   padding: 0 8px;
   margin: 0 2px;
@@ -74,12 +75,41 @@ window#waybar {
   min-width: 45px;
 }
 
+#mpris {
+  background-color: @background;
+  padding: 0 8px;
+  margin: 0 2px;
+  border-radius: 1px;
+  color: @primary;
+  transition: all 0.3s ease;
+}
+
+#mpris.playing {
+  background-color: @shadow;
+  border: 1px dashed @outline;
+}
+
+#mpris.paused {
+  color: @tertiary;
+  background-color: @background;
+  border: 1px dashed @outline_variant;
+}
+
+#mpris.stopped {
+  background-color: transparent;
+  color: transparent;
+}
+
 #tray {
   background-color: @background;
   color: @primary;
   /* border-radius: 40px; */
   padding: 0 6px;
   margin: 0 2px;
+}
+
+#idle_inhibitor {
+  border: 1px solid @outline;
 }
 
 #custom-swaync,
