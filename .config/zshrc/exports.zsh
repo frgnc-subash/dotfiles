@@ -9,6 +9,9 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+export TERMINAL='kitty'
+export EDITOR='nvim'
+export VISUAL='nvim'
 
 export PATH=$PATH:/home/axosis/.spicetify
 

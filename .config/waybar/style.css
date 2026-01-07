@@ -1,4 +1,4 @@
-@import "colors.css";
+@import url("../../.config/matugen/generated/colors.css");
 
 * {
   border: none;
