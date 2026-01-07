@@ -1,5 +1,5 @@
 
-@import "~/.config/rofi/colors.rasi"
+@import "~/.config/matugen/generated/rofi-colors.rasi"
 
 * {
     /* Map your variables to standard css properties */

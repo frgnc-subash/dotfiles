@@ -4,7 +4,7 @@
 ┴└─└─┘└  ┴
 */
 
-@import "~/.config/rofi/colors.rasi"
+@import "~/.config/matugen/generated/rofi-colors.rasi"
 
 * {
     active-background: @primary;

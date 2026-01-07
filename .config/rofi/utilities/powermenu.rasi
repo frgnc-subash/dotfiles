@@ -1,3 +1,4 @@
+@import "~/.config/matugen/generated/rofi-colors.rasi"
 * {
     background:     #1E1D2FFF;
     background-alt: #282839FF;
@@ -6,7 +7,6 @@
     active:         #ABE9B3FF;
     urgent:         #F28FADFF;
 }
-@import "~/.config/rofi/colors.rasi"
 
 configuration {
     show-icons:                 false;
