@@ -1,0 +1,71 @@
+[config]
+reload_apps = true
+
+[config.wallpaper]
+set = true
+command = "swww"
+arguments = [ "img", "-t", "fade", "--transition-duration", "0.5", "--transition-step", "255", "--transition-fps", "60", "-f", "Nearest",]
+
+[templates.hyprland]
+input_path = "~/.config/Ax-Shell/config/matugen/templates/hyprland-colors.conf"
+output_path = "~/.config/Ax-Shell/config/hypr/colors.conf"
+post_hook = "hyprctl reload"
+
+[templates.rofi]
+input_path = "~/.config/matugen/themes/rofi-colors.rasi"
+output_path = "~/.config/rofi/colors.rasi"
+
+[templates.waybar]
+input_path = "~/.config/matugen/themes/colors.css"
+output_path = "~/.config/waybar/colors.css"
+post_hook = "pkill waybar; waybar & disown"
+
+[templates.wlogout]
+input_path = "~/.config/matugen/themes/colors.css"
+output_path = "~/.config/wlogout/colors.css"
+
+[templates.swaync]
+input_path = "~/.config/matugen/themes/colors.css"
+output_path = "~/.config/swaync/colors.css"
+post_hook = "pkill swaync; swaync & disown"
+
+[templates.yazi]
+input_path = "~/.config/matugen/themes/yazi-theme.toml"
+output_path = "~/.config/yazi/theme.toml"
+
+[templates.btop]
+input_path = "~/.config/matugen/themes/btop.theme"
+output_path = "~/.config/btop/themes/matugen.theme"
+
+[templates.ax-shell]
+input_path = "~/.config/Ax-Shell/config/matugen/templates/ax-shell.css"
+output_path = "~/.config/Ax-Shell/styles/colors.css"
+post_hook = "fabric-cli exec ax-shell 'app.set_css()' &"
+
+[config.custom_colors.red]
+color = "#FF0000"
+blend = true
+
+[config.custom_colors.green]
+color = "#00FF00"
+blend = true
+
+[config.custom_colors.yellow]
+color = "#FFFF00"
+blend = true
+
+[config.custom_colors.blue]
+color = "#0000FF"
+blend = true
+
+[config.custom_colors.magenta]
+color = "#FF00FF"
+blend = true
+
+[config.custom_colors.cyan]
+color = "#00FFFF"
+blend = true
+
+[config.custom_colors.white]
+color = "#FFFFFF"
+blend = true

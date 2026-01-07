@@ -5,43 +5,43 @@ set = false
 command = "swww"
 
 [templates.hyprland]
-input_path = '~/.config/matugen/themes/hyprland-colors.conf'
-output_path = '~/.config/hypr/colors.conf'
+input_path = '~/.config/matugen/templates/hyprland-colors.conf'
+output_path = '~/.config/matugen/generated/hypr-colors.conf'
 post_hook = 'hyprctl reload'
 
-# [templates.kitty]
-# input_path = '~/.config/matugen/themes/kitty-colors.conf'
-# output_path = '~/.config/kitty/colors.conf'
-# post_hook = 'pkill -SIGUSR1 $(pgrep kitty)'
-
 [templates.rofi]
-input_path = '~/.config/matugen/themes/rofi-colors.rasi'
-output_path = '~/.config/rofi/colors.rasi'
-
+input_path = '~/.config/matugen/templates/rofi-colors.rasi'
+output_path = '~/.config/matugen/generated/rofi-colors.rasi'
 
 [templates.waybar]
-input_path = '~/.config/matugen/themes/colors.css'
-output_path = '~/.config/waybar/colors.css'
+input_path = '~/.config/matugen/templates/colors.css'
+output_path = '~/.config/matugen/generated/colors.css'
 post_hook = 'pkill waybar; waybar & disown; pkill cava.sh;'
 
-
-[templates.wlogout]
-input_path = '~/.config/matugen/themes/colors.css'
-output_path = '~/.config/wlogout/colors.css'
-
-
 [templates.swaync]
-input_path = '~/.config/matugen/themes/colors.css'
-output_path = '~/.config/swaync/colors.css'
+input_path = '~/.config/matugen/templates/colors.css'
+output_path = '~/.config/matugen/generated/colors.css'
 post_hook = 'pkill swaync; swaync & disown'
 
-
-# [templates.yazi]
-# input_path = '~/.config/matugen/themes/yazi-theme.toml'
-# output_path = '~/.config/yazi/theme.toml'
-
+[templates.swayosd]
+input_path = '~/.config/matugen/templates/swayosd-colors.css'
+output_path = '~/.config/matugen/generated/swayosd-colors.css'
+post_hook = '~/.config/swayosd/scripts/restartOSD.sh'
 
 [templates.btop]
-input_path = '~/.config/matugen/themes/btop.theme'
-output_path = '~/.config/btop/themes/dynamic.theme'
+input_path = '~/.config/matugen/templates/btop.theme'
+output_path = '~/.config/matugen/generated/btop.theme'
 
+[templates.qt5ct]
+input_path = '~/.config/matugen/templates/qtct-colors.conf'
+output_path = '~/.config/matugen/generated/qtct-colors.conf'
+
+[templates.cava]
+input_path = '~/.config/matugen/templates/cava-colors.ini'
+output_path = '~/.config/matugen/generated/cava-colors.ini'
+post_hook = 'mkdir -p $HOME/.config/cava/themes; ln -nfs $HOME/.config/matugen/generated/cava-colors.ini $HOME/.config/cava/themes/cava-colors.ini; pkill -USR1 cava || true'
+
+# [templates.yazi]
+# input_path = '~/.config/matugen/templates/yazi-theme.toml'
+# output_path = '~/.config/matugen/generated/yazi-theme.toml'
+# post_hook = 'ln -nfs $HOME/.config/matugen/generated/yazi-theme.toml $HOME/.config/yazi/theme.toml' 
