@@ -126,7 +126,7 @@
         "format-paused": "{status_icon} <i>{position} {artist}</i>",
         "player-icons": {
             "default": "⏸",
-            "mpv": "mpv",
+            "mpv": "",
             "spotify": "",
             "firefox": ""
         },

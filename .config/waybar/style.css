@@ -26,7 +26,7 @@ window#waybar {
 
 #workspaces {
   background-color: @background;
-  /* border-radius: 40px; */
+  border-radius: 8px;
   padding: 0 3px;
   margin: 0 2px;
   min-height: 26px;
@@ -38,7 +38,7 @@ window#waybar {
   padding: 0 6px;
   margin: 3px 1px;
   font-size: 13px;
-  border-radius: 1px;
+  border-radius: 6px;
   background-color: @surface_container_low;
   color: @on_surface;
   transition: all 0.2s ease-in-out;
@@ -66,9 +66,9 @@ window#waybar {
   background-color: @background;
   color: @primary;
   font-weight: 900;
-  border: 1px solid @outline;
-  /* border-radius: 40px; */
-  padding: 0 8px;
+  /* border: 1px solid @outline; */
+  border-radius: 8px;
+  padding: 0 6px;
   margin: 0 2px;
   min-height: 22px;
   font-size: 11px;
@@ -79,7 +79,7 @@ window#waybar {
   background-color: @background;
   padding: 0 8px;
   margin: 0 2px;
-  border-radius: 1px;
+  border-radius: 8px;
   color: @primary;
   transition: all 0.3s ease;
 }
@@ -103,14 +103,14 @@ window#waybar {
 #tray {
   background-color: @background;
   color: @primary;
-  /* border-radius: 40px; */
+  border-radius: 8px;
   padding: 0 6px;
   margin: 0 2px;
 }
 
-#idle_inhibitor {
-  border: 1px solid @outline;
-}
+/* #idle_inhibitor { */
+/*   border: 1px solid @outline; */
+/* } */
 
 #custom-swaync,
 #power-profiles-daemon,
@@ -119,7 +119,7 @@ window#waybar {
   background-color: @background;
   color: @primary;
   font-weight: 900;
-  /* border-radius: 40px; */
+  border-radius: 8px;
   padding: 0 10px;
   margin: 0 2px;
   min-height: 22px;
@@ -148,7 +148,7 @@ window#waybar {
 #backlight,
 #battery {
   background-color: @background;
-  /* border-radius: 40px; */
+  border-radius: 8px;
   padding: 0 11px;
   margin: 0 2px;
   min-height: 20px;
@@ -186,7 +186,7 @@ window#waybar {
 
 #custom-cava {
   background-color: @background;
-  /* border-radius: 30px; */
+  border-radius: 8px;
   padding: 0px 6px;
   margin: 0px 4px;
   font-family: "CaskaydiaCove Nerd Font";
