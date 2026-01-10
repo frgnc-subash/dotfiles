@@ -55,6 +55,11 @@ input_path = '~/.config/matugen/templates/cava-colors.ini'
 output_path = '~/.config/matugen/generated/cava-colors.ini'
 post_hook = 'mkdir -p $HOME/.config/cava/themes; ln -nfs $HOME/.config/matugen/generated/cava-colors.ini $HOME/.config/cava/themes/cava-colors.ini; pkill -USR1 cava || true'
 
+[templates.pywalfox]
+input_path = '~/.config/matugen/templates/pywalfox-colors.json'
+output_path = '~/.config/matugen/generated/pywalfox-colors.json'
+post_hook = 'ln -nfs $HOME/.config/matugen/generated/pywalfox-colors.json $HOME/.cache/wal/colors.json; pywalfox update || true'
+
 # [templates.yazi]
 # input_path = '~/.config/matugen/templates/yazi-theme.toml'
 # output_path = '~/.config/matugen/generated/yazi-theme.toml'
