@@ -9,7 +9,7 @@
 
 .notification {
   background: @surface_container_high;
-  border-radius: 1px;
+  border-radius: 8px;
   border: 1px solid @outline_variant;
   padding: 10px 12px;
   margin: 6px;
@@ -26,7 +26,7 @@
 
 .notification .icon,
 .notification .app-icon {
-  border-radius: 1px;
+  border-radius: 8px;
   margin-right: 10px;
   min-width: 40px;
   min-height: 40px;
@@ -76,17 +76,17 @@
 
 .progressbar {
   background: @surface_variant;
-  border-radius: 1px;
+  border-radius: 8px;
 }
 
 .progressbar > trough > progress {
   background: @primary;
-  border-radius: 1px;
+  border-radius: 8px;
 }
 
 .control-center {
   background: @surface_container;
-  border-radius: 1px;
+  border-radius: 8px;
   border: 1px solid @outline_variant;
   box-shadow: 0 4px 10px @shadow;
   padding: 8px;
@@ -106,7 +106,7 @@
 .widget-title button {
   background: @outline_variant;
   color: @primary;
-  border-radius: 1px;
+  border-radius: 8px;
   padding: 6px 14px;
   border: none;
   font-weight: 500;
@@ -123,7 +123,7 @@
 
 .widget-dnd {
   background: @surface_container_high;
-  border-radius: 1px;
+  border-radius: 8px;
   padding: 6px 10px;
   margin: 6px 0;
   display: flex;
@@ -138,7 +138,7 @@
 
 .widget-dnd switch {
   background: @surface_variant;
-  border-radius: 1px;
+  border-radius: 8px;
   min-width: 36px;
   min-height: 18px;
   padding: 2px;
@@ -146,7 +146,7 @@
 
 .widget-dnd switch slider {
   background: @on_surface_variant;
-  border-radius: 5%;
+  border-radius: 100%;
   min-width: 14px;
   min-height: 14px;
 }
@@ -161,7 +161,7 @@
 
 .widget-mpris {
   background: @surface_container_high;
-  border-radius: 1px;
+  border-radius: 8px;
   padding: 8px;
   margin: 6px 0;
 }
@@ -178,7 +178,7 @@
 
 .widget-notifications {
   background: transparent;
-  border-radius: 1px;
+  border-radius: 8px;
   padding: 6px;
 }
 
@@ -192,3 +192,4 @@
 .dnd-active {
   color: @error;
 }
+
