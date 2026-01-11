@@ -1,65 +1,104 @@
-#!/bin/bash
-# ------------------------------------------------------------------------------
-# 🧮 ROFI CALCULATOR (QALCULATE)
-# Optimized for: Arch Linux / Hyprland / Wayland
-# Dependencies: rofi, libqalculate (qalc), wl-copy
-# ------------------------------------------------------------------------------
+#!/usr/bin/env bash
 
-# 1. Kill existing instance (Toggle behavior)
-# If you map this to a keybind, pressing it again closes the calc.
-if pgrep -x "rofi" >/dev/null; then
-    pkill rofi
-    exit 0
-fi
+set -o errexit
+set -o nounset
+set -o pipefail
 
-# 2. Dependency Check
-if ! command -v rofi &> /dev/null || ! command -v qalc &> /dev/null || ! command -v wl-copy &> /dev/null; then
-    notify-send "Error" "Missing dependencies: rofi, libqalculate, or wl-copy" -u critical
-    exit 1
-fi
+declare -r ICON=""
 
+# Matches your requested style
+declare -ra ROFI_CMD=(
+    rofi
+    -dmenu
+    -i
+    -markup-rows
+    -theme-str '@import "~/.config/matugen/generated/rofi-colors.rasi"'
+    -theme-str 'window {width: 400px;}'
+    -theme-str 'listview {lines: 3;}'
+    -mesg "<span size='x-small'>Type equation. <b>Enter</b> to calc/copy. <b>Esc</b> to exit.</span>"
+)
 
-# 3. Main Loop
-# Initialize variables to avoid empty display on first run
-last_equation=""
-last_result=""
-
-while true; do
-    # Dynamic message: Instructions on first run, Result on subsequent runs
-    # We use Pango markup (<b>, <span>) to make the result stand out.
-    if [ -z "$last_result" ]; then
-        display_mesg="<i>Type an equation (e.g., 50*5) and hit Enter</i>"
-    else
-        display_mesg="<b>$last_equation</b> = <span color='#a6e3a1'>$last_result</span>"
-    fi
-
-    # Run Rofi
-    # -lines 0: Hides the list view since we only need the input bar
-    # -no-show-icons: Crucial to prevent broken icon lookups for numbers
-    current_input=$(rofi -dmenu \
-        -i \
-        -lines 0 \
-        -theme ~/.config/rofi/config.rasi \
-        -no-show-icons \
-        -p " Calc" \
-        -mesg "$display_mesg")
+check_dependencies() {
+    local -a missing=()
+    local cmd
+    for cmd in rofi bc wl-copy; do
+        command -v "$cmd" &>/dev/null || missing+=("$cmd")
+    done
     
-    # Exit code handling (Esc or Cancel)
-    if [ $? -ne 0 ]; then
-        exit 0
+    if ((${#missing[@]} > 0)); then
+        printf 'Error: Missing dependencies: %s\n' "${missing[*]}" >&2
+        exit 1
     fi
+}
 
-    # 4. Calculation Logic
-    if [ -n "$current_input" ]; then
-        # Perform calculation using qalc
-        # -t: Terse mode (returns only the result, no extra text)
-        calculation=$(qalc -t "$current_input")
+calc_engine() {
+    local input="$1"
+    # Use bc with math library, strip trailing zeros
+    local result
+    if result=$(echo "scale=4; $input" | bc -l 2>/dev/null); then
+        # Remove trailing zeros and decimal point if not needed
+        echo "$result" | sed 's/\.0*$//;s/\.\([0-9]*[1-9]\)0*$/.\1/'
+    else
+        echo "Error"
+    fi
+}
+
+main() {
+    check_dependencies
+    
+    local input=""
+    local result=""
+    local history=""
+    local display_list=""
+    local exit_code
+    
+    while true; do
+        # Build the list to show in Rofi
+        if [[ -n "$result" && "$result" != "Error" ]]; then
+            display_list="${ICON}  = <b>${result}</b>"
+        else
+            display_list=""
+        fi
         
-        # Update variables for next loop
-        last_equation="$current_input"
-        last_result="$calculation"
+        # Run Rofi
+        # We use -filter to keep the last equation typed if we are looping
+        if ! input=$(echo -e "$display_list" | "${ROFI_CMD[@]}" -p "$ICON" -filter "$history"); then
+            exit 0 # User pressed Esc
+        fi
 
-        # Copy to clipboard automatically
-        echo -n "$last_result" | wl-copy
-    fi
-done
+        # Logic: 
+        # 1. If input matches the displayed result line, user selected it -> Copy
+        # 2. If input is just a number/result, user hit enter on filter -> Copy
+        # 3. Otherwise, it is a new equation -> Calculate
+        
+        # Clean input (remove icon if selected from list)
+        local clean_input="${input#*${ICON}  = <b>}"
+        clean_input="${clean_input%</b>}"
+
+        if [[ "$clean_input" == "$result" && -n "$result" ]]; then
+            # Copy to clipboard
+            printf '%s' "$result" | wl-copy
+            if command -v notify-send &>/dev/null; then
+                notify-send -i accessories-calculator "Calculator" "Copied: $result"
+            fi
+            exit 0
+        fi
+        
+        # Perform Calculation
+        if [[ -n "$input" ]]; then
+            result=$(calc_engine "$input")
+            
+            # If calculation was successful, update history to show empty box next time
+            # so user can see the result in the list but type a new one
+            if [[ "$result" != "Error" ]]; then
+                history="" 
+            else
+                # If error, keep the input so user can fix it
+                history="$input"
+                result="Error"
+            fi
+        fi
+    done
+}
+
+main "$@"
