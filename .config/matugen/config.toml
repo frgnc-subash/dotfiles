@@ -12,7 +12,7 @@ post_hook = "gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
 [templates.gtk4]
 input_path = '~/.config/matugen/templates/gtk-colors.css'
 output_path = '~/.config/matugen/generated/gtk-4.css'
-post_hook = 'mkdir -p $HOME/.config/gtk-3.0 $HOME/.config/gtk-4.0; ln -nfs $HOME/.config/matugen/generated/gtk-3.css $HOME/.config/gtk-3.0/gtk.css; ln -nfs $HOME/.config/matugen/generated/gtk-4.css $HOME/.config/gtk-4.0/gtk.css; gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"; systemctl --user reset-failed hyprpolkitagent; systemctl --user restart hyprpolkitagent || true'
+post_hook = 'mkdir -p $HOME/.config/gtk-3.0 $HOME/.config/gtk-4.0; ln -nfs $HOME/.config/matugen/generated/gtk-3.css $HOME/.config/gtk-3.0/gtk.css; ln -nfs $HOME/.config/matugen/generated/gtk-4.css $HOME/.config/gtk-4.0/gtk.css; gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"; systemctl --user reset-failed hyprpolkitagent; systemctl --user restart hyprpolkitagent || true'
 
 [templates.qt5ct]
 input_path = '~/.config/matugen/templates/qtct-colors.conf'
@@ -59,6 +59,11 @@ post_hook = 'mkdir -p $HOME/.config/cava/themes; ln -nfs $HOME/.config/matugen/g
 input_path = '~/.config/matugen/templates/pywalfox-colors.json'
 output_path = '~/.config/matugen/generated/pywalfox-colors.json'
 post_hook = 'ln -nfs $HOME/.config/matugen/generated/pywalfox-colors.json $HOME/.cache/wal/colors.json; pywalfox update || true'
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty-colors.conf'
+output_path = '~/.config/matugen/generated/kitty-colors.conf'
+post_hook = 'ln -nfs $HOME/.config/matugen/generated/kitty-colors.conf $HOME/.config/kitty/kitty-colors.conf; pkill -SIGUSR1 kitty || true'
 
 # [templates.yazi]
 # input_path = '~/.config/matugen/templates/yazi-theme.toml'

@@ -1,8 +1,8 @@
 {
-  "wallpaper": "/home/axosis/Pictures/wallpapers/wallpapers/wallhaven-w55re6_1920x1080.png",
+  "wallpaper": "/home/axosis/Pictures/wallpapers/wallpapers/alley.gif",
   "alpha": "100",
   "colors": {
-    "color0": "#171217",
+    "color0": "#0f1417",
     "color1": "",
     "color2": "",
     "color3": "",
@@ -12,11 +12,11 @@
     "color7": "",
     "color8": "",
     "color9": "",
-    "color10": "#e9b5ef",
+    "color10": "#8ccff1",
     "color11": "",
     "color12": "",
-    "color13": "#3d373d",
+    "color13": "#353a3d",
     "color14": "",
-    "color15": "#eadfe7"
+    "color15": "#dfe3e7"
   }
 }

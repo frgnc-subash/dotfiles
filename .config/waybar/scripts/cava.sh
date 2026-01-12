@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 bar="▁▂▃▄▅▆▇█"
 config_file="/tmp/waybar_cava_config"

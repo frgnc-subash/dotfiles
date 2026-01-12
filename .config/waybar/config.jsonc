@@ -56,7 +56,7 @@
     },
     "custom/cava": {
         "format": "{}",
-        "exec": "/home/axosis/.config/waybar/scripts/cava.sh||echo \"\"",
+        "exec": "$HOME/.config/waybar/scripts/cava.sh||echo \"\"",
         "return-type": "text"
     },
     "clock": {
