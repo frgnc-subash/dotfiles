@@ -85,7 +85,7 @@
         },
         "scroll-step": 1,
         "max-volume": 150,
-        "on-click-right": "pavucontrol",
+        "on-click-right": "kitty --class audio-tui -e wiremix",
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
     },
     "backlight": {
