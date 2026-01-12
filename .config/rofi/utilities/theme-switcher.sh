@@ -3,7 +3,7 @@
 # --- CONFIGURATION ---
 THEME_DIR="$HOME/.config/btop/themes"
 BTOP_CONF="$HOME/.config/btop/btop.conf"
-ROFI_THEME="$HOME/.config/rofi/utilities/theme-switcher.rasi"
+ROFI_THEME="$HOME/.config/rofi/config.rasi"
 
 # --- CHECKS ---
 if [ ! -d "$THEME_DIR" ]; then
@@ -32,14 +32,14 @@ NEW_CONF="color_theme = \"$CHOICE\""
 #    so running instances of btop don't lose track of it.)
 if grep -q "^color_theme =" "$BTOP_CONF"; then
     # Create a temp file with the change
-    sed "s|^color_theme = .*|$NEW_CONF|" "$BTOP_CONF" > "$BTOP_CONF.tmp"
+    sed "s|^color_theme = .*|$NEW_CONF|" "$BTOP_CONF" >"$BTOP_CONF.tmp"
     # Overwrite the original file content
-    cat "$BTOP_CONF.tmp" > "$BTOP_CONF"
+    cat "$BTOP_CONF.tmp" >"$BTOP_CONF"
     # Remove temp
     rm "$BTOP_CONF.tmp"
 else
     # Fallback if line doesn't exist
-    echo "$NEW_CONF" >> "$BTOP_CONF"
+    echo "$NEW_CONF" >>"$BTOP_CONF"
 fi
 
 # 3. Force btop to redraw immediately
@@ -49,3 +49,4 @@ pkill -USR2 btop || pkill -WINCH btop
 
 # 4. Notify
 notify-send "Btop" "Theme set to: $CHOICE" -t 2000
+
