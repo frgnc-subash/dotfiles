@@ -22,6 +22,7 @@
  <img src='/.assets/showcase/1.png' alt='showcase' width=100%>
  <img src='/.assets/showcase/2.png' alt='showcase' width=100%>
   <img src='/.assets/showcase/3.png' alt='showcase' width=100%>
+  <img src='/.assets/showcase/4.png' alt='showcase' width=100%>
 </p>
 
 ### Fonts
