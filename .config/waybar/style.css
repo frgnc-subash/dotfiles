@@ -27,39 +27,31 @@ window#waybar {
 #workspaces {
   background-color: @background;
   border-radius: 8px;
-  padding: 0 3px;
+  padding: 6px 5px;
   margin: 0 2px;
-  min-height: 26px;
 }
 
 #workspaces button {
-  min-width: 22px;
-  min-height: 20px;
-  padding: 0 6px;
-  margin: 3px 1px;
-  font-size: 13px;
-  border-radius: 6px;
-  background-color: @surface_container_low;
-  color: @on_surface;
-  transition: all 0.2s ease-in-out;
-  opacity: 0.8;
+  padding: 0;
+  margin: 0 3px;
+  background-color: @secondary;
+  opacity: 0.4;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #workspaces button:hover {
-  background-color: @surface_container;
-  color: @on_surface;
-  opacity: 1;
+  opacity: 0.8;
 }
 
 #workspaces button.active {
+  min-width: 32px;
   background-color: @primary;
-  color: @on_primary;
   opacity: 1;
-  animation: pulse 0.5s ease-in-out;
 }
 
-#workspaces button.active:hover {
-  background-color: @primary_fixed_dim;
+#workspaces button.urgent {
+  background-color: @error;
+  opacity: 1;
 }
 
 #clock {

@@ -26,18 +26,14 @@
         "idle_inhibitor"
     ],
     "hyprland/workspaces": {
-        "format": "{icon}",
+        "format": " ",
         "active-only": false,
-        "format-icons": {
-            "default": "",
-            "urgent": "",
-            "active": "󰮯"
-        },
         "persistent-workspaces": {
             "*": [
                 1,
                 2,
-                3
+                3,
+                4
             ]
         }
     },
