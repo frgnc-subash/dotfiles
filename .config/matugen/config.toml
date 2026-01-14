@@ -34,7 +34,7 @@ output_path = '~/.config/matugen/generated/rofi-colors.rasi'
 [templates.waybar]
 input_path = '~/.config/matugen/templates/colors.css'
 output_path = '~/.config/matugen/generated/colors.css'
-post_hook = 'pkill waybar; waybar & disown; pkill cava.sh;'
+post_hook = '~/.config/hypr/scripts/reload.sh'
 
 [templates.swaync]
 input_path = '~/.config/matugen/templates/colors.css'
