@@ -1,52 +1,94 @@
 #!/bin/bash
 
-# --- CONFIGURATION ---
-THEME_DIR="$HOME/.config/btop/themes"
-BTOP_CONF="$HOME/.config/btop/btop.conf"
-ROFI_THEME="$HOME/.config/rofi/config.rasi"
+THEME_CONFIG_DIR="$HOME/.config/themes"
+MATUGEN_GEN="$HOME/.config/matugen/generated"
+WALLPAPER_BASE="$HOME/Pictures/wallpapers"
 
-# --- CHECKS ---
-if [ ! -d "$THEME_DIR" ]; then
-    notify-send "Error" "Theme directory not found!" -u critical
-    exit 1
-fi
+HYPR_THEME_FILE="$HOME/.config/hypr/theme.conf"
+WAYBAR_THEME_FILE="$HOME/.config/waybar/theme.css"
+ROFI_THEME_FILE="$HOME/.config/rofi/theme.rasi"
+SWAYNC_THEME_FILE="$HOME/.config/swaync/theme.css"
+SWAYOSD_THEME_FILE="$HOME/.config/swayosd/theme.css"
+KITTY_THEME_FILE="$HOME/.config/kitty/theme.conf"
 
-# --- LOGIC ---
-# Get themes
-THEMES=$(ls "$THEME_DIR"/*.theme | xargs -n 1 basename | sed 's/\.theme//')
+SWAYOSD_RELOAD_SCRIPT="$HOME/.config/swayosd/scripts/restartOSD.sh"
 
-# Show Rofi
-CHOICE=$(echo "$THEMES" | rofi -dmenu -i -theme "$ROFI_THEME" -p "")
+CURRENT_SOURCE=$(grep "source =" "$HYPR_THEME_FILE" | awk '{print $3}')
 
-if [ -z "$CHOICE" ]; then
-    exit 0
-fi
-
-# --- APPLY THEME (LIVE UPDATE) ---
-
-# 1. Prepare the new configuration line
-NEW_CONF="color_theme = \"$CHOICE\""
-
-# 2. Update the file WITHOUT changing the inode.
-#    (sed -i creates a new file; using a temp file + cat preserves the file handle
-#    so running instances of btop don't lose track of it.)
-if grep -q "^color_theme =" "$BTOP_CONF"; then
-    # Create a temp file with the change
-    sed "s|^color_theme = .*|$NEW_CONF|" "$BTOP_CONF" >"$BTOP_CONF.tmp"
-    # Overwrite the original file content
-    cat "$BTOP_CONF.tmp" >"$BTOP_CONF"
-    # Remove temp
-    rm "$BTOP_CONF.tmp"
+if [[ "$CURRENT_SOURCE" == *"matugen"* ]]; then
+    ACTIVE_THEME="dynamic"
 else
-    # Fallback if line doesn't exist
-    echo "$NEW_CONF" >>"$BTOP_CONF"
+    ACTIVE_THEME=$(basename $(dirname "$CURRENT_SOURCE"))
 fi
 
-# 3. Force btop to redraw immediately
-#    Sending SIGWINCH (Signal 28) forces btop to recalculate sizes and redraw,
-#    which makes it pick up the new colors instantly without waiting for the update timer.
-pkill -USR2 btop || pkill -WINCH btop
+THEME_LIST=""
+for theme_dir in "$THEME_CONFIG_DIR"/*/; do
+    theme_name=$(basename "$theme_dir")
+    if [ "$theme_name" == "$ACTIVE_THEME" ]; then
+        THEME_LIST+="${theme_name} *\n"
+    else
+        THEME_LIST+="${theme_name}\n"
+    fi
+done
 
-# 4. Notify
-notify-send "Btop" "Theme set to: $CHOICE" -t 2000
+RAW_SELECTION=$(echo -e "$THEME_LIST" | rofi -dmenu -i -p "Select Theme")
 
+if [ -z "$RAW_SELECTION" ]; then exit 0; fi
+
+SELECTED_THEME=$(echo "$RAW_SELECTION" | awk '{print $1}')
+
+if [ "$SELECTED_THEME" == "dynamic" ]; then
+    SEARCH_DIR="$WALLPAPER_BASE/wallpapers"
+    WALLPAPER=$(find "$SEARCH_DIR" -type f | shuf -n 1)
+    
+    if [ -z "$WALLPAPER" ]; then 
+        notify-send "Error" "No wallpapers found in $SEARCH_DIR"
+        exit 1
+    fi
+
+    HYPR_SOURCE="$MATUGEN_GEN/hypr-colors.conf"
+    WAYBAR_SOURCE="$MATUGEN_GEN/colors.css"
+    ROFI_SOURCE="$MATUGEN_GEN/rofi-colors.rasi"
+    SWAYNC_SOURCE="$MATUGEN_GEN/colors.css"
+    SWAYOSD_SOURCE="$MATUGEN_GEN/swayosd-colors.css"
+    KITTY_SOURCE="$MATUGEN_GEN/kitty-colors.conf"
+
+else
+    CURRENT_CONFIG_PATH="$THEME_CONFIG_DIR/$SELECTED_THEME"
+    SEARCH_DIR="$WALLPAPER_BASE/$SELECTED_THEME"
+    
+    WALLPAPER=$(find "$SEARCH_DIR" -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.webp" \) | shuf -n 1)
+
+    HYPR_SOURCE="$CURRENT_CONFIG_PATH/hyprland.conf"
+    WAYBAR_SOURCE="$CURRENT_CONFIG_PATH/waybar.css"
+    ROFI_SOURCE="$CURRENT_CONFIG_PATH/rofi.rasi"
+    SWAYNC_SOURCE="$CURRENT_CONFIG_PATH/swaync.css"
+    SWAYOSD_SOURCE="$CURRENT_CONFIG_PATH/swayosd.css"
+    KITTY_SOURCE="$CURRENT_CONFIG_PATH/kitty.conf"
+fi
+
+echo "source = $HYPR_SOURCE" > "$HYPR_THEME_FILE"
+echo "@import \"$WAYBAR_SOURCE\";" > "$WAYBAR_THEME_FILE"
+echo "@import \"$ROFI_SOURCE\"" > "$ROFI_THEME_FILE"
+echo "@import \"$SWAYNC_SOURCE\";" > "$SWAYNC_THEME_FILE"
+echo "@import \"$SWAYOSD_SOURCE\";" > "$SWAYOSD_THEME_FILE"
+echo "include $KITTY_SOURCE" > "$KITTY_THEME_FILE"
+
+if [ -n "$WALLPAPER" ]; then
+    swww img "$WALLPAPER" --transition-type any --transition-duration 1.5 --transition-fps 90
+fi
+
+if [ "$SELECTED_THEME" == "dynamic" ]; then
+    matugen image "$WALLPAPER"
+else
+    hyprctl reload > /dev/null
+    kill -SIGUSR2 $(pidof waybar)
+    swaync-client -R && swaync-client -rs
+    kill -SIGUSR1 $(pidof kitty)
+    
+    if [ -x "$SWAYOSD_RELOAD_SCRIPT" ]; then
+        "$SWAYOSD_RELOAD_SCRIPT"
+    fi
+fi
+
+notify-send -i "$WALLPAPER" "Theme Activated" "<b>$SELECTED_THEME</b> applied."

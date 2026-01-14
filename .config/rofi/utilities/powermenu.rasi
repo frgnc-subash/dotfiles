@@ -1,4 +1,4 @@
-@import "~/.config/matugen/generated/rofi-colors.rasi"
+@import "~/.config/rofi/theme.rasi"
 * {
     background:     #1E1D2FFF;
     background-alt: #282839FF;

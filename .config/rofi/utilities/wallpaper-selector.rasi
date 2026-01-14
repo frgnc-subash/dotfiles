@@ -1,0 +1,93 @@
+/*****
+ * Wallpaper Selector - Compact No-Gap Layout
+ * Location: ~/.config/rofi/utilities/wallpaper-selector.rasi
+ *****/
+
+@import "../theme.rasi"
+
+configuration {
+    modi:                        "dmenu";
+    show-icons:                  true;
+    dmenu-display-format:        "{name}";
+}
+
+//----- Main Window -----//
+window {
+    enabled:                     true;
+    fullscreen:                  false;
+    width:                       650px;    /* Tighter width */
+    /* REMOVED fixed height to allow auto-shrink */
+    transparency:                "real";
+    cursor:                      "default";
+    spacing:                     0px;
+    padding:                     0px;
+    border:                      2px;
+    border-radius:               15px;
+    border-color:                @primary;
+    background-color:            @surface;
+}
+
+//----- Main Box -----//
+mainbox {
+    enabled:                     true;
+    children:                    [ "listview" ];
+    background-color:            transparent;
+    padding:                     15px;
+}
+
+//----- Listview -----//
+listview {
+    enabled:                     true;
+    columns:                     3;
+    lines:                       1;
+    spacing:                     15px;
+    padding:                     0px;
+    cycle:                       true;
+    dynamic:                     false;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    
+    /* These two settings remove the gap: */
+    fixed-height:                false; 
+    fixed-columns:               true;
+    
+    cursor:                      "default";
+    background-color:            transparent;
+    text-color:                  @on-surface;
+}
+
+//----- Elements -----//
+element {
+    enabled:                     true;
+    orientation:                 vertical;
+    spacing:                     5px;
+    padding:                     10px;
+    border-radius:               10px;
+    cursor:                      pointer;
+    background-color:            transparent;
+    text-color:                  @on-surface;
+}
+
+element selected.normal {
+    background-color:            @primary;
+    text-color:                  @on-primary;
+}
+
+element-icon {
+    size:                        150px; /* Square icons */
+    cursor:                      inherit;
+    border-radius:               8px;
+    background-color:            transparent;
+    text-color:                  inherit;
+    horizontal-align:            0.5;
+}
+
+element-text {
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+    font:                        "JetBrainsMono Nerd Font 10"; /* Smaller font */
+}

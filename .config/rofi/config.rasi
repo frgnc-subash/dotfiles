@@ -4,7 +4,7 @@
 ┴└─└─┘└  ┴
 */
 
-@import "~/.config/matugen/generated/rofi-colors.rasi"
+@import "~/.config/rofi/theme.rasi"
 
 configuration {
     modi:                       "drun,run";
