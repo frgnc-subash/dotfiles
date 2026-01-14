@@ -1,5 +1,4 @@
-@import url("../../.config/matugen/generated/colors.css");
-
+@import "theme.css";
 * {
   border: none;
   font-family: "DepartureMonoNerdFontMono", monospace;

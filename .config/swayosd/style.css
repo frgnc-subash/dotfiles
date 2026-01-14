@@ -1,4 +1,4 @@
-@import "../../.config/matugen/generated/swayosd-colors.css";
+@import "theme.css";
 
 window#osd {
   border-radius: 6px;

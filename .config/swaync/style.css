@@ -1,7 +1,7 @@
-@import url("../../.config/matugen/generated/colors.css");
+@import "theme.css";
 
 * {
-  font-family: "Inter", "Noto Sans", sans-serif;
+  font-family: "GeistMono Nerd Font";
   font-size: 12pt;
   color: @on_surface;
   background: transparent;
@@ -192,4 +192,3 @@
 .dnd-active {
   color: @error;
 }
-

@@ -1,8 +1,8 @@
 {
-  "wallpaper": "/home/axosis/Pictures/wallpapers/wallpapers/alley.gif",
+  "wallpaper": "/home/axosis/Pictures/wallpapers/wallpapers/chillin.gif",
   "alpha": "100",
   "colors": {
-    "color0": "#0f1417",
+    "color0": "#0e1514",
     "color1": "",
     "color2": "",
     "color3": "",
@@ -12,11 +12,11 @@
     "color7": "",
     "color8": "",
     "color9": "",
-    "color10": "#8ccff1",
+    "color10": "#80d5d2",
     "color11": "",
     "color12": "",
-    "color13": "#353a3d",
+    "color13": "#343a3a",
     "color14": "",
-    "color15": "#dfe3e7"
+    "color15": "#dde4e3"
   }
 }
