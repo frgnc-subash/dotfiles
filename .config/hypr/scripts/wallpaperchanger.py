@@ -6,16 +6,15 @@ import subprocess
 import threading
 import sys
 import random
-import time
 import hashlib
 from concurrent.futures import ThreadPoolExecutor
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk, GdkPixbuf, GLib
 
-# ---------------- CONFIGURATION ----------------
-WALLPAPER_DIR = os.path.expanduser("~/Pictures/wallpapers/wallpapers")
-CACHE_DIR = os.path.expanduser("~/.cache/wallpaper_dock")
+HOME_DIR = os.getenv("HOME")
+WALLPAPER_DIR = os.path.join(HOME_DIR, "Pictures/wallpapers/wallpapers")
+CACHE_DIR = os.path.join(HOME_DIR, ".cache/wallpaper_dock")
 
 CENTER_W = 400
 CENTER_H = 225
@@ -24,7 +23,6 @@ SIDE_H = 140
 
 MAX_BAR_WIDTH = 1000
 TOTAL_WINDOW_HEIGHT = CENTER_H + 50 
-# -----------------------------------------------
 
 class Utils:
     @staticmethod
@@ -52,6 +50,15 @@ class WallpaperManager:
                 "--transition-fps", "90"
             ])
             subprocess.Popen(["matugen", "image", wallpaper])
+
+            reload_cmd = (
+                "killall -q waybar; "
+                "pkill -f 'cava -p /tmp/waybar_cava_config'; "
+                "while pgrep -x waybar >/dev/null || pgrep -f 'cava -p /tmp/waybar_cava_config' >/dev/null; do sleep 0.1; done; "
+                "waybar & disown"
+            )
+            subprocess.Popen(reload_cmd, shell=True, executable="/bin/bash")
+
         except Exception as e:
             print(f"Error setting wallpaper: {e}")
 
@@ -92,8 +99,8 @@ class ImageLoader:
             if pixbuf:
                 self.mem_cache[(filepath, w, h)] = pixbuf
                 GLib.idle_add(callback, pixbuf)
-        except Exception as e:
-            print(f"Error loading {filepath}: {e}")
+        except Exception:
+            pass
 
 class WallpaperDock(Gtk.Window):
     def __init__(self):
@@ -113,7 +120,6 @@ class WallpaperDock(Gtk.Window):
         self.set_default_size(MAX_BAR_WIDTH, TOTAL_WINDOW_HEIGHT)
         self.move((geo.width - MAX_BAR_WIDTH)//2, geo.height - TOTAL_WINDOW_HEIGHT)
 
-        # -- FIXED CSS --
         screen = Gdk.Screen.get_default()
         css = b"""
         window { 
@@ -127,8 +133,6 @@ class WallpaperDock(Gtk.Window):
             margin: 0; 
             border-radius: 6px;
         }
-        
-        /* Side Images */
         #side_btn { 
             opacity: 1.0; 
             transition: opacity 0.2s; 
@@ -137,15 +141,12 @@ class WallpaperDock(Gtk.Window):
         #side_btn:hover { 
             opacity: 1.0; 
         }
-
-        /* Center Image - FIXED */
         #center_btn { 
             opacity: 1.0; 
             transition: all 0.2s; 
             border: 2px solid transparent; 
         }
         #center_btn:hover { 
-            /* Full border frame instead of underline */
             border: 1px solid #ffffff; 
             background-color: rgba(255,255,255,0.1);
         }
@@ -159,7 +160,6 @@ class WallpaperDock(Gtk.Window):
         self.loader = ImageLoader()
 
         if not self.wallpapers:
-            print("No wallpapers found.")
             sys.exit(1)
 
         self.hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=15)
@@ -183,8 +183,9 @@ class WallpaperDock(Gtk.Window):
         self.hbox.pack_start(self.btn_curr, False, False, 0)
         self.hbox.pack_start(self.btn_next, False, False, 0)
 
-        self.add_events(Gdk.EventMask.SCROLL_MASK)
+        self.add_events(Gdk.EventMask.SCROLL_MASK | Gdk.EventMask.KEY_PRESS_MASK)
         self.connect("scroll-event", self.on_scroll)
+        self.connect("key-press-event", self.on_key_press)
         
         self.update_view()
 
@@ -208,6 +209,19 @@ class WallpaperDock(Gtk.Window):
         elif event.direction in (Gdk.ScrollDirection.UP, Gdk.ScrollDirection.LEFT):
             self.shift(-1)
         return True
+
+    def on_key_press(self, widget, event):
+        key = event.keyval
+        if key == Gdk.KEY_Left:
+            self.shift(-1)
+            return True
+        elif key == Gdk.KEY_Right:
+            self.shift(1)
+            return True
+        elif key in (Gdk.KEY_Return, Gdk.KEY_KP_Enter, Gdk.KEY_space):
+            self.on_center_click(None)
+            return True
+        return False
 
     def on_center_click(self, widget):
         path = self.wallpapers[self.current_idx % len(self.wallpapers)]
