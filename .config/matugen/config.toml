@@ -65,6 +65,11 @@ input_path = '~/.config/matugen/templates/kitty-colors.conf'
 output_path = '~/.config/matugen/generated/kitty-colors.conf'
 post_hook = 'ln -nfs $HOME/.config/matugen/generated/kitty-colors.conf $HOME/.config/kitty/kitty-colors.conf; pkill -SIGUSR1 kitty || true'
 
+[templates.tmux]
+input_path = '~/.config/matugen/templates/tmux-colors.conf'
+output_path = '~/.config/matugen/generated/tmux-colors.conf'
+# post_hook = 'tmux source-file ~/.config/tmux/generated.conf' 
+
 # [templates.yazi]
 # input_path = '~/.config/matugen/templates/yazi-theme.toml'
 # output_path = '~/.config/matugen/generated/yazi-theme.toml'
