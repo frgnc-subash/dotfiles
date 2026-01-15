@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Wallpaper Selector
+Comment=Switch between Hyprland themes and wallpapers
+Exec=/home/axosis/.config/rofi/utilities/wallpaper-selector.sh gui
+Icon=preferences-desktop-wallpaper
+Terminal=false
+Categories=System;Settings;
+Keywords=theme;wallpaper;switch;
