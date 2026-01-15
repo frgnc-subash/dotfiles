@@ -76,5 +76,5 @@ element-text {
     cursor:                      inherit;
     background-color:            transparent;
     text-color:                  inherit;
-    font:                        "DepartureMonoNerdFontMono 8";
+    font:                        "DepartureMonoNerdFontMono 10";
 }
