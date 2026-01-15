@@ -1,8 +1,3 @@
-/*****
- * Wallpaper Selector - Compact No-Gap Layout
- * Location: ~/.config/rofi/utilities/wallpaper-selector.rasi
- *****/
-
 @import "../theme.rasi"
 
 configuration {
@@ -11,83 +6,75 @@ configuration {
     dmenu-display-format:        "{name}";
 }
 
-//----- Main Window -----//
 window {
     enabled:                     true;
-    fullscreen:                  false;
-    width:                       650px;    /* Tighter width */
-    /* REMOVED fixed height to allow auto-shrink */
+    location:                    south;
+    anchor:                      south;
+    y-offset:                    -20px;
+    width:                       850px;   /* Adjust width to fit the 3 items */
     transparency:                "real";
+    background-color:            transparent;
     cursor:                      "default";
-    spacing:                     0px;
-    padding:                     0px;
-    border:                      2px;
-    border-radius:               15px;
-    border-color:                @primary;
-    background-color:            @surface;
 }
 
-//----- Main Box -----//
 mainbox {
     enabled:                     true;
+    spacing:                     0px;
+    background-color:            rgba(0,0,0,0.8); /* Dark dock background */
+    border-radius:               20px;
     children:                    [ "listview" ];
-    background-color:            transparent;
     padding:                     15px;
 }
 
-//----- Listview -----//
 listview {
     enabled:                     true;
     columns:                     3;
     lines:                       1;
-    spacing:                     15px;
-    padding:                     0px;
     cycle:                       true;
-    dynamic:                     false;
+    dynamic:                     true;
     scrollbar:                   false;
     layout:                      vertical;
     reverse:                     false;
-    
-    /* These two settings remove the gap: */
-    fixed-height:                false; 
+    fixed-height:                true;
     fixed-columns:               true;
     
-    cursor:                      "default";
+    spacing:                     15px;
     background-color:            transparent;
-    text-color:                  @on-surface;
 }
 
-//----- Elements -----//
 element {
     enabled:                     true;
     orientation:                 vertical;
-    spacing:                     5px;
-    padding:                     10px;
-    border-radius:               10px;
+    padding:                     35px;      /* Side items shrink due to this padding */
+    border-radius:               15px;
     cursor:                      pointer;
     background-color:            transparent;
     text-color:                  @on-surface;
 }
 
 element selected.normal {
-    background-color:            @primary;
-    text-color:                  @on-primary;
+    padding:                     0px;       /* Center item expands because padding is 0 */
+    background-color:            rgba(255,255,255,0.1);
+    border:                      2px;
+    border-color:                @primary;
 }
 
 element-icon {
-    size:                        150px; /* Square icons */
+    size:                        160px;     /* Smaller height for a "lil bit" reduction */
     cursor:                      inherit;
-    border-radius:               8px;
+    border-radius:               12px;
     background-color:            transparent;
-    text-color:                  inherit;
     horizontal-align:            0.5;
+    vertical-align:              0.5;
 }
 
 element-text {
+    enabled:                     true;
     vertical-align:              0.5;
     horizontal-align:            0.5;
+    padding:                     2px;
     cursor:                      inherit;
     background-color:            transparent;
     text-color:                  inherit;
-    font:                        "JetBrainsMono Nerd Font 10"; /* Smaller font */
+    font:                        "DepartureMonoNerdFontMono 8";
 }

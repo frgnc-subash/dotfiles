@@ -4,10 +4,9 @@ WALLPAPER_BASE="$HOME/Pictures/wallpapers"
 HYPR_THEME_FILE="$HOME/.config/hypr/theme.conf"
 ROFI_CONFIG="$HOME/.config/rofi/utilities/wallpaper-selector.rasi"
 CACHE_DIR="$HOME/.cache/wallpaper-thumbnails"
-CYCLE_STATE_FILE="$HOME/.cache/wallpaper-cycle-index"
+STATE_FILE="$HOME/.cache/wallpaper-cycle-index"
 
 CURRENT_SOURCE=$(grep "source =" "$HYPR_THEME_FILE" | awk '{print $3}')
-
 if [[ "$CURRENT_SOURCE" == *"matugen"* ]]; then
     THEME_MODE="dynamic"
     TARGET_DIR="$WALLPAPER_BASE/wallpapers"
@@ -19,78 +18,41 @@ else
     THEME_CACHE="$CACHE_DIR/$THEME_NAME"
 fi
 
-if [ ! -d "$TARGET_DIR" ]; then
-    notify-send "Error" "Dir not found: $TARGET_DIR"
-    exit 1
-fi
+mkdir -p "$THEME_CACHE"
+
+generate_thumb() {
+    img="$1"
+    thumb="$THEME_CACHE/$(basename "${img%.*}.png")"
+    [ ! -s "$thumb" ] && vipsthumbnail "$img[0]" --size 400x225 --smartcrop=attention -o "$thumb"
+}
+export -f generate_thumb
 
 MODE="$1"
 
-case "$MODE" in
-"gui")
-    mkdir -p "$THEME_CACHE"
-    export THEME_CACHE
-    export TARGET_DIR
-
-    generate_thumb() {
-        img="$1"
-        filename=$(basename "$img")
-        thumb_name="${filename%.*}.png"
-        target="$THEME_CACHE/$thumb_name"
-
-        if [ ! -s "$target" ]; then
-            vipsthumbnail "$img[0]" --size 300x300 --smartcrop=attention -o "$target"
-        fi
-    }
-
-    export -f generate_thumb
-
-    find "$TARGET_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) |
+if [ "$MODE" == "gui" ]; then
+    find "$TARGET_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" \) |
         xargs -P "$(nproc)" -I {} bash -c 'generate_thumb "{}"'
 
     SELECTED_FILE=$(
-        find "$TARGET_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) | sort | while read -r img; do
-            filename=$(basename "$img")
-            thumb_name="${filename%.*}.png"
-            echo -en "$filename\0icon\x1f$THEME_CACHE/$thumb_name\n"
-        done | rofi -dmenu -i -show-icons -p "Wallpaper" -theme "$ROFI_CONFIG"
+        find "$TARGET_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" \) | sort | while read -r img; do
+            echo -en "$(basename "$img")\0icon\x1f$THEME_CACHE/$(basename "${img%.*}.png")\n"
+        done | rofi -dmenu -i -show-icons -p "󰸉" -theme "$ROFI_CONFIG"
     )
-    ;;
-"cycle")
-    mapfile -t WALLPAPERS < <(
-        find "$TARGET_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) | sort
-    )
-
-    COUNT="${#WALLPAPERS[@]}"
+elif [ "$MODE" == "cycle" ]; then
+    mapfile -t WALLS < <(find "$TARGET_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" \) | sort)
+    COUNT=${#WALLS[@]}
     [ "$COUNT" -eq 0 ] && exit 1
 
-    if [ -f "$CYCLE_STATE_FILE" ]; then
-        INDEX=$(cat "$CYCLE_STATE_FILE")
-    else
-        INDEX=0
-    fi
+    INDEX=$(cat "$STATE_FILE" 2>/dev/null || echo 0)
+    SELECTED_PATH="${WALLS[$INDEX]}"
+    SELECTED_FILE=$(basename "$SELECTED_PATH")
 
-    SELECTED_FILE="$(basename "${WALLPAPERS[$INDEX]}")"
-
-    INDEX=$(((INDEX + 1) % COUNT))
-    echo "$INDEX" >"$CYCLE_STATE_FILE"
-    ;;
-*)
-    echo "Usage: $0 {gui|cycle}"
-    exit 1
-    ;;
-esac
-
-if [ -z "$SELECTED_FILE" ]; then
-    exit 0
+    echo "$(((INDEX + 1) % COUNT))" >"$STATE_FILE"
 fi
 
-FULL_PATH="$TARGET_DIR/$SELECTED_FILE"
-
-if [ "$THEME_MODE" == "dynamic" ]; then
+if [ -n "$SELECTED_FILE" ]; then
+    FULL_PATH="$TARGET_DIR/$SELECTED_FILE"
     swww img "$FULL_PATH" --transition-type any --transition-duration 1.5 --transition-fps 90
-
-    matugen image "$FULL_PATH"
-else
-    swww img "$FULL_PATH" --transition-type any --transition-duration 1.5 --transition-fps 90
+    [ "$THEME_MODE" == "dynamic" ] && matugen image "$FULL_PATH"
 fi
+
