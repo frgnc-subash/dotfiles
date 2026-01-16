@@ -13,7 +13,7 @@
 </p>
 
 <p align='center'>
-<img src='/.assets/previews/preview.png' alt='preview' width=100%>
+<img src='/.assets/previews/prev.png' alt='preview' width=100%>
 </p>
     
 ## Themes
