@@ -16,13 +16,41 @@
 <img src='/.assets/previews/preview.png' alt='preview' width=100%>
 </p>
     
-### Showcase
+## Themes
+
+#### Dynamic 
+
+- Dynamic theming is done through matugen.
 
 <p align="center">
  <img src='/.assets/showcase/1.png' alt='showcase' width=100%>
  <img src='/.assets/showcase/2.png' alt='showcase' width=100%>
   <img src='/.assets/showcase/3.png' alt='showcase' width=100%>
   <img src='/.assets/showcase/4.png' alt='showcase' width=100%>
+</p>
+
+#### Monochrome
+
+<p>
+<img src='/.assets/showcase/monochrome.png' alt='monochrome'>
+</p>
+
+#### Gruvbox
+
+<p>
+<img src='/.assets/showcase/gruvbox.png' alt='gruvbox'>
+</p>
+
+#### Catppuccin Mocha
+
+<p>
+<img src='/.assets/showcase/mocha.png' alt='mocha'>
+</p>
+
+#### Moonfly
+
+<p>
+<img src='/.assets/showcase/moonfly.png' alt='moonfly'>
 </p>
 
 ### Fonts
