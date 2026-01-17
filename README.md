@@ -18,7 +18,7 @@
     
 ## Themes
 
-#### Dynamic 
+#### Dynamic
 
 - Dynamic theming is done through matugen.
 
@@ -51,6 +51,12 @@
 
 <p>
 <img src='/.assets/showcase/moonfly.png' alt='moonfly'>
+</p>
+
+#### Tokyonight
+
+<p>
+<img src='/.assets/showcase/tokyonight.png' alt='tokyonight'>
 </p>
 
 ### Fonts
