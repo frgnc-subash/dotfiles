@@ -7,7 +7,7 @@ command = "swww"
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk-colors.css'
 output_path = '~/.config/matugen/generated/gtk-3.css'
-post_hook = "gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'"
+post_hook = "gsettings set org.gnome.desktop.interface icon-theme 'Fluent-teal-dark'"
 
 [templates.gtk4]
 input_path = '~/.config/matugen/templates/gtk-colors.css'
@@ -79,3 +79,9 @@ output_path = '~/.config/matugen/generated/tmux-colors.conf'
 # input_path = '~/.config/matugen/templates/neovim-colors.lua'
 # output_path = '~/.config/matugen/generated/neovim-colors.lua'
 # post_hook = 'pkill -SIGUSR1 nvim || true'
+
+
+[templates.Obsidian]
+input_path = '~/.config/matugen/templates/obsidian-theme.css'
+output_path = '~/.config/matugen/generated/obsidian-theme.css'
+post_hook = 'mkdir -p $HOME/Desktop/obsidian/axosis/.obsidian/snippets; ln -nfs $HOME/.config/matugen/generated/obsidian-theme.css $HOME/Desktop/obsidian/axosis/.obsidian/snippets/matugen-theme.css'

@@ -138,6 +138,7 @@ window#waybar {
 #pulseaudio,
 #backlight,
 #battery {
+  color: @primary;
   background-color: @background;
   border-radius: 8px;
   padding: 0 11px;
