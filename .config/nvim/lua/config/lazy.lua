@@ -48,3 +48,12 @@ require("lazy").setup({
     },
   },
 })
+-- Force the theme change after plugins are loaded
+vim.api.nvim_create_autocmd("User", {
+  pattern = "LazyVimStarted",
+  callback = function()
+    local theme = vim.g.lazyvim_colorscheme or "tokyonight"
+    pcall(vim.cmd.colorscheme, theme)
+  end,
+})
+

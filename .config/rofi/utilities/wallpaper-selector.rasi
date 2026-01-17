@@ -60,7 +60,7 @@ element selected.normal {
 }
 
 element-icon {
-    size:                        160px;     /* Smaller height for a "lil bit" reduction */
+    size:                        120px;     /* Smaller height for a "lil bit" reduction */
     cursor:                      inherit;
     border-radius:               12px;
     background-color:            transparent;

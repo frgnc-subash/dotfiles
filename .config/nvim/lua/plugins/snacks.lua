@@ -135,7 +135,7 @@ return {
         explorer = {
           layout = {
             layout = {
-              width = 30, -- Adjust this value to make it wider or shorter
+              width = 30,
             },
           },
         },
