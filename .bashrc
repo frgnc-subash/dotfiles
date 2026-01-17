@@ -2,6 +2,8 @@
 #  ├┴┐├─┤└─┐├─┤├┬┘│
 # o└─┘┴ ┴└─┘┴ ┴┴└─└─┘
 
+PS1="\[\e[1;36m\]\u\[\e[0m\]\[\e[1;35m\]@\[\e[0m\]\[\e[1;33m\]\h\[\e[0m\] \[\e[1;32m\]\$\[\e[0m\] "
+
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
@@ -11,6 +13,7 @@ alias grep='grep --color=auto'
 alias ls='ls --color'
 alias cat='bat --paging=never --style=plain'
 alias ls='eza --icons'
+alias hl='rg --passthrough'
 
 # Common variations
 alias ll='eza -l --icons'               # Long format
@@ -29,7 +32,5 @@ alias bare='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias cmatrix='cmatrix -ba -u 2 -C blue'
 
 #exports
-eval "$(starship init bash)"
-export STARSHIP_CONFIG="$HOME/.config/starship/themes/end4.toml"
-
-. "$HOME/.local/bin/env"
+# eval "$(starship init bash)"
+# export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
