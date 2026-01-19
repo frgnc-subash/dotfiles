@@ -5,7 +5,7 @@
 
 "$schema" = 'https://starship.rs/config-schema.json'
 add_newline = false
-format = """[󰁕](fg:blue) $directory\ 
+format = """[󰫣](fg:blue) $directory\ 
  $git_branch\
  $git_status \
  [](fg:yellow)\
@@ -22,18 +22,18 @@ format = """[󰁕](fg:blue) $directory\
 
 [username]
 show_always = true
-style_user = "bold fg:#00F5FF"
+style_user = "bold fg:cyan"
 format = "[$user]($style)"
 
 [fill]
 symbol = " "
 
 [character]
-success_symbol = "[▶](bold fg:#7C9FF3)"
-error_symbol = "[▶](bold red)"
+success_symbol = "[󰁕](bold blue)"
+error_symbol = "[󰁕](bold red)"
 
 [directory]
-style = "fg:#769ff0"
+style = "fg:magenta"
 format = "$path"
 truncation_length = 1
 truncation_symbol = ""
@@ -72,7 +72,7 @@ tag_symbol = "  "
 [time]
 disabled = true
 time_format = "%R"
-style = "fg:#0D4A88"
+style = "fg:blue"
 format = "$time"
 
 [cmd_duration]
