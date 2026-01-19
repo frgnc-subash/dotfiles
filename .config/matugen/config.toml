@@ -7,7 +7,7 @@ command = "swww"
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk-colors.css'
 output_path = '~/.config/matugen/generated/gtk-3.css'
-post_hook = "gsettings set org.gnome.desktop.interface icon-theme 'Fluent-teal-dark'"
+post_hook = "gsettings set org.gnome.desktop.interface icon-theme 'Fluent-dark'"
 
 [templates.gtk4]
 input_path = '~/.config/matugen/templates/gtk-colors.css'
@@ -48,7 +48,7 @@ post_hook = '~/.config/swayosd/scripts/restartOSD.sh'
 
 [templates.btop]
 input_path = '~/.config/matugen/templates/btop.theme'
-output_path = '~/.config/matugen/generated/btop.theme'
+output_path = '~/.config/btop/themes/dynamic.theme'
 
 [templates.cava]
 input_path = '~/.config/matugen/templates/cava-colors.ini'
@@ -85,3 +85,5 @@ output_path = '~/.config/matugen/generated/tmux-colors.conf'
 input_path = '~/.config/matugen/templates/obsidian-theme.css'
 output_path = '~/.config/matugen/generated/obsidian-theme.css'
 post_hook = 'mkdir -p $HOME/Desktop/obsidian/axosis/.obsidian/snippets; ln -nfs $HOME/.config/matugen/generated/obsidian-theme.css $HOME/Desktop/obsidian/axosis/.obsidian/snippets/matugen-theme.css'
+
+
