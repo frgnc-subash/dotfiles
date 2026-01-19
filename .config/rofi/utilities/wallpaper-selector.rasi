@@ -10,20 +10,45 @@ window {
     enabled:                     true;
     location:                    south;
     anchor:                      south;
-    y-offset:                    -20px;
-    width:                       850px;   /* Adjust width to fit the 3 items */
-    transparency:                "real";
-    background-color:            transparent;
+    y-offset:                    -15px;
+    width:                       800px;
+    background-color:            @scrim;
+    border-radius:               12px;
     cursor:                      "default";
 }
 
 mainbox {
     enabled:                     true;
-    spacing:                     0px;
-    background-color:            rgba(0,0,0,0.8); /* Dark dock background */
-    border-radius:               20px;
-    children:                    [ "listview" ];
-    padding:                     15px;
+    spacing:                     16px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "listview" ]; 
+    padding:                     16px;
+}
+
+inputbar {
+    enabled:                     true;
+    padding:                     6px 12px;
+    border-radius:               8px;
+    background-color:            @tertiary;
+    text-color:                  @scrim;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  @scrim;
+    font:                        "GeistMonoNerdFontMono Bold 12";
+}
+
+entry {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "search wallpapers";
+    placeholder-color:           inherit;
+    font:                        "GeistMonoNerdFontMono 10";
 }
 
 listview {
@@ -37,7 +62,6 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-    
     spacing:                     15px;
     background-color:            transparent;
 }
@@ -45,24 +69,26 @@ listview {
 element {
     enabled:                     true;
     orientation:                 vertical;
-    padding:                     35px;      /* Side items shrink due to this padding */
-    border-radius:               15px;
+    padding:                     0px;      
+    spacing:                     0px;      /* Reduced internal gap */
+    border-radius:               8px;
     cursor:                      pointer;
     background-color:            transparent;
     text-color:                  @on-surface;
 }
 
 element selected.normal {
-    padding:                     0px;       /* Center item expands because padding is 0 */
-    background-color:            rgba(255,255,255,0.1);
-    border:                      2px;
+    padding:                     0px;       
+    background-color:            @surface-variant;
+    border:                      1px;
     border-color:                @primary;
+    text-color:                  @primary;
 }
 
 element-icon {
-    size:                        120px;     /* Smaller height for a "lil bit" reduction */
+    size:                        130px;     
     cursor:                      inherit;
-    border-radius:               12px;
+    border-radius:               6px;
     background-color:            transparent;
     horizontal-align:            0.5;
     vertical-align:              0.5;
@@ -72,9 +98,9 @@ element-text {
     enabled:                     true;
     vertical-align:              0.5;
     horizontal-align:            0.5;
-    padding:                     2px;
+    padding:                     0px 0px 0px 0px; /* Gap removed */
     cursor:                      inherit;
     background-color:            transparent;
     text-color:                  inherit;
-    font:                        "DepartureMonoNerdFontMono 10";
+    font:                        "GeistMonoNerdFontMono 9";
 }

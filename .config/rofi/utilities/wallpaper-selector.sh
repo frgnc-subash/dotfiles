@@ -1,4 +1,5 @@
 #!/bin/bash
+
 WALLPAPER_BASE="$HOME/Pictures/wallpapers"
 HYPR_THEME_FILE="$HOME/.config/hypr/theme.conf"
 ROFI_CONFIG="$HOME/.config/rofi/utilities/wallpaper-selector.rasi"
@@ -22,8 +23,8 @@ export -f generate_thumb
 if [ "$1" == "gui" ]; then
     find "$TARGET_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.jpeg" \) | xargs -P "$(nproc)" -I {} bash -c "generate_thumb \"{}\" \"$THEME_CACHE\""
     SELECTED_FILE=$(find "$TARGET_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.jpeg" \) | sort | while read -r img; do
-        echo -en "$(basename "$img")\0icon\x1f$THEME_CACHE/$(basename "${img%.*}.png")\n"
-    done | rofi -dmenu -i -show-icons -p "󰸉" -theme "$ROFI_CONFIG")
+            echo -en "$(basename "$img")\0icon\x1f$THEME_CACHE/$(basename "${img%.*}.png")\n"
+    done | rofi -dmenu -i -show-icons -p " " -theme "$ROFI_CONFIG")
 else
     SELECTED_PATH=$(find "$TARGET_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.jpeg" \) | shuf -n 1)
     [ -n "$SELECTED_PATH" ] && SELECTED_FILE=$(basename "$SELECTED_PATH")

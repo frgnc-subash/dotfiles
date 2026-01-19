@@ -3,8 +3,8 @@
 dir="$HOME/.config/rofi/utilities"
 theme='powermenu'
 
-uptime="`uptime -p | sed -e 's/up //g'`"
-host=`hostname`
+uptime="$(uptime -p | sed -e 's/up //g')"
+host=$(hostname)
 
 shutdown='󰐥'
 reboot=''
@@ -16,21 +16,21 @@ no='✗'
 
 rofi_cmd() {
     rofi -dmenu \
-    -p "Uptime: $uptime" \
-    -mesg "Uptime: $uptime" \
-    -theme ${dir}/${theme}.rasi
+        -p "Uptime: $uptime" \
+        -mesg "Uptime: $uptime" \
+        -theme ${dir}/${theme}.rasi
 }
 
 confirm_cmd() {
     rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 350px;}' \
-    -theme-str 'mainbox {children: [ "message", "listview" ];}' \
-    -theme-str 'listview {columns: 2; lines: 1;}' \
-    -theme-str 'element-text {horizontal-align: 0.5;}' \
-    -theme-str 'textbox {horizontal-align: 0.5;}' \
-    -dmenu \
-    -p 'Confirmation' \
-    -mesg 'Are you Sure?' \
-    -theme ${dir}/${theme}.rasi
+        -theme-str 'mainbox {children: [ "message", "listview" ];}' \
+        -theme-str 'listview {columns: 2; lines: 1;}' \
+        -theme-str 'element-text {horizontal-align: 0.5;}' \
+        -theme-str 'textbox {horizontal-align: 0.5;}' \
+        -dmenu \
+        -p 'Confirmation' \
+        -mesg 'Are you Sure?' \
+        -theme ${dir}/${theme}.rasi
 }
 
 confirm_exit() {
@@ -46,11 +46,11 @@ run_cmd() {
     if [[ "$selected" == "$yes" ]]; then
         if [[ $1 == '--shutdown' ]]; then
             systemctl poweroff
-            elif [[ $1 == '--reboot' ]]; then
+        elif [[ $1 == '--reboot' ]]; then
             systemctl reboot
-            elif [[ $1 == '--suspend' ]]; then
+        elif [[ $1 == '--suspend' ]]; then
             systemctl suspend
-            elif [[ $1 == '--logout' ]]; then
+        elif [[ $1 == '--logout' ]]; then
             hyprctl dispatch exit
         fi
     else
@@ -60,19 +60,19 @@ run_cmd() {
 
 chosen="$(run_rofi)"
 case ${chosen} in
-    $shutdown)
-        run_cmd --shutdown
+$shutdown)
+    run_cmd --shutdown
     ;;
-    $reboot)
-        run_cmd --reboot
+$reboot)
+    run_cmd --reboot
     ;;
-    $lock)
-        loginctl lock-session
+$lock)
+    loginctl lock-session
     ;;
-    $suspend)
-        run_cmd --suspend
+$suspend)
+    run_cmd --suspend
     ;;
-    $logout)
-        run_cmd --logout
+$logout)
+    run_cmd --logout
     ;;
 esac
