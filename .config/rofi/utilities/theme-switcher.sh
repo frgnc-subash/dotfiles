@@ -12,6 +12,7 @@ GTK4_CONF="$HOME/.config/gtk-4.0/gtk.css"
 BTOP_CONFIG="$HOME/.config/btop/btop.conf"
 BTOP_THEME_DIR="$HOME/.config/btop/themes"
 SPICETIFY_THEME_FILE="$HOME/.config/spicetify/Themes/Matugen/color.ini"
+
 WAYBAR_THEME_FILE="$HOME/.config/waybar/theme.css"
 ROFI_THEME_FILE="$HOME/.config/rofi/theme.rasi"
 SWAYNC_THEME_FILE="$HOME/.config/swaync/theme.css"
@@ -20,11 +21,7 @@ KITTY_THEME_FILE="$HOME/.config/kitty/theme.conf"
 SWAYOSD_RELOAD_SCRIPT="$HOME/.config/swayosd/scripts/restartOSD.sh"
 
 CURRENT_SOURCE=$(grep "source =" "$HYPR_THEME_FILE" | awk '{print $3}')
-if [[ "$CURRENT_SOURCE" == *"matugen"* ]]; then
-    ACTIVE_THEME="dynamic"
-else
-    ACTIVE_THEME=$(basename $(dirname "$CURRENT_SOURCE"))
-fi
+[[ "$CURRENT_SOURCE" == *"matugen"* ]] && ACTIVE_THEME="dynamic" || ACTIVE_THEME=$(basename $(dirname "$CURRENT_SOURCE"))
 
 THEME_LIST=""
 for theme_dir in "$THEME_CONFIG_DIR"/*/; do
@@ -58,7 +55,7 @@ if [ "$SELECTED_THEME" == "dynamic" ]; then
     TMUX_SOURCE="$MATUGEN_GEN/tmux-colors.conf"
     BTOP_NAME="dynamic.theme"
     SPOTIFY_SOURCE="$MATUGEN_GEN/spotify.ini"
-    echo "catppuccin-dynamic" >"$NVIM_THEME_NAME_FILE"
+    echo "catppuccin-dynamic" > "$NVIM_THEME_NAME_FILE"
 else
     SEARCH_DIR="$WALLPAPER_BASE/$SELECTED_THEME"
     WALLPAPER=$(find "$SEARCH_DIR" -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.webp" \) | shuf -n 1)
@@ -76,12 +73,12 @@ else
     TMUX_SOURCE="$CURRENT_CONFIG_PATH/tmux.conf"
     SPOTIFY_SOURCE="$CURRENT_CONFIG_PATH/spotify.ini"
     case "$SELECTED_THEME" in
-    "mocha") BTOP_NAME="catppuccin.theme" ;;
-    *) BTOP_NAME="${SELECTED_THEME}.theme" ;;
+        "mocha") BTOP_NAME="catppuccin.theme" ;;
+        *) BTOP_NAME="${SELECTED_THEME}.theme" ;;
     esac
     if [ -f "$CURRENT_CONFIG_PATH/neovim.lua" ]; then
         THEME_NAME_STRING=$(grep 'return' "$CURRENT_CONFIG_PATH/neovim.lua" | cut -d '"' -f 2)
-        echo "$THEME_NAME_STRING" >"$NVIM_THEME_NAME_FILE"
+        echo "$THEME_NAME_STRING" > "$NVIM_THEME_NAME_FILE"
     fi
 fi
 
@@ -94,13 +91,13 @@ if [ -f "$CURRENT_CONFIG_PATH/vscode.json" ] && [ -f "$VSCODE_SETTINGS" ]; then
     VS_THEME=$(grep '"name":' "$CURRENT_CONFIG_PATH/vscode.json" | cut -d '"' -f 4 | xargs)
     [ -n "$VS_THEME" ] && sed -i "s/\(\"workbench.colorTheme\":\s*\"\)[^\"]*\(\"\)/\1$VS_THEME\2/" "$VSCODE_SETTINGS"
 fi
-echo "source = $HYPR_SOURCE" >"$HYPR_THEME_FILE"
-echo "@import \"$WAYBAR_SOURCE\";" >"$WAYBAR_THEME_FILE"
-echo "@import \"$ROFI_SOURCE\"" >"$ROFI_THEME_FILE"
-echo "@import \"$SWAYNC_SOURCE\";" >"$SWAYNC_THEME_FILE"
-echo "@import \"$SWAYOSD_SOURCE\";" >"$SWAYOSD_THEME_FILE"
-echo "include $KITTY_SOURCE" >"$KITTY_THEME_FILE"
-hyprctl reload >/dev/null
+echo "source = $HYPR_SOURCE" > "$HYPR_THEME_FILE"
+echo "@import \"$WAYBAR_SOURCE\";" > "$WAYBAR_THEME_FILE"
+echo "@import \"$ROFI_SOURCE\"" > "$ROFI_THEME_FILE"
+echo "@import \"$SWAYNC_SOURCE\";" > "$SWAYNC_THEME_FILE"
+echo "@import \"$SWAYOSD_SOURCE\";" > "$SWAYOSD_THEME_FILE"
+echo "include $KITTY_SOURCE" > "$KITTY_THEME_FILE"
+hyprctl reload > /dev/null
 kill -SIGUSR2 $(pidof waybar) 2>/dev/null
 swaync-client -R && swaync-client -rs 2>/dev/null
 kill -SIGUSR1 $(pidof kitty) 2>/dev/null

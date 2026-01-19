@@ -7,28 +7,27 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     lazy = false,
-    priority = 1000, -- High priority
-    opts = {
-      transparent_background = false,
-      color_overrides = {
-        mocha = { base = "#000000", mantle = "#000000", crust = "#000000" },
-      },
-    },
+    priority = 1000,
+    opts = { transparent_background = false },
     config = function(_, opts)
       if vim.g.is_dynamic then
-        require("catppuccin").setup(opts)
+        local matugen_path = vim.fn.expand("~/.config/matugen/generated/neovim-colors.lua")
+        local f = loadfile(matugen_path)
+        if f then
+          local ok, colors = pcall(f)
+          if ok then
+            opts.color_overrides = { mocha = colors }
+          end
+        end
       else
-        require("catppuccin").setup({ color_overrides = {} })
+        opts.color_overrides = {}
       end
-      -- No vim.cmd.colorscheme here, the autocmd handles it
+      require("catppuccin").setup(opts)
     end,
   },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = function()
-        return vim.g.lazyvim_colorscheme or "tokyonight"
-      end,
-    },
-  },
+  { "LazyVim/LazyVim", opts = {
+    colorscheme = function()
+      return vim.g.lazyvim_colorscheme or "tokyonight"
+    end,
+  } },
 }

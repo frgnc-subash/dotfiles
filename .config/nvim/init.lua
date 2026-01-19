@@ -11,5 +11,4 @@ if f then
     vim.g.is_dynamic = false
   end
 end
-
 require("config.lazy")
