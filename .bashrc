@@ -2,7 +2,7 @@
 #  ├┴┐├─┤└─┐├─┤├┬┘│
 # o└─┘┴ ┴└─┘┴ ┴┴└─└─┘
 
-PS1="\[\e[1;36m\]\u\[\e[0m\]\[\e[1;35m\]@\[\e[0m\]\[\e[1;33m\]\h\[\e[0m\] \[\e[1;32m\]\$\[\e[0m\] "
+# PS1="\[\e[1;36m\]\u\[\e[0m\]\[\e[1;35m\]@\[\e[0m\]\[\e[1;33m\]\h\[\e[0m\] \[\e[1;32m\]\$\[\e[0m\] "
 
 [[ $- != *i* ]] && return
 
@@ -32,5 +32,6 @@ alias bare='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias cmatrix='cmatrix -ba -u 2 -C blue'
 
 #exports
-# eval "$(starship init bash)"
-# export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+eval "$(starship init bash)"
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+source -- ~/.local/share/blesh/ble.sh
