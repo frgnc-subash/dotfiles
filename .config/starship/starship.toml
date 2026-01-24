@@ -5,7 +5,7 @@
 
 "$schema" = 'https://starship.rs/config-schema.json'
 add_newline = false
-format = """[󰫣](fg:blue) $directory\ 
+format = """[󰫣](fg:purple) $directory\ 
  $git_branch\
  $git_status \
  [](fg:yellow)\

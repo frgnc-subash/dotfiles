@@ -1,39 +1,39 @@
 {
-  "$schema": "/etc/xdg/swaync/configSchema.json",
-  "positionX": "right",
-  "positionY": "top",
-  "control-center-margin-top": 5,
-  "control-center-margin-bottom": 8,
-  "control-center-margin-right": 5,
-  "control-center-margin-left": 8,
-  "control-center-width": 320,
-  "control-center-height": 600,
-  "fit-to-screen": false,
-  "layer": "overlay",
-  "cssPriority": "user",
-  "timeout": 10,
-  "timeout-low": 5,
-  "timeout-critical": 0,
-  "notification-window-width": 320,
-  "keyboard-shortcuts": true,
-  "image-visibility": "when-available",
-  "transition-time": 200,
-  "hide-on-clear": true,
-  "hide-on-action": true,
-  "script-fail-notify": true,
-  "widgets": [
-    "title",
-    "dnd",
-    "notifications"
-  ],
-  "widget-config": {
-    "title": {
-      "text": "Notifications",
-      "clear-all-button": true,
-      "button-text": "Clear All"
-    },
-    "dnd": {
-      "text": "Do Not Disturb"
+    "$schema": "/etc/xdg/swaync/configSchema.json",
+    "positionX": "right",
+    "positionY": "top",
+    "control-center-margin-top": 5,
+    "control-center-margin-bottom": 8,
+    "control-center-margin-right": 5,
+    "control-center-margin-left": 8,
+    "control-center-width": 320,
+    "control-center-height": 600,
+    "fit-to-screen": false,
+    "layer": "overlay",
+    "cssPriority": "user",
+    "timeout": 10,
+    "timeout-low": 5,
+    "timeout-critical": 0,
+    "notification-window-width": 320,
+    "keyboard-shortcuts": true,
+    "image-visibility": "when-available",
+    "transition-time": 200,
+    "hide-on-clear": true,
+    "hide-on-action": true,
+    "script-fail-notify": true,
+    "widgets": [
+        "title",
+        "dnd",
+        "notifications"
+    ],
+    "widget-config": {
+        "title": {
+            "text": "Notifications",
+            "clear-all-button": true,
+            "button-text": "Clear"
+        },
+        "dnd": {
+            "text": "Do Not Disturb"
+        }
     }
-  }
 }

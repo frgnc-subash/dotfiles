@@ -2,7 +2,6 @@ return {
   "stevearc/conform.nvim",
   opts = {
     formatters_by_ft = {
-      -- Web
       javascript = { "prettierd", "prettier" },
       typescript = { "prettierd", "prettier" },
       javascriptreact = { "prettierd", "prettier" },
@@ -11,13 +10,16 @@ return {
       html = { "prettierd", "prettier" },
       yaml = { "prettierd", "prettier" },
       markdown = { "prettierd", "prettier" },
-
+      rust = { "rustfmt" },
+      c = { "clang-format" },
+      cpp = { "clang-format" },
+      java = { "google-java-format" },
+      python = { "ruff_format", "ruff_organize_imports" },
+      qml = { "qmlformat" },
+      yml = { "prettier" },
+      bash = { "shfmt" },
       lua = { "stylua" },
-
       toml = { "taplo" },
-
-      python = { "black", "isort" },
-
       sh = { "shfmt" },
     },
   },
