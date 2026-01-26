@@ -1,0 +1,57 @@
+@import "theme.css";
+
+* {
+  border: none;
+  font-family: "DepartureMonoNerdFontMono", monospace;
+}
+
+window#waybar {
+  background-color: transparent;
+  padding: 0;
+}
+
+#clock,
+#pulseaudio,
+#battery,
+#custom-swaync,
+#workspaces {
+  background-color: @background;
+  color: @primary;
+  border-radius: 12px;
+  margin: 2px 0;
+  padding: 10px 0;
+}
+
+#workspaces {
+  padding: 8px 0;
+}
+
+#workspaces button {
+  min-width: 12px;
+  min-height: 12px;
+  border-radius: 12px;
+  margin: 2px 11px;
+  padding: 0;
+  background-color: @secondary;
+  opacity: 0.3;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#workspaces button.active {
+  min-height: 24px;
+  background-color: @primary;
+  opacity: 1;
+}
+
+#clock {
+  font-size: 10px;
+  padding: 6px 0;
+}
+
+#pulseaudio {
+  color: @secondary;
+}
+
+#custom-swaync {
+  color: @tertiary;
+}

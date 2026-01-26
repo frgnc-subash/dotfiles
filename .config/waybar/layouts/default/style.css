@@ -1,0 +1,186 @@
+@import "theme.css";
+* {
+  border: none;
+  font-family: "DepartureMonoNerdFontMono", monospace;
+  font-weight: 700;
+  font-size: 11px;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+}
+
+.modules-left,
+.modules-right,
+.modules-center {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+#workspaces {
+  background-color: @background;
+  border-radius: 8px;
+  padding: 6px 5px;
+  margin: 0 2px;
+}
+
+#workspaces button {
+  padding: 0;
+  margin: 0 3px;
+  background-color: @secondary;
+  opacity: 0.4;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#workspaces button:hover {
+  opacity: 0.8;
+}
+
+#workspaces button.active {
+  min-width: 32px;
+  background-color: @primary;
+  opacity: 1;
+}
+
+#workspaces button.urgent {
+  background-color: @error;
+  opacity: 1;
+}
+
+#clock {
+  background-color: @background;
+  color: @primary;
+  font-weight: 900;
+  /* border: 1px solid @outline; */
+  border-radius: 8px;
+  padding: 0 6px;
+  margin: 0 2px;
+  min-height: 22px;
+  font-size: 11px;
+  min-width: 45px;
+}
+
+#mpris {
+  background-color: @background;
+  padding: 0 8px;
+  margin: 0 2px;
+  border-radius: 8px;
+  color: @primary;
+  transition: all 0.3s ease;
+}
+
+#mpris.playing {
+  background-color: @shadow;
+  border: 1px dashed @outline;
+}
+
+#mpris.paused {
+  color: @tertiary;
+  background-color: @background;
+  border: 1px dashed @outline_variant;
+}
+
+#mpris.stopped {
+  background-color: transparent;
+  color: transparent;
+}
+
+#tray {
+  background-color: @background;
+  color: @primary;
+  border-radius: 8px;
+  padding: 0 6px;
+  margin: 0 2px;
+}
+
+/* #idle_inhibitor { */
+/*   border: 1px solid @outline; */
+/* } */
+
+#custom-swaync,
+#power-profiles-daemon,
+#custom-hyprpicker,
+#idle_inhibitor {
+  background-color: @background;
+  color: @primary;
+  font-weight: 900;
+  border-radius: 8px;
+  padding: 0 10px;
+  margin: 0 2px;
+  min-height: 22px;
+  font-size: 11px;
+  min-width: 7px;
+}
+
+#network.wifi {
+  color: @secondary;
+}
+#network.ethernet {
+  color: @tertiary;
+}
+#network.disconnected {
+  color: @error;
+}
+
+#window {
+  min-width: 0px;
+  color: @secondary;
+  min-height: 22px;
+  margin: 0px 4px;
+}
+
+#pulseaudio,
+#backlight,
+#battery {
+  color: @primary;
+  background-color: @background;
+  border-radius: 8px;
+  padding: 0 11px;
+  margin: 0 2px;
+  min-height: 20px;
+  font-size: 11px;
+  min-width: 36px;
+}
+
+#pulseaudio {
+  color: @secondary;
+}
+#backlight {
+  color: @secondary;
+}
+
+#battery {
+  color: @secondary;
+}
+#battery.charging {
+  color: @primary;
+}
+#battery.warning {
+  color: @on_error_container;
+}
+#battery.critical {
+  color: @error;
+}
+
+#custom-swaync.dnd-enabled {
+  color: @on_error_container;
+}
+
+#custom-swaync.empty {
+  opacity: 0.5;
+}
+
+#custom-cava {
+  background-color: @background;
+  border-radius: 8px;
+  padding: 0px 6px;
+  margin: 0px 4px;
+  font-family: "CaskaydiaCove Nerd Font";
+  color: @tertiary;
+}

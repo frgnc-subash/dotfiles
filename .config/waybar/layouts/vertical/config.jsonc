@@ -1,0 +1,34 @@
+{
+  "layer": "top",
+  "position": "left",
+  "width": "auto",
+  "margin-top": 2,
+  "margin-left": 4,
+  "margin-right": 0,
+  "margin-bottom": 0,
+  "modules-left": ["clock"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["pulseaudio", "battery", "custom/swaync"],
+  "hyprland/workspaces": {
+    "format": " ",
+    "active-only": false,
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4],
+    },
+  },
+  "clock": {
+    "format": "{:%H\n%M}",
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-icons": { "default": ["󰕾"] },
+  },
+  "battery": {
+    "format": "{icon}",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+  },
+  "custom/swaync": {
+    "format": "󰂚",
+    "on-click": "swaync-client -t",
+  },
+}
