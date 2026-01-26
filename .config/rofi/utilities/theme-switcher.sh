@@ -11,7 +11,7 @@ GTK3_CONF="$HOME/.config/gtk-3.0/gtk.css"
 GTK4_CONF="$HOME/.config/gtk-4.0/gtk.css"
 BTOP_CONFIG="$HOME/.config/btop/btop.conf"
 BTOP_THEME_DIR="$HOME/.config/btop/themes"
-SPICETIFY_THEME_FILE="$HOME/.config/spicetify/Themes/Matugen/color.ini"
+
 WAYBAR_THEME_FILE="$HOME/.config/waybar/theme.css"
 ROFI_THEME_FILE="$HOME/.config/rofi/theme.rasi"
 SWAYNC_THEME_FILE="$HOME/.config/swaync/theme.css"
@@ -53,7 +53,6 @@ if [ "$SELECTED_THEME" == "dynamic" ]; then
     KITTY_SOURCE="$MATUGEN_GEN/kitty-colors.conf"
     TMUX_SOURCE="$MATUGEN_GEN/tmux-colors.conf"
     BTOP_NAME="dynamic.theme"
-    SPOTIFY_SOURCE="$MATUGEN_GEN/spotify.ini"
     echo "catppuccin-dynamic" >"$NVIM_THEME_NAME_FILE"
 else
     SEARCH_DIR="$WALLPAPER_BASE/$SELECTED_THEME"
@@ -70,7 +69,6 @@ else
     SWAYOSD_SOURCE="$CURRENT_CONFIG_PATH/swayosd.css"
     KITTY_SOURCE="$CURRENT_CONFIG_PATH/kitty.conf"
     TMUX_SOURCE="$CURRENT_CONFIG_PATH/tmux.conf"
-    SPOTIFY_SOURCE="$CURRENT_CONFIG_PATH/spotify.ini"
     case "$SELECTED_THEME" in
     "mocha") BTOP_NAME="catppuccin.theme" ;;
     *) BTOP_NAME="${SELECTED_THEME}.theme" ;;
@@ -85,7 +83,7 @@ if [ -f "$BTOP_CONFIG" ]; then
     sed -i "s|^color_theme =.*|color_theme = \"$BTOP_THEME_DIR/$BTOP_NAME\"|" "$BTOP_CONFIG"
 fi
 [ -f "$TMUX_SOURCE" ] && cp "$TMUX_SOURCE" "$TMUX_THEME_FILE"
-[ -f "$SPOTIFY_SOURCE" ] && cp "$SPOTIFY_SOURCE" "$SPICETIFY_THEME_FILE"
+
 if [ -f "$CURRENT_CONFIG_PATH/vscode.json" ] && [ -f "$VSCODE_SETTINGS" ]; then
     VS_THEME=$(grep '"name":' "$CURRENT_CONFIG_PATH/vscode.json" | cut -d '"' -f 4 | xargs)
     [ -n "$VS_THEME" ] && sed -i "s/\(\"workbench.colorTheme\":\s*\"\)[^\"]*\(\"\)/\1$VS_THEME\2/" "$VSCODE_SETTINGS"
@@ -107,7 +105,5 @@ disown
 
 kill -SIGUSR1 $(pidof kitty) 2>/dev/null
 [ -n "$(pgrep tmux)" ] && tmux source-file "$HOME/.config/tmux/tmux.conf" 2>/dev/null
-[ -n "$(pgrep spotify)" ] && spicetify apply -q 2>/dev/null
 [ -x "$SWAYOSD_RELOAD_SCRIPT" ] && "$SWAYOSD_RELOAD_SCRIPT"
 notify-send -i "$WALLPAPER" "Theme Activated" "Applied $SELECTED_THEME"
-
