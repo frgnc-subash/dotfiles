@@ -1,6 +1,6 @@
 #!/bin/bash
 
-killall -q waybar
+pkill waybar
 killall -q swaync
 pkill -f "cava -p /tmp/waybar_cava_config"
 
