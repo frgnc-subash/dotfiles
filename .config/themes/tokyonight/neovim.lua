@@ -1,1 +1,1 @@
-return "tokyonight"
+return "tokyonight-night"
