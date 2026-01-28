@@ -1,7 +1,14 @@
 #!/bin/bash
+
 count=$(swaync-client -c)
-if [ -z "$count" ] || [ "$count" -eq 0 ]; then
-  echo "󰂚"   
+dnd=$(swaync-client -D)
+
+if [ "$dnd" == "true" ]; then
+    echo "󰂛"
 else
-  echo "󰂚 $count"
+    if [ -n "$count" ] && [ "$count" -gt 0 ]; then
+        echo "󱅫"
+    else
+        echo "󰂚"
+    fi
 fi
