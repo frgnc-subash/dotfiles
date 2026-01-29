@@ -60,7 +60,7 @@
         "format-alt": "{:%a, %b %d}",
         "tooltip": false,
         "tooltip-format": "{:%A, %B %d, %Y}\nWeek: %V",
-        "on-click": "~/.config/waybar/scripts/toggle-date.sh"
+        "on-click-right": "gsimplecal"
     },
     "custom/hyprpicker": {
         "format": "󰌁",
@@ -121,7 +121,7 @@
         "format": "{player_icon} {title}",
         "format-paused": "{status_icon} <i>{position} {artist}</i>",
         "player-icons": {
-            "default": "⏸",
+            "default": "",
             "mpv": "",
             "spotify": "",
             "firefox": ""

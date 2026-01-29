@@ -60,7 +60,7 @@
         "format-alt": "{:%a, %b %d}",
         "tooltip": false,
         "tooltip-format": "{:%A, %B %d, %Y}\nWeek: %V",
-        "on-click": "~/.config/waybar/scripts/toggle-date.sh"
+        "on-click-right": "gsimplecal"
     },
     "custom/hyprpicker": {
         "format": "󰌁",
@@ -121,7 +121,7 @@
         "format": "{player_icon} {title}",
         "format-paused": "{status_icon} <i>{position} {artist}</i>",
         "player-icons": {
-            "default": "⏸",
+            "default": "",
             "mpv": "",
             "spotify": "",
             "firefox": ""
@@ -143,7 +143,7 @@
         "exec": "~/.config/waybar/scripts/swaync-status.sh",
         "on-click": "swaync-client -t",
         "on-click-right": "swaync-client -d",
-        "interval": 2
+        "interval": 5
     },
     "power-profiles-daemon": {
         "format": "{icon}",
