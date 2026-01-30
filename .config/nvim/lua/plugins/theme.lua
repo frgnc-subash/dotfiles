@@ -25,9 +25,12 @@ return {
       require("catppuccin").setup(opts)
     end,
   },
-  { "LazyVim/LazyVim", opts = {
-    colorscheme = function()
-      return vim.g.lazyvim_colorscheme or "tokyonight"
-    end,
-  } },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = function()
+        return vim.g.lazyvim_colorscheme or "tokyonight"
+      end,
+    },
+  },
 }
