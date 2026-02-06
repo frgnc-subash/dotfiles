@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Waybars
+Comment=Waybar themes
+Exec=/home/axosis/.config/rofi/utilities/waybarChanger.sh
+Icon=preferences-desktop-wallpaper
+Terminal=false
+Categories=System;Settings;
+Keywords=theme;wallpaper;switch;
