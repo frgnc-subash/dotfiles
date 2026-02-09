@@ -1,57 +1,57 @@
 @import "theme.css";
 
 * {
-  border: none;
-  font-family: "DepartureMonoNerdFontMono", monospace;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 12px;
+  font-weight: bold;
 }
 
 window#waybar {
-  background-color: transparent;
-  padding: 0;
-}
-
-#clock,
-#pulseaudio,
-#battery,
-#custom-swaync,
-#workspaces {
-  background-color: @background;
+  background-color: @shadow;
   color: @primary;
-  border-radius: 12px;
-  margin: 2px 0;
-  padding: 10px 0;
-}
-
-#workspaces {
-  padding: 8px 0;
-}
-
-#workspaces button {
-  min-width: 12px;
-  min-height: 12px;
-  border-radius: 12px;
-  margin: 2px 11px;
-  padding: 0;
-  background-color: @secondary;
-  opacity: 0.3;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-#workspaces button.active {
-  min-height: 24px;
-  background-color: @primary;
-  opacity: 1;
+  border-radius: 8px;
 }
 
 #clock {
-  font-size: 10px;
+  padding: 0;
+  margin: 6px;
+  background-color: transparent;
+}
+
+#workspaces {
+  background-color: transparent;
+  border-radius: 14px;
   padding: 6px 0;
 }
 
-#pulseaudio {
-  color: @secondary;
+#workspaces button {
+  padding: 0;
+  margin: 4px 5px;
+  border-radius: 50%;
+  background-color: @secondary;
+  color: transparent;
+  min-width: 8px;
+  min-height: 8px;
+  opacity: 0.4;
+  box-shadow: none;
+  text-shadow: none;
+  border: none;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-#custom-swaync {
-  color: @tertiary;
+#workspaces button:hover {
+  opacity: 0.8;
+}
+
+#workspaces button.active {
+  background-color: @primary;
+  opacity: 1;
+  min-height: 32px;
+  min-width: 8px;
+  border-radius: 100px;
+}
+
+#workspaces button.urgent {
+  background-color: @error;
+  opacity: 1;
 }

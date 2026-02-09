@@ -1,34 +1,46 @@
 {
-  "layer": "top",
-  "position": "left",
-  "width": "auto",
-  "margin-top": 2,
-  "margin-left": 4,
-  "margin-right": 0,
-  "margin-bottom": 0,
-  "modules-left": ["clock"],
-  "modules-center": ["hyprland/workspaces"],
-  "modules-right": ["pulseaudio", "battery", "custom/swaync"],
-  "hyprland/workspaces": {
-    "format": " ",
-    "active-only": false,
-    "persistent-workspaces": {
-      "*": [1, 2, 3, 4],
+    "layer": "top",
+    "position": "left",
+    "margin-top": 4,
+    "margin-bottom": 4,
+    "margin-left": 5,
+    "spacing": 0,
+    "modules-left": [
+        "clock"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "clock": {
+        "format": "{:%H\n%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode"
+        }
     },
-  },
-  "clock": {
-    "format": "{:%H\n%M}",
-  },
-  "pulseaudio": {
-    "format": "{icon}",
-    "format-icons": { "default": ["󰕾"] },
-  },
-  "battery": {
-    "format": "{icon}",
-    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-  },
-  "custom/swaync": {
-    "format": "󰂚",
-    "on-click": "swaync-client -t",
-  },
+    "hyprland/workspaces": {
+        "format": "",
+        "active-only": false,
+        "all-outputs": true,
+        "persistent-workspaces": {
+            "*": [
+                1,
+                2,
+                3,
+                4
+            ]
+        }
+    }
 }
