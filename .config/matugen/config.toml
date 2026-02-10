@@ -14,14 +14,14 @@ input_path = '~/.config/matugen/templates/gtk-colors.css'
 output_path = '~/.config/matugen/generated/gtk-4.css'
 post_hook = 'mkdir -p $HOME/.config/gtk-3.0 $HOME/.config/gtk-4.0; ln -nfs $HOME/.config/matugen/generated/gtk-3.css $HOME/.config/gtk-3.0/gtk.css; ln -nfs $HOME/.config/matugen/generated/gtk-4.css $HOME/.config/gtk-4.0/gtk.css; gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"; systemctl --user reset-failed hyprpolkitagent; systemctl --user restart hyprpolkitagent || true'
 
-[templates.qt5ct]
-input_path = '~/.config/matugen/templates/qtct-colors.conf'
-output_path = '~/.config/matugen/generated/qt5ct-colors.conf'
-
-[templates.qt6ct]
-input_path = '~/.config/matugen/templates/qtct-colors.conf'
-output_path = '~/.config/matugen/generated/qt6ct-colors.conf'
-
+# [templates.qt5ct]
+# input_path = '~/.config/matugen/templates/qtct-colors.conf'
+# output_path = '~/.config/matugen/generated/qt5ct-colors.conf'
+#
+# [templates.qt6ct]
+# input_path = '~/.config/matugen/templates/qtct-colors.conf'
+# output_path = '~/.config/matugen/generated/qt6ct-colors.conf'
+#
 [templates.hyprland]
 input_path = '~/.config/matugen/templates/hyprland-colors.conf'
 output_path = '~/.config/matugen/generated/hypr-colors.conf'
