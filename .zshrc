@@ -29,3 +29,4 @@ export EDITOR="nvim"
 
 export PATH=$PATH:/home/axosis/.spicetify
 
+export PATH=$PATH:~/.spicetify
