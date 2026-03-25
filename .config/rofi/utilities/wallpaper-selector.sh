@@ -38,7 +38,6 @@ fi
 
 if [ -n "$SELECTED_FILE" ]; then
     FULL_PATH="$TARGET_DIR/$SELECTED_FILE"
-    swww img "$FULL_PATH" --transition-type any --transition-duration 1.5 --transition-fps 90
+    awww img "$FULL_PATH" --transition-type any --transition-duration 1.5 --transition-fps 90
     [ "$THEME_MODE" == "dynamic" ] && matugen image "$FULL_PATH"
 fi
-
