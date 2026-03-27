@@ -43,7 +43,7 @@ CURRENT_CONFIG_PATH="$THEME_CONFIG_DIR/$SELECTED_THEME"
 if [ "$SELECTED_THEME" == "dynamic" ]; then
     SEARCH_DIR="$WALLPAPER_BASE/wallpapers"
     WALLPAPER=$(find "$SEARCH_DIR" -type f | shuf -n 1)
-    swww img "$WALLPAPER" --transition-type any --transition-duration 1.5 --transition-fps 90
+    awww img "$WALLPAPER" --transition-type any --transition-duration 1.5 --transition-fps 90
     matugen image "$WALLPAPER"
     HYPR_SOURCE="$MATUGEN_GEN/hypr-colors.conf"
     WAYBAR_SOURCE="$MATUGEN_GEN/colors.css"
@@ -57,7 +57,7 @@ if [ "$SELECTED_THEME" == "dynamic" ]; then
 else
     SEARCH_DIR="$WALLPAPER_BASE/$SELECTED_THEME"
     WALLPAPER=$(find "$SEARCH_DIR" -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.webp" \) | shuf -n 1)
-    swww img "$WALLPAPER" --transition-type any --transition-duration 1.5 --transition-fps 90
+    awww img "$WALLPAPER" --transition-type any --transition-duration 1.5 --transition-fps 90
     rm -f "$GTK3_CONF" "$GTK4_CONF"
     [ -f "$CURRENT_CONFIG_PATH/gtk-3.css" ] && cp "$CURRENT_CONFIG_PATH/gtk-3.css" "$GTK3_CONF"
     [ -f "$CURRENT_CONFIG_PATH/gtk-4.css" ] && cp "$CURRENT_CONFIG_PATH/gtk-4.css" "$GTK4_CONF"
