@@ -1,0 +1,12 @@
+# ~/.config/systemd/user/wallpaper-switcher.timer
+[Unit]
+Description=Switch wallpaper periodically
+Requires=wallpaper-switcher.service
+
+[Timer]
+OnActiveSec=30
+OnUnitActiveSec=30
+Unit=wallpaper-switcher.service
+
+[Install]
+WantedBy=timers.target

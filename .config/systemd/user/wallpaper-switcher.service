@@ -1,0 +1,12 @@
+# ~/.config/systemd/user/wallpaper-switcher.service
+[Unit]
+Description=Random Wallpaper Switcher
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=oneshot
+Environment=WAYLAND_DISPLAY=wayland-1
+Environment=DISPLAY=:0
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+ExecStart=%h/.config/rofi/utilities/wallpaper-selector.sh cycle
