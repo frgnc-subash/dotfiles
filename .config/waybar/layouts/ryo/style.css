@@ -1,0 +1,163 @@
+@import "/home/axosis/.config/waybar/theme.css";
+
+* {
+  border: none;
+  font-family: "DepartureMonoNerdFontMono", "JetBrainsMono Nerd Font", monospace;
+  font-size: 11px;
+  font-weight: 800;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: transparent;
+  color: @on_surface;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  background-color: @surface_container_low;
+  border: 1px solid @outline_variant;
+  border-radius: 8px;
+  padding: 2px;
+}
+
+.modules-left {
+  margin-right: 4px;
+}
+
+.modules-center {
+  margin: 0 4px;
+}
+
+.modules-right {
+  margin-left: 4px;
+}
+
+#workspaces {
+  background-color: transparent;
+  padding: 0;
+}
+
+#workspaces button {
+  color: @on_surface_variant;
+  background-color: transparent;
+  border-radius: 6px;
+  margin: 0;
+  padding: 0 6px;
+  min-width: 14px;
+  transition: all 0.25s ease;
+}
+
+#workspaces button:hover {
+  color: @tertiary;
+  background-color: @surface_container_high;
+}
+
+#workspaces button.active {
+  color: @on_primary;
+  background-color: @primary;
+}
+
+#workspaces button.urgent {
+  color: @on_error;
+  background-color: @error;
+}
+
+#window {
+  color: @secondary;
+  margin: 0 6px;
+  min-width: 0;
+}
+
+#clock,
+#mpris,
+#custom-cava,
+#tray,
+#pulseaudio,
+#backlight,
+#battery,
+#power-profiles-daemon,
+#idle_inhibitor,
+#custom-hyprpicker,
+#custom-swaync {
+  background-color: @surface_container;
+  color: @primary;
+  border-radius: 7px;
+  margin: 0 2px;
+  padding: 0 9px;
+  min-height: 22px;
+}
+
+#clock {
+  color: @on_primary;
+  background-color: @primary;
+  min-width: 48px;
+}
+
+#mpris {
+  color: @tertiary;
+  background-color: @surface_container_high;
+}
+
+#mpris.paused {
+  color: @secondary;
+}
+
+#mpris.stopped {
+  color: transparent;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+#custom-cava {
+  color: @tertiary;
+  font-family: "CaskaydiaCove Nerd Font", monospace;
+  min-width: 74px;
+}
+
+#tray {
+  padding: 0 7px;
+}
+
+#pulseaudio,
+#backlight,
+#battery {
+  color: @secondary;
+}
+
+#pulseaudio.muted,
+#battery.critical,
+#custom-swaync.dnd-enabled {
+  color: @error;
+}
+
+#battery.charging,
+#battery.plugged,
+#idle_inhibitor.activated {
+  color: @tertiary;
+}
+
+#battery.warning {
+  color: @on_error_container;
+}
+
+#power-profiles-daemon.performance {
+  color: @error;
+}
+
+#power-profiles-daemon.power-saver {
+  color: @tertiary;
+}
+
+#custom-swaync.empty {
+  opacity: 0.55;
+}
+
+tooltip {
+  background-color: @surface_container_highest;
+  color: @on_surface;
+  border: 1px solid @outline_variant;
+  border-radius: 8px;
+}

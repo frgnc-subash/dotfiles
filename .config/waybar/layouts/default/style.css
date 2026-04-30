@@ -1,4 +1,4 @@
-@import "theme.css";
+@import "/home/axosis/.config/waybar/theme.css";
 * {
   border: none;
   font-family: "DepartureMonoNerdFontMono", monospace;

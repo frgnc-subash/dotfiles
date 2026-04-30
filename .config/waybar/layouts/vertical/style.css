@@ -1,37 +1,43 @@
-@import "theme.css";
+@import "/home/axosis/.config/waybar/theme.css";
 
 * {
   font-family: "JetBrainsMono Nerd Font";
   font-size: 12px;
   font-weight: bold;
+  border: none;
+  min-height: 0;
 }
 
 window#waybar {
-  background-color: @shadow;
+  background-color: @surface_container_low;
   color: @primary;
   border-radius: 8px;
+  border: 1px solid @outline_variant;
 }
 
 #clock {
-  padding: 0;
-  margin: 6px;
-  background-color: transparent;
+  padding: 8px 0;
+  margin: 5px 4px;
+  color: @primary;
+  background-color: @surface_container_high;
+  border-radius: 7px;
+  min-width: 28px;
 }
 
 #workspaces {
   background-color: transparent;
-  border-radius: 14px;
-  padding: 6px 0;
+  padding: 8px 0;
+  margin: 0;
 }
 
 #workspaces button {
   padding: 0;
-  margin: 4px 5px;
+  margin: 4px 11px;
   border-radius: 50%;
   background-color: @secondary;
   color: transparent;
-  min-width: 8px;
-  min-height: 8px;
+  min-width: 9px;
+  min-height: 9px;
   opacity: 0.4;
   box-shadow: none;
   text-shadow: none;
@@ -41,17 +47,57 @@ window#waybar {
 
 #workspaces button:hover {
   opacity: 0.8;
+  background-color: @tertiary;
 }
 
 #workspaces button.active {
   background-color: @primary;
   opacity: 1;
-  min-height: 32px;
-  min-width: 8px;
+  min-height: 34px;
+  min-width: 9px;
   border-radius: 100px;
 }
 
 #workspaces button.urgent {
   background-color: @error;
   opacity: 1;
+}
+
+#pulseaudio,
+#battery,
+#custom-swaync,
+#idle_inhibitor {
+  color: @secondary;
+  background-color: @surface_container_high;
+  border-radius: 7px;
+  margin: 3px 4px;
+  padding: 8px 0;
+  min-width: 28px;
+}
+
+#pulseaudio.muted,
+#battery.critical,
+#custom-swaync.dnd-enabled {
+  color: @error;
+}
+
+#battery.charging,
+#battery.plugged,
+#idle_inhibitor.activated {
+  color: @tertiary;
+}
+
+#battery.warning {
+  color: @on_error_container;
+}
+
+#custom-swaync.empty {
+  opacity: 0.55;
+}
+
+tooltip {
+  background-color: @surface_container_highest;
+  color: @on_surface;
+  border: 1px solid @outline_variant;
+  border-radius: 8px;
 }

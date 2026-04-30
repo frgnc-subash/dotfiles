@@ -1,40 +1,40 @@
 @define-color background #080808;
-@define-color on_background #bdbdbd;
-@define-color surface #080808;
-@define-color on_surface #bdbdbd;
-@define-color on_surface_variant #949494;
+@define-color on_background #b2b2b2;
+@define-color surface #121212;
+@define-color on_surface #b2b2b2;
+@define-color on_surface_variant #4e4e4e;
 
-@define-color primary #80a0ff;
+@define-color primary #78a8ff;
 @define-color on_primary #080808;
-@define-color primary_container #323437;
-@define-color on_primary_container #80a0ff;
+@define-color primary_container #1c1c1c;
+@define-color on_primary_container #78a8ff;
 
-@define-color secondary #cf87e8;
+@define-color secondary #c678dd;
 @define-color on_secondary #080808;
-@define-color secondary_container #323437;
-@define-color on_secondary_container #cf87e8;
+@define-color secondary_container #1c1c1c;
+@define-color on_secondary_container #c678dd;
 
-@define-color tertiary #79dac8;
+@define-color tertiary #56b6c2;
 @define-color on_tertiary #080808;
-@define-color tertiary_container #323437;
-@define-color on_tertiary_container #79dac8;
+@define-color tertiary_container #1c1c1c;
+@define-color on_tertiary_container #56b6c2;
 
-@define-color error #ff5d5d;
+@define-color error #ff5454;
 @define-color on_error #080808;
-@define-color error_container #ff5189;
+@define-color error_container #ff5454;
 @define-color on_error_container #080808;
 
-@define-color outline #949494;
-@define-color outline_variant #323437;
+@define-color outline #4e4e4e;
+@define-color outline_variant #303030;
 
 @define-color surface_container_lowest #080808;
-@define-color surface_container_low #323437;
-@define-color surface_container #3a3c40;
-@define-color surface_container_high #5a5c60;
-@define-color surface_container_highest #949494;
+@define-color surface_container_low #121212;
+@define-color surface_container #1c1c1c;
+@define-color surface_container_high #303030;
+@define-color surface_container_highest #444444;
 
-@define-color shadow #000000;
-@define-color scrim #000000;
-@define-color inverse_surface #c6c6c6;
+@define-color shadow #080808;
+@define-color scrim #080808;
+@define-color inverse_surface #b2b2b2;
 @define-color inverse_on_surface #080808;
-@define-color inverse_primary #74b2ff;
+@define-color inverse_primary #78a8ff;

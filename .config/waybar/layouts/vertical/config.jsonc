@@ -1,6 +1,7 @@
 {
     "layer": "top",
     "position": "left",
+    "width": 38,
     "margin-top": 4,
     "margin-bottom": 4,
     "margin-left": 5,
@@ -11,8 +12,15 @@
     "modules-center": [
         "hyprland/workspaces"
     ],
+    "modules-right": [
+        "pulseaudio",
+        "battery",
+        "custom/swaync",
+        "idle_inhibitor"
+    ],
     "clock": {
         "format": "{:%H\n%M}",
+        "format-alt": "{:%a\n%d}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode": "year",
@@ -20,10 +28,10 @@
             "weeks-pos": "right",
             "on-scroll": 1,
             "format": {
-                "months": "<span color='#ffead3'><b>{}</b></span>",
-                "days": "<span color='#ecc6d9'><b>{}</b></span>",
-                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+                "months": "<b>{}</b>",
+                "days": "{}",
+                "weeks": "<b>W{}</b>",
+                "today": "<b><u>{}</u></b>"
             }
         },
         "actions": {
@@ -42,5 +50,70 @@
                 4
             ]
         }
+    },
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": "󰖁",
+        "format-icons": {
+            "default": [
+                "󰕿",
+                "󰖀",
+                "󰕾"
+            ],
+            "default-muted": "󰖁",
+            "muted": "󰖁"
+        },
+        "scroll-step": 1,
+        "max-volume": 150,
+        "on-click-right": "kitty --class audio-tui -e wiremix",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    },
+    "battery": {
+        "format": "{icon}",
+        "format-charging": "",
+        "format-plugged": "",
+        "format-full": "󰁹",
+        "format-icons": [
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ],
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "tooltip-format": "{capacity}%"
+    },
+    "custom/swaync": {
+        "tooltip": true,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󱅫",
+            "none": "󰂚",
+            "dnd-notification": "󱏩",
+            "dnd-none": "󰂛"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰅶",
+            "deactivated": "󰾪"
+        },
+        "timeout": 30.5,
+        "tooltip": false
     }
 }
