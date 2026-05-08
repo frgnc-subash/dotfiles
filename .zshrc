@@ -24,9 +24,6 @@ eval "$(starship init zsh)"
 
 export EDITOR="nvim"
 
-. "$HOME/.local/bin/env"
 
 
-export PATH=$PATH:/home/axosis/.spicetify
 
-export PATH=$PATH:~/.spicetify

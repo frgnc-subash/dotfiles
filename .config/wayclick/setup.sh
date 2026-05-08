@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# WAYCLICK ELITE - SETUP ONLY (ORCHESTRA MODULE)
+# WAYCLICK - FAST SETUP ONLY (ORCHESTRA MODULE)
 # ==============================================================================
 #  INSTRUCTIONS:
 #  Add this to your Orchestra INSTALL_SEQUENCE as a User command:
@@ -15,6 +15,8 @@ readonly BASE_DIR="$HOME/.contained_apps/uv/$APP_NAME"
 readonly VENV_DIR="$BASE_DIR/.venv"
 readonly RUNNER_SCRIPT="$BASE_DIR/runner.py"
 readonly CONFIG_DIR="$HOME/.config/wayclick"
+readonly PYTHON_BIN="${WAYCLICK_PYTHON:-python3}"
+readonly NATIVE_BUILD="${WAYCLICK_NATIVE_BUILD:-false}"
 
 # --- LOGGING HELPER ---
 log() {
@@ -27,9 +29,12 @@ NEEDED_DEPS=""
 if ! command -v uv &>/dev/null; then NEEDED_DEPS="$NEEDED_DEPS uv"; fi
 if ! command -v notify-send &>/dev/null; then NEEDED_DEPS="$NEEDED_DEPS libnotify"; fi
 
-# [FIXED LIST] Critical headers for compiling pygame-ce from source.
-# Added 'portmidi' (fixes the specific error you saw) and 'pkgconf' (required for meson).
-REQUIRED_LIBS=("sdl2" "sdl2_image" "sdl2_mixer" "sdl2_ttf" "portmidi" "pkgconf" "git")
+# Native builds are slow and usually unnecessary. Keep them as an opt-in for
+# machines where you explicitly want pygame-ce/evdev compiled locally.
+REQUIRED_LIBS=()
+if [[ "$NATIVE_BUILD" == "true" ]]; then
+    REQUIRED_LIBS=("sdl2" "sdl2_image" "sdl2_mixer" "sdl2_ttf" "portmidi" "pkgconf" "git")
+fi
 
 for pkg in "${REQUIRED_LIBS[@]}"; do
     if ! pacman -Qi "$pkg" &>/dev/null; then
@@ -38,7 +43,7 @@ for pkg in "${REQUIRED_LIBS[@]}"; do
 done
 
 if [[ -n "$NEEDED_DEPS" ]]; then
-    log "Installing missing native build dependencies: $NEEDED_DEPS"
+    log "Installing missing system dependencies: $NEEDED_DEPS"
     # --needed ensures we don't reinstall things, --noconfirm for automation
     if sudo pacman -S --needed --noconfirm $NEEDED_DEPS; then
         log "System dependencies installed successfully."
@@ -47,7 +52,7 @@ if [[ -n "$NEEDED_DEPS" ]]; then
         exit 1
     fi
 else
-    log "System dependencies (SDL2 stack, PortMidi, pkgconf) are present."
+    log "System dependencies are present."
 fi
 
 # 2. Group Permission Check (Input)
@@ -71,39 +76,49 @@ if [[ ! -d "$CONFIG_DIR" ]]; then
 fi
 
 # 4. Environment Setup (UV)
-MARKER_FILE="$BASE_DIR/.build_marker_v3"
+if [[ "$NATIVE_BUILD" == "true" ]]; then
+    MARKER_FILE="$BASE_DIR/.build_marker_native_v4"
+else
+    MARKER_FILE="$BASE_DIR/.build_marker_fast_v4"
+fi
 
 # Force rebuild if dependencies changed implies we might want to wipe,
 # but for now we trust the marker.
 if [[ ! -f "$MARKER_FILE" ]]; then
     log "Initializing UV environment..."
 
-    # Create VENV if it doesn't exist
     if [[ ! -d "$VENV_DIR" ]]; then
-        uv venv "$VENV_DIR" --python 3.13 --quiet
+        uv venv "$VENV_DIR" --python "$PYTHON_BIN" --quiet
     fi
 
-    log "Compiling dependencies with NATIVE CPU FLAGS (AVX2+)..."
-    log "NOTE: This may take a moment as we are compiling C extensions."
-
-    # ---------------------------------------------------------
-    # ELITE BUILD FLAGS
-    # ---------------------------------------------------------
-    export CFLAGS="-march=native -mtune=native -O3 -pipe -fno-plt"
-    export CXXFLAGS="-march=native -mtune=native -O3 -pipe -fno-plt"
-
-    # Install evdev and pygame-ce from source
-    # We explicitly use the venv python to ensure paths are correct
-    if uv pip install --python "$VENV_DIR/bin/python" \
-        --no-binary :all: \
-        --compile-bytecode \
-        evdev pygame-ce; then
-
+    if "$VENV_DIR/bin/python" -c 'import evdev, pygame' &>/dev/null; then
         touch "$MARKER_FILE"
-        log "Native build complete."
+        log "Existing Python environment is usable. Skipping dependency install."
+    elif [[ "$NATIVE_BUILD" == "true" ]]; then
+        log "Compiling dependencies with native CPU flags..."
+        log "NOTE: Native builds are slower. Leave WAYCLICK_NATIVE_BUILD unset for fast setup."
+
+        export CFLAGS="-march=native -mtune=native -O3 -pipe -fno-plt"
+        export CXXFLAGS="-march=native -mtune=native -O3 -pipe -fno-plt"
+
+        if uv pip install --python "$VENV_DIR/bin/python" --no-binary :all: evdev pygame-ce; then
+            touch "$MARKER_FILE"
+            log "Native build complete."
+        else
+            log "CRITICAL: Native build failed. Check if 'portmidi' or 'sdl2_mixer' are missing."
+            exit 1
+        fi
     else
-        log "CRITICAL: Build failed. Check if 'portmidi' or 'sdl2_mixer' are missing."
-        exit 1
+        log "Installing Python dependencies with a prebuilt pygame-ce wheel..."
+        if uv pip install --python "$VENV_DIR/bin/python" --only-binary=pygame-ce evdev pygame-ce; then
+            touch "$MARKER_FILE"
+            log "Fast dependency install complete."
+        else
+            log "CRITICAL: No compatible pygame-ce wheel found for this Python/platform."
+            log "Try: WAYCLICK_PYTHON=python3.13 $0"
+            log "Or opt into the old compile path: WAYCLICK_NATIVE_BUILD=true $0"
+            exit 1
+        fi
     fi
 else
     log "Environment already built (Marker found). Skipping build."

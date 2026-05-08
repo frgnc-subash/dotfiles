@@ -3,6 +3,7 @@
 THEME_CONFIG_DIR="$HOME/.config/themes"
 MATUGEN_GEN="$HOME/.config/matugen/generated"
 WALLPAPER_BASE="$HOME/Pictures/wallpapers"
+MATUGEN_ARGS=(--prefer saturation)
 HYPR_THEME_FILE="$HOME/.config/hypr/theme.conf"
 NVIM_THEME_NAME_FILE="$HOME/.config/nvim/theme_name.txt"
 VSCODE_SETTINGS="$HOME/.config/Code/User/settings.json"
@@ -42,9 +43,25 @@ CURRENT_CONFIG_PATH="$THEME_CONFIG_DIR/$SELECTED_THEME"
 
 if [ "$SELECTED_THEME" == "dynamic" ]; then
     SEARCH_DIR="$WALLPAPER_BASE/wallpapers"
-    WALLPAPER=$(find "$SEARCH_DIR" -type f | shuf -n 1)
+    WALLPAPER=$(find "$SEARCH_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) | shuf -n 1)
+    [ -z "$WALLPAPER" ] && notify-send "Theme Error" "No dynamic wallpapers found in $SEARCH_DIR" && exit 1
     awww img "$WALLPAPER" --transition-type any --transition-duration 1.5 --transition-fps 90
-    matugen image "$WALLPAPER"
+    EXT_LOWER=$(echo "${WALLPAPER##*.}" | tr '[:upper:]' '[:lower:]')
+    if [ "$EXT_LOWER" = "gif" ]; then
+        GIF_FRAME_TMP=$(mktemp /tmp/matugen-frame-XXXXXX.png)
+        ffmpeg -v error -i "$WALLPAPER" -vframes 1 "$GIF_FRAME_TMP"
+        if ! matugen image "$GIF_FRAME_TMP" "${MATUGEN_ARGS[@]}"; then
+            rm -f "$GIF_FRAME_TMP"
+            notify-send "Theme Error" "matugen failed for $WALLPAPER"
+            exit 1
+        fi
+        rm -f "$GIF_FRAME_TMP"
+    else
+        if ! matugen image "$WALLPAPER" "${MATUGEN_ARGS[@]}"; then
+            notify-send "Theme Error" "matugen failed for $WALLPAPER"
+            exit 1
+        fi
+    fi
     HYPR_SOURCE="$MATUGEN_GEN/hypr-colors.conf"
     WAYBAR_SOURCE="$MATUGEN_GEN/colors.css"
     ROFI_SOURCE="$MATUGEN_GEN/rofi-colors.rasi"

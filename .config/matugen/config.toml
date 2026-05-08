@@ -2,7 +2,7 @@
 
 [config.wallpaper]
 set = false
-command = "swww"
+command = "awww"
 
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk-colors.css'
