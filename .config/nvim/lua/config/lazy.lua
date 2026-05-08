@@ -54,6 +54,13 @@ vim.api.nvim_create_autocmd("User", {
   callback = function()
     local theme = vim.g.lazyvim_colorscheme or "tokyonight"
     pcall(vim.cmd.colorscheme, theme)
+    local f = io.open(vim.fn.stdpath("config") .. "/theme_name.txt", "r")
+    local name = f and f:read("*all"):gsub("%s+", "") or nil
+    if f then
+      f:close()
+    end
+    if name == "ryo" then
+      require("config.transparent").apply_deferred()
+    end
   end,
 })
-

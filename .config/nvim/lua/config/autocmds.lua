@@ -1,47 +1,32 @@
 local name_file = vim.fn.stdpath("config") .. "/theme_name.txt"
 local matugen_file = vim.fn.expand("~/.config/matugen/generated/neovim-colors.lua")
+local transparent = require("config.transparent")
 
-local function set_transparent_background()
-  local groups = {
-    "Normal",
-    "NormalNC",
-    "NormalFloat",
-    "FloatBorder",
-    "FloatTitle",
-    "SignColumn",
-    "EndOfBuffer",
-    "LineNr",
-    "FoldColumn",
-    "StatusLine",
-    "StatusLineNC",
-    "TabLine",
-    "TabLineFill",
-    "WinSeparator",
-    "LazyNormal",
-    "MasonNormal",
-    "NeoTreeNormal",
-    "NeoTreeNormalNC",
-    "TelescopeNormal",
-    "TelescopeBorder",
-    "WhichKeyNormal",
-  }
-
-  for _, group in ipairs(groups) do
-    vim.api.nvim_set_hl(0, group, { bg = "NONE" })
-  end
-end
-
-local function apply_theme()
+local function read_theme_name()
   local f = io.open(name_file, "r")
   if not f then
-    return
+    return nil
   end
 
-  -- Read all content and remove ALL whitespace/newlines
   local name = f:read("*all"):gsub("%s+", "")
   f:close()
 
   if name == "" then
+    return nil
+  end
+
+  return name
+end
+
+local function apply_ryo_transparency()
+  if read_theme_name() == "ryo" then
+    transparent.apply_deferred()
+  end
+end
+
+local function apply_theme()
+  local name = read_theme_name()
+  if not name then
     return
   end
 
@@ -75,7 +60,7 @@ local function apply_theme()
     elseif name == "ryo" then
       vim.g.is_dynamic = false
       vim.cmd.colorscheme("default")
-      set_transparent_background()
+      apply_ryo_transparency()
     else
       vim.g.is_dynamic = false
       pcall(vim.cmd.colorscheme, name)
@@ -84,19 +69,12 @@ local function apply_theme()
 end
 
 vim.api.nvim_create_autocmd("ColorScheme", {
-  callback = function()
-    local f = io.open(name_file, "r")
-    if not f then
-      return
-    end
+  callback = apply_ryo_transparency,
+})
 
-    local name = f:read("*all"):gsub("%s+", "")
-    f:close()
-
-    if name == "ryo" then
-      set_transparent_background()
-    end
-  end,
+vim.api.nvim_create_autocmd({ "VimEnter", "User" }, {
+  pattern = { "*", "LazyVimStarted" },
+  callback = apply_ryo_transparency,
 })
 
 local function watch_file(path, callback)

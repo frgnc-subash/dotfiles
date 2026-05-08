@@ -1,0 +1,40 @@
+@define-color background rgba(12, 15, 20, 0.78);
+@define-color on_background #eef5ff;
+@define-color surface rgba(16, 20, 27, 0.84);
+@define-color on_surface #eef5ff;
+@define-color on_surface_variant #9aa8ba;
+
+@define-color primary #8bd5ff;
+@define-color on_primary #071017;
+@define-color primary_container rgba(29, 45, 59, 0.86);
+@define-color on_primary_container #b9e6ff;
+
+@define-color secondary #c7a8ff;
+@define-color on_secondary #120a1d;
+@define-color secondary_container rgba(48, 36, 65, 0.84);
+@define-color on_secondary_container #decaff;
+
+@define-color tertiary #8ff0c7;
+@define-color on_tertiary #061511;
+@define-color tertiary_container rgba(28, 55, 48, 0.82);
+@define-color on_tertiary_container #b8f8dc;
+
+@define-color error #ff8f9b;
+@define-color on_error #24060a;
+@define-color error_container rgba(83, 25, 33, 0.88);
+@define-color on_error_container #ffd9de;
+
+@define-color outline rgba(180, 204, 224, 0.62);
+@define-color outline_variant rgba(132, 151, 170, 0.42);
+
+@define-color surface_container_lowest rgba(7, 10, 14, 0.62);
+@define-color surface_container_low rgba(12, 15, 20, 0.72);
+@define-color surface_container rgba(16, 20, 27, 0.82);
+@define-color surface_container_high rgba(26, 32, 42, 0.88);
+@define-color surface_container_highest rgba(38, 47, 61, 0.92);
+
+@define-color shadow rgba(0, 0, 0, 0.52);
+@define-color scrim rgba(0, 0, 0, 0.70);
+@define-color inverse_surface #dce8f7;
+@define-color inverse_on_surface #121820;
+@define-color inverse_primary #23627e;
