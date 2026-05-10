@@ -136,7 +136,8 @@
     },
     "tray": {
         "icon-size": 18,
-        "spacing": 2
+        "spacing": 2,
+        "show-passive-items": true
     },
     "custom/swaync": {
         "tooltip": true,

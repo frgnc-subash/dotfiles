@@ -118,16 +118,6 @@ window#waybar {
   min-width: 7px;
 }
 
-#network.wifi {
-  color: @secondary;
-}
-#network.ethernet {
-  color: @tertiary;
-}
-#network.disconnected {
-  color: @error;
-}
-
 #window {
   min-width: 0px;
   color: @secondary;
