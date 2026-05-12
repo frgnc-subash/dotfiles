@@ -4,7 +4,7 @@ THEME_CONFIG_DIR="$HOME/.config/themes"
 MATUGEN_GEN="$HOME/.config/matugen/generated"
 WALLPAPER_BASE="$HOME/Pictures/wallpapers"
 MATUGEN_ARGS=(--prefer saturation)
-HYPR_THEME_FILE="$HOME/.config/hypr/theme.conf"
+HYPR_THEME_FILE="$HOME/.config/hypr/theme.lua"
 NVIM_THEME_NAME_FILE="$HOME/.config/nvim/theme_name.txt"
 VSCODE_SETTINGS="$HOME/.config/Code/User/settings.json"
 TMUX_THEME_FILE="$HOME/.config/tmux/theme.conf"
@@ -20,7 +20,7 @@ SWAYOSD_THEME_FILE="$HOME/.config/swayosd/theme.css"
 KITTY_THEME_FILE="$HOME/.config/kitty/theme.conf"
 SWAYOSD_RELOAD_SCRIPT="$HOME/.config/swayosd/scripts/restartOSD.sh"
 
-CURRENT_SOURCE=$(grep "source =" "$HYPR_THEME_FILE" | awk '{print $3}')
+CURRENT_SOURCE=$(grep "dofile" "$HYPR_THEME_FILE" | sed 's/dofile("\(.*\)")/\1/')
 [[ "$CURRENT_SOURCE" == *"matugen"* ]] && ACTIVE_THEME="dynamic" || ACTIVE_THEME=$(basename $(dirname "$CURRENT_SOURCE"))
 
 THEME_LIST=""
@@ -62,7 +62,7 @@ if [ "$SELECTED_THEME" == "dynamic" ]; then
             exit 1
         fi
     fi
-    HYPR_SOURCE="$MATUGEN_GEN/hypr-colors.conf"
+    HYPR_SOURCE="$MATUGEN_GEN/hypr-colors.lua"
     WAYBAR_SOURCE="$MATUGEN_GEN/colors.css"
     ROFI_SOURCE="$MATUGEN_GEN/rofi-colors.rasi"
     SWAYNC_SOURCE="$MATUGEN_GEN/colors.css"
@@ -79,7 +79,7 @@ else
     [ -f "$CURRENT_CONFIG_PATH/gtk-3.css" ] && cp "$CURRENT_CONFIG_PATH/gtk-3.css" "$GTK3_CONF"
     [ -f "$CURRENT_CONFIG_PATH/gtk-4.css" ] && cp "$CURRENT_CONFIG_PATH/gtk-4.css" "$GTK4_CONF"
     gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
-    HYPR_SOURCE="$CURRENT_CONFIG_PATH/hyprland.conf"
+    HYPR_SOURCE="$CURRENT_CONFIG_PATH/hyprland.lua"
     WAYBAR_SOURCE="$CURRENT_CONFIG_PATH/waybar.css"
     ROFI_SOURCE="$CURRENT_CONFIG_PATH/rofi.rasi"
     SWAYNC_SOURCE="$CURRENT_CONFIG_PATH/swaync.css"
@@ -105,7 +105,8 @@ if [ -f "$CURRENT_CONFIG_PATH/vscode.json" ] && [ -f "$VSCODE_SETTINGS" ]; then
     VS_THEME=$(grep '"name":' "$CURRENT_CONFIG_PATH/vscode.json" | cut -d '"' -f 4 | xargs)
     [ -n "$VS_THEME" ] && sed -i "s/\(\"workbench.colorTheme\":\s*\"\)[^\"]*\(\"\)/\1$VS_THEME\2/" "$VSCODE_SETTINGS"
 fi
-echo "source = $HYPR_SOURCE" >"$HYPR_THEME_FILE"
+
+echo "dofile(\"$HYPR_SOURCE\")" >"$HYPR_THEME_FILE"
 echo "@import \"$WAYBAR_SOURCE\";" >"$WAYBAR_THEME_FILE"
 echo "@import \"$ROFI_SOURCE\"" >"$ROFI_THEME_FILE"
 echo "@import \"$SWAYNC_SOURCE\";" >"$SWAYNC_THEME_FILE"

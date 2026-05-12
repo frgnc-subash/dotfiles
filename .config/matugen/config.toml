@@ -23,8 +23,8 @@ post_hook = 'mkdir -p $HOME/.config/gtk-3.0 $HOME/.config/gtk-4.0; ln -nfs $HOME
 # output_path = '~/.config/matugen/generated/qt6ct-colors.conf'
 #
 [templates.hyprland]
-input_path = '~/.config/matugen/templates/hyprland-colors.conf'
-output_path = '~/.config/matugen/generated/hypr-colors.conf'
+input_path = '~/.config/matugen/templates/hyprland-colors.lua'
+output_path = '~/.config/matugen/generated/hypr-colors.lua'
 post_hook = 'hyprctl reload'
 
 [templates.rofi]

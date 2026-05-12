@@ -2,12 +2,12 @@
 
 WAYBAR_DIR="$HOME/.config/waybar"
 LAYOUTS_DIR="$WAYBAR_DIR/layouts"
-HYPR_CONF="$HOME/.config/hypr/hyprland.conf"
+HYPR_ANI_FILE="$HOME/.config/hypr/modules/ani.lua"
 
 current_pos=$(grep "\"position\":" "$WAYBAR_DIR/config.jsonc" 2>/dev/null)
 ACTIVE=""
 [[ "$current_pos" == *"left"* ]] && ACTIVE="vertical"
-[[ "$current_pos" == *"top"* ]] && ACTIVE="top"
+[[ "$current_pos" == *"top"* ]]  && ACTIVE="top"
 
 MENU_LIST=""
 for layout in "$LAYOUTS_DIR"/*/; do
@@ -25,19 +25,15 @@ CHOICE=$(echo "$SELECTION" | awk '{print $1}')
 
 if [ -d "$LAYOUTS_DIR/$CHOICE" ]; then
     cp "$LAYOUTS_DIR/$CHOICE/config.jsonc" "$WAYBAR_DIR/config.jsonc"
-    cp "$LAYOUTS_DIR/$CHOICE/style.css" "$WAYBAR_DIR/style.css"
+    cp "$LAYOUTS_DIR/$CHOICE/style.css"    "$WAYBAR_DIR/style.css"
 
     if [ "$CHOICE" == "vertical" ]; then
-        TARGET="vertAni.conf"
+        TARGET="vertAni"
     else
-        TARGET="horizAni.conf"
+        TARGET="horizAni"
     fi
 
-    if grep -q "Ani.conf" "$HYPR_CONF"; then
-        sed -i "s|source = .*Ani.conf|source = ~/.config/hypr/conf/$TARGET|" "$HYPR_CONF"
-    else
-        echo "source = ~/.config/hypr/conf/$TARGET" >>"$HYPR_CONF"
-    fi
+    echo "require(\"modules.${TARGET}\")" > "$HYPR_ANI_FILE"
 
     hyprctl reload >/dev/null
 
@@ -46,7 +42,7 @@ if [ -d "$LAYOUTS_DIR/$CHOICE" ]; then
     waybar &
     disown
 
-    notify-send "System" "Layout: $CHOICE | Animation: $TARGET"
+    notify-send "System" "Layout: $CHOICE | Animation: ${TARGET}.lua"
 fi
 
 pkill -f "cava -p /tmp/waybar_cava_config"
