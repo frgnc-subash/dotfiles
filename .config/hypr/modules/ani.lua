@@ -1,1 +1,1 @@
-require("modules.horizAni")
+require("modules.vertAni")
