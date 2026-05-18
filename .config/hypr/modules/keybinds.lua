@@ -42,7 +42,7 @@ hl.bind("ALT + V",                 hl.dsp.exec_cmd("$HOME/.config/wayclick/waycl
 
 hl.bind("ALT + A",  hl.dsp.exec_cmd("~/.config/hypr/sliders/brightness_slider.sh"))
 hl.bind("ALT + Z",  hl.dsp.exec_cmd("~/.config/hypr/sliders/hyprsunset_slider.sh"))
-hl.bind("ALT + W",  hl.dsp.exec_cmd("~/.config/rofi/utilities/waybarChanger.sh"))
+hl.bind("ALT + W",  hl.dsp.exec_cmd("~/.config/rofi/utilities/noti-bar.sh"))
 hl.bind("ALT + D",  hl.dsp.exec_cmd("~/.config/hypr/sliders/volume_slider.sh"))
 hl.bind("ALT + E",  hl.dsp.exec_cmd("eww open activate-linux"))
 hl.bind("ALT + X",  hl.dsp.exec_cmd("eww close activate-linux"))

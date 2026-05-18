@@ -35,7 +35,6 @@ hl.config({
 	-- -------------------
 	-- Dwindle Layout
 	-- -------------------
-
 	dwindle = {
 		preserve_split = true, -- You probably want this
 	},
@@ -68,6 +67,7 @@ hl.device({
 	enabled = true,
 	natural_scroll = true,
 })
+
 hl.config({
 	misc = {
 		force_default_wallpaper = 0,
