@@ -1,40 +1,29 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 30,
-    "margin-top": 5,
-    "margin-left": 6,
-    "margin-right": 6,
+    "height": 28,
+    "width": 620,
+    "fixed-center": true,
+    "margin-top": 4,
+    "margin-left": 0,
+    "margin-right": 0,
     "margin-bottom": 0,
     "spacing": 0,
     "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/window"
+        "pulseaudio",
+        "custom/cava"
     ],
     "modules-center": [
-        "clock",
-        "mpris"
-    ],
-    "modules-right": [
-        "custom/cava",
-        "tray",
-        "pulseaudio",
-        "backlight",
-        "battery",
-        "power-profiles-daemon",
-        "idle_inhibitor",
-        "custom/hyprpicker",
+        "custom/hour",
+        "hyprland/workspaces",
+        "custom/minute",
         "custom/swaync"
     ],
+    "modules-right": [
+        "battery"
+    ],
     "hyprland/workspaces": {
-        "format": "{icon}",
-        "format-icons": {
-            "1": "一",
-            "2": "二",
-            "3": "三",
-            "4": "四",
-            "default": "•"
-        },
+        "format": " ",
         "active-only": false,
         "persistent-workspaces": {
             "*": [
@@ -45,116 +34,23 @@
             ]
         }
     },
-    "hyprland/window": {
-        "format": "{title}",
-        "max-length": 46,
-        "separate-outputs": false,
-        "icon": true
-    },
-    "clock": {
-        "format": "{:%H:%M}",
-        "format-alt": "{:%a %d %b}",
-        "tooltip": true,
-        "tooltip-format": "{:%A, %B %d, %Y}\nWeek: %V",
-        "on-click-right": "gsimplecal"
-    },
-    "mpris": {
-        "format": "{player_icon} {title}",
-        "format-paused": "{status_icon} <i>{artist}</i>",
-        "player-icons": {
-            "default": "",
-            "mpv": "",
-            "spotify": "",
-            "firefox": ""
-        },
-        "status-icons": {
-            "paused": "▶"
-        },
-        "max-length": 32
-    },
-    "custom/cava": {
-        "format": "{text}",
-        "exec": "$HOME/.config/waybar/scripts/cava.sh || echo \"\"",
-        "return-type": "text"
-    },
-    "tray": {
-        "icon-size": 17,
-        "spacing": 3
-    },
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "󰖁 {volume}%",
-        "format-icons": {
-            "default": [
-                "󰕿",
-                "󰖀",
-                "󰕾"
-            ],
-            "default-muted": "󰖁",
-            "muted": "󰖁"
-        },
-        "scroll-step": 1,
-        "max-volume": 150,
-        "on-click-right": "kitty --class audio-tui -e wiremix",
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-    },
-    "backlight": {
-        "format": "{icon} {percent}%",
-        "format-icons": [
-            "󰃞",
-            "󰃟",
-            "󰃠"
-        ],
-        "scroll-step": 1
-    },
-    "battery": {
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-full": "󰁹 {capacity}%",
-        "format-icons": [
-            "󰁺",
-            "󰁻",
-            "󰁼",
-            "󰁽",
-            "󰁾",
-            "󰁿",
-            "󰂀",
-            "󰂁",
-            "󰂂",
-            "󰁹"
-        ],
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "tooltip": false,
-        "interval": 5
-    },
-    "power-profiles-daemon": {
-        "format": "{icon}",
-        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-        "tooltip": true,
-        "format-icons": {
-            "default": "󰈸",
-            "performance": "󰈸",
-            "balanced": "",
-            "power-saver": "󰔶"
-        }
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "󰅶",
-            "deactivated": "󰾪"
-        },
-        "timeout": 30.5,
+    "custom/hour": {
+        "format": "{}",
+        "exec": "date +%H",
+        "interval": 1,
         "tooltip": false
     },
-    "custom/hyprpicker": {
-        "format": "󰌁",
-        "on-click": "hyprpicker -a -f hex",
-        "interval": "once"
+    "custom/minute": {
+        "format": "{}",
+        "exec": "date +%M",
+        "interval": 1,
+        "tooltip": false
+    },
+    "custom/cava": {
+        "format": "{}",
+        "exec": "$HOME/.config/waybar/scripts/cava.sh || echo \"\"",
+        "return-type": "text",
+        "tooltip": false
     },
     "custom/swaync": {
         "tooltip": true,
@@ -171,5 +67,35 @@
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰖁 {volume}%",
+        "format-icons": {
+            "default": [
+                "󰕿",
+                "󰖀",
+                "󰕾"
+            ],
+            "default-muted": "󰖁",
+            "muted": "󰖁"
+        },
+        "scroll-step": 1,
+        "max-volume": 150,
+        "on-click-right": "kitty --class audio-tui -e wiremix",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "tooltip": false
+    },
+    "battery": {
+        "format": "󰁹 {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-full": "󰁹 {capacity}%",
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "tooltip": false,
+        "interval": 5
     }
 }

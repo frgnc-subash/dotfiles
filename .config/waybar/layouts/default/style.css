@@ -148,15 +148,15 @@ window#waybar {
 #battery {
   color: @secondary;
 }
-#battery.charging {
-  color: @primary;
-}
-#battery.warning {
+/* #battery.charging {
+  color: @surface;
+} */
+/* #battery.warning {
   color: @on_error_container;
 }
 #battery.critical {
   color: @error;
-}
+} */
 
 #custom-swaync.dnd-enabled {
   color: @on_error_container;

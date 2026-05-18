@@ -3,139 +3,52 @@
 * {
   border: none;
   font-family: "DepartureMonoNerdFontMono", "JetBrainsMono Nerd Font", monospace;
+  font-weight: 700;
   font-size: 11px;
-  font-weight: 800;
   min-height: 0;
 }
 
 window#waybar {
-  background-color: transparent;
+  background-color: @background;
   color: @on_surface;
+  border: none;
+  border-radius: 8px;
 }
 
 .modules-left,
-.modules-center,
-.modules-right {
-  background-color: @surface_container_low;
-  border: 1px solid @outline_variant;
-  border-radius: 8px;
-  padding: 2px;
-}
-
-.modules-left {
-  margin-right: 4px;
-}
-
+.modules-right,
 .modules-center {
-  margin: 0 4px;
-}
-
-.modules-right {
-  margin-left: 4px;
-}
-
-#workspaces {
-  background-color: transparent;
+  background: transparent;
   padding: 0;
-}
-
-#workspaces button {
-  color: @on_surface_variant;
-  background-color: transparent;
-  border-radius: 6px;
   margin: 0;
-  padding: 0 6px;
-  min-width: 14px;
-  transition: all 0.25s ease;
 }
 
-#workspaces button:hover {
-  color: @tertiary;
-  background-color: @surface_container_high;
-}
-
-#workspaces button.active {
-  color: @on_primary;
-  background-color: @primary;
-}
-
-#workspaces button.urgent {
-  color: @on_error;
-  background-color: @error;
-}
-
-#window {
-  color: @secondary;
-  margin: 0 6px;
-  min-width: 0;
-}
-
-#clock,
-#mpris,
-#custom-cava,
-#tray,
 #pulseaudio,
-#backlight,
 #battery,
-#power-profiles-daemon,
-#idle_inhibitor,
-#custom-hyprpicker,
+#custom-cava,
+#custom-hour,
+#custom-minute,
 #custom-swaync {
-  background-color: @surface_container;
-  color: @primary;
-  border-radius: 7px;
-  margin: 0 2px;
-  padding: 0 9px;
-  min-height: 22px;
-}
-
-#clock {
-  color: @on_primary;
-  background-color: @primary;
-  min-width: 48px;
-}
-
-#mpris {
-  color: @tertiary;
-  background-color: @surface_container_high;
-}
-
-#mpris.paused {
-  color: @secondary;
-}
-
-#mpris.stopped {
-  color: transparent;
-  background-color: transparent;
-  padding: 0;
+  background: transparent;
+  color: @on_surface;
+  padding: 0 4px;
   margin: 0;
 }
 
-#custom-cava {
-  color: @tertiary;
-  font-family: "CaskaydiaCove Nerd Font", monospace;
-  min-width: 74px;
-}
-
-#tray {
-  padding: 0 7px;
-}
-
 #pulseaudio,
-#backlight,
 #battery {
-  color: @secondary;
+  color: @primary;
+  font-size: 10px;
+  padding: 0 12px;
 }
 
 #pulseaudio.muted,
-#battery.critical,
-#custom-swaync.dnd-enabled {
+#battery.critical {
   color: @error;
 }
 
 #battery.charging,
-#battery.plugged,
-#idle_inhibitor.activated {
+#battery.plugged {
   color: @tertiary;
 }
 
@@ -143,16 +56,75 @@ window#waybar {
   color: @on_error_container;
 }
 
-#power-profiles-daemon.performance {
-  color: @error;
+#custom-cava {
+  color: @primary;
+  font-family: "CaskaydiaCove Nerd Font", monospace;
+  font-size: 10px;
+  min-width: 92px;
 }
 
-#power-profiles-daemon.power-saver {
-  color: @tertiary;
+#custom-hour,
+#custom-minute {
+  color: @on_surface;
+  font-size: 11px;
+  min-width: 18px;
+}
+
+#custom-hour {
+  margin-right: 12px;
+}
+
+#custom-minute {
+  margin-left: 12px;
+}
+
+#workspaces {
+  background-color: @background;
+  border-radius: 8px;
+  padding: 6px 5px;
+  margin: 0 2px;
+}
+
+#workspaces button {
+  padding: 0;
+  margin: 0 3px;
+  background-color: @secondary;
+  opacity: 0.4;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#workspaces button:hover {
+  opacity: 0.8;
+}
+
+#workspaces button.active {
+  min-width: 32px;
+  background-color: @primary;
+  opacity: 1;
+}
+
+#workspaces button.urgent {
+  background-color: @error;
+  opacity: 1;
+}
+
+#custom-swaync {
+  background-color: @background;
+  color: @primary;
+  border-radius: 8px;
+  margin: 0 2px;
+  padding: 0 10px;
+  min-width: 7px;
+  opacity: 1;
+  transition: all 0.2s ease;
+}
+
+#custom-swaync.dnd-enabled {
+  color: @on_error_container;
 }
 
 #custom-swaync.empty {
-  opacity: 0.55;
+  opacity: 0.5;
 }
 
 tooltip {
