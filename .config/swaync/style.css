@@ -1,102 +1,296 @@
 @import "theme.css";
 
 * {
-  font-family: "GeistMono Nerd Font", monospace;
+  all: unset;
+  font-family: "Geist", "JetBrainsMono Nerd Font", monospace;
   font-size: 14px;
+  font-weight: 700;
   color: @on_surface;
   transition: none;
   box-shadow: none;
   outline: none;
   filter: none;
-}
 
-.notification,
-.notification:hover,
-.notification:active,
-.notification:focus,
-.notification:selected,
-.notification:checked {
-  background: @surface_container;
-  box-shadow: none;
-  outline: none;
-  filter: none;
-}
-
-.control-center .notification,
-.control-center .notification:hover,
-.control-center .notification:active,
-.control-center .notification:focus,
-.control-center .notification:selected,
-.control-center .notification:checked {
-  background: @surface_container;
-  box-shadow: none;
-  outline: none;
-  filter: none;
-}
-
-.notification *:hover,
-.notification *:active,
-.notification *:focus {
-  background: transparent;
-  box-shadow: none;
-  outline: none;
-  filter: none;
+  --border-radius: 16px;
+  --border-radius-s: 8px;
+  --border-radius-xl: 18px;
+  --shadow: 2px 4px 10px alpha(@shadow, 0.26);
 }
 
 .notification {
-  border-radius: 10px;
-  padding: 8px 10px;
-  margin: 4px 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  padding: 5px;
 }
 
-.notification .icon,
-.notification .app-icon {
+.notification-background {
+  background: @surface_container_high;
+  border-radius: var(--border-radius);
+  margin: 8px;
+  padding: 0;
+}
+
+.notification-background .close-button {
+  margin: 6px;
+  padding: 2px;
   border-radius: 6px;
-  min-width: 32px;
-  min-height: 32px;
-}
-
-.notification .content {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.notification .title {
-  font-weight: 700;
-}
-
-.notification .body {
-  font-size: 12px;
-  color: @on_surface_variant;
-}
-
-.notification button,
-.notification button:hover,
-.notification button:active,
-.notification button:focus {
   background: transparent;
-  box-shadow: none;
-  outline: none;
+  color: @on_surface;
 }
+
+.notification-background .close-button:hover {
+  background: @surface_container_highest;
+}
+
+.notification.critical {
+  border: 2px solid @error;
+  border-radius: var(--border-radius);
+}
+
 
 .control-center {
   background: @surface_container;
+  border-radius: var(--border-radius);
+  margin: 5px;
+  padding: 5px 5px 0;
+}
+
+.control-center .notification-background {
+  background: @surface_container_high;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin: 8px;
+  padding: 0;
+}
+
+.control-center .notification-background .close-button,
+.notification-group-close-button {
+  opacity: 0;
+}
+
+.notification-content {
+  color: @on_surface;
+  margin: 10px;
+  font-weight: 700;
+}
+
+.notification-content .text-box {
+  margin: 0 0 0 15px;
+}
+
+.notification-content .time {
+  padding: 2px;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.notification-content .summary {
+  font-size: 1rem;
+  font-weight: 800;
+  padding: 2px 0;
+  margin-bottom: 2px;
+}
+
+.notification-content .body {
+  color: @on_surface_variant;
+  font-size: 0.8rem;
+}
+
+.notification-row .inline-reply-entry,
+.notification-row .inline-reply-button {
+  margin: 5px -5px -5px -5px;
+  padding: 10px 15px;
+  border-radius: var(--border-radius);
+  background: @surface_container_high;
+}
+
+.notification-row .inline-reply-entry {
+  margin-right: 10px;
+}
+
+.notification-row .inline-reply-button:hover {
+  background: @primary_container;
+}
+
+.notification-alt-actions {
+  padding: 5px 0;
+}
+
+.notification-action {
+  font-weight: 700;
+  border-radius: var(--border-radius);
+  background: @surface_container_highest;
+  color: @on_surface;
+  margin: 0 5px;
+  padding: 10px 0;
+}
+
+.notification-action:hover,
+.notification-action:active {
+  background: @primary_container;
+}
+
+.notification-group {
+  transition: 200ms;
+}
+
+.notification-group:not(.collapsed) {
+  margin: 8px;
+}
+
+.notification-group-headers,
+.notification-group-buttons {
+  color: @on_surface;
+  font-weight: bold;
+  background: @surface_container;
+  border-radius: var(--border-radius);
+  padding: 4px 8px;
+}
+
+.notification-group-headers > label {
+  margin: 0 3px;
+  font-size: 1rem;
+}
+
+.notification-group-icon {
+  color: @on_surface;
+}
+
+.notification-group-buttons .image-button {
+  background: transparent;
+  color: @on_surface;
+  padding: 4px;
+  border-radius: var(--border-radius);
+}
+
+.notification-group-buttons .image-button:hover {
+  background: @surface_container_highest;
+}
+
+.widget {
+  margin: 5px;
+  color: @on_surface;
+}
+
+.widget-title {
+  background: @surface_container_high;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 10px 15px;
+}
+
+.widget-title > label {
+  color: @on_surface;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.widget-title button {
+  background: @surface_container_highest;
+  border-radius: var(--border-radius-s);
+  color: @on_surface;
+  padding: 4px 10px;
+}
+
+.widget-title button:hover {
+  background: @primary_container;
+}
+
+.widget-mpris {
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin: 5px;
+  padding: 0;
+}
+
+.widget-mpris .widget-mpris-player {
+  background: transparent;
+  border-radius: var(--border-radius);
+}
+
+.widget-mpris-album-art {
+  border-radius: var(--border-radius);
+  margin: 6px 4px;
+}
+
+.mpris-background {
   border-radius: 14px;
-  padding: 10px;
+  margin: 3px;
+}
+
+.mpris-overlay {
+  border-radius: var(--border-radius);
+  padding: 12px;
+  background: @surface_container;
+}
+
+.widget-mpris-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 3px;
+}
+
+.widget-mpris-subtitle {
+  color: @on_surface_variant;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0 3px;
+}
+
+.mpris-overlay > box:last-child {
+  border-radius: var(--border-radius-xl);
+  padding: 0 5px;
+  background: alpha(@surface_container_highest, 0.6);
+}
+
+.widget-mpris-player button,
+.widget-mpris > box > button {
+  color: @on_surface;
+  margin: 0 2.5px;
+  padding: 5px;
+}
+
+.widget-mpris-player button:hover,
+.widget-mpris > box > button:hover {
+  border-radius: var(--border-radius-s);
+  background: @surface_container_highest;
 }
 
 .widget-dnd {
-  background: @surface_container;
-  border-radius: 10px;
-  padding: 6px;
-  margin: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 10px 15px;
+  border-radius: var(--border-radius);
+  background: @surface_container_high;
+  box-shadow: var(--shadow);
+  color: @on_surface;
+}
+
+.widget-dnd > label {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.widget-dnd switch {
+  background: @surface_container_highest;
+  border-radius: var(--border-radius-s);
+  box-shadow: none;
+  padding: 2px;
+  transition: 200ms;
+}
+
+.widget-dnd switch slider {
+  background: @primary;
+  border-radius: var(--border-radius-s);
+}
+
+.widget-dnd switch:hover,
+.widget-dnd switch:checked {
+  background-color: @primary_container;
+}
+
+.widget-notifications {
+  margin: 0;
+}
+
+.control-center-list-placeholder {
+  color: @primary;
 }
 
 scrollbar,
@@ -107,4 +301,7 @@ scrollbar slider {
 
 scrolledwindow {
   box-shadow: none;
+}
+.blank-window {
+  background: transparent;
 }

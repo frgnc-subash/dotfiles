@@ -20,3 +20,4 @@ new_tmux() {
 
 alias tm=new_tmux
 alias tl='tmux list-sessions'
+alias tk='tmux kill-server'

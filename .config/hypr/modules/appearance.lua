@@ -23,10 +23,10 @@ hl.config({
 	-- Window Decoration
 	-- -------------------
 	decoration = {
-		rounding = 6,
-		rounding_power = 5,
-		active_opacity = 0.98,
-		inactive_opacity = 0.87,
+		rounding = 4,
+		rounding_power = 4,
+		active_opacity = 0.95,
+		inactive_opacity = 0.80,
 
 		shadow = {
 			enabled = false,

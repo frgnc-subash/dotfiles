@@ -1,9 +1,10 @@
 @import "/home/axosis/.config/waybar/theme.css";
 * {
+  all: unset;
   border: none;
-  font-family: "DepartureMonoNerdFontMono", monospace;
+  font-family: "Geist", "JetBrainsMono Nerd Font", monospace;
   font-weight: 700;
-  font-size: 11px;
+  font-size: 10px;
   min-height: 0;
 }
 
@@ -26,16 +27,17 @@ window#waybar {
 #workspaces {
   background-color: @background;
   border-radius: 8px;
-  padding: 6px 5px;
-  margin: 0 2px;
+  padding: 7px;
+  margin: 0 3px;
 }
 
 #workspaces button {
-  padding: 0;
-  margin: 0 3px;
+  padding: 0 4px;
+  margin: 0 2px;
+  border-radius: 100px;
   background-color: @secondary;
   opacity: 0.4;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #workspaces button:hover {
@@ -99,12 +101,22 @@ window#waybar {
   margin: 0 2px;
 }
 
+#tray menu{
+  
+}
 /* #idle_inhibitor { */
 /*   border: 1px solid @outline; */
 /* } */
+#power-profiles-daemon {
+  background-color: @background;
+  color: @error;
+  font-size: 13px;
+  padding: 0 10px;
+  margin: 0 2px;
+  border-radius: 8px;
+}
 
 #custom-swaync,
-#power-profiles-daemon,
 #custom-hyprpicker,
 #idle_inhibitor {
   background-color: @background;

@@ -35,7 +35,7 @@ return {
         keys = {
           {
             icon = "󰭷 ",
-            key = "g",
+            key = "f",
             desc = "Find Text",
             action = ":lua Snacks.dashboard.pick('live_grep')",
           },

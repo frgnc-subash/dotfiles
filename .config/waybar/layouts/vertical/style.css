@@ -1,8 +1,9 @@
 @import "/home/axosis/.config/waybar/theme.css";
 
 * {
-  font-family: "JetBrainsMono Nerd Font";
-  font-size: 12px;
+  all: unset;
+  font-family: "Geist", "JetBrainsMono Nerd Font", monospace;
+  font-size: 10px;
   font-weight: bold;
   border: none;
   min-height: 0;
@@ -31,7 +32,7 @@ window#waybar {
 }
 
 #workspaces button {
-  padding: 0;
+  padding: 1px 0px;
   margin: 4px 11px;
   border-radius: 50%;
   background-color: @secondary;

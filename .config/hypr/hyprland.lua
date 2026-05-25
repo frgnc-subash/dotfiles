@@ -15,5 +15,3 @@ require("modules.monitors")
 
 require("modules.windowrules")
 require("modules.workspaces")
-
-

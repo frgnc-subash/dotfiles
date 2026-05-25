@@ -1,7 +1,6 @@
 #!/bin/bash
-
 WALLPAPER_BASE="$HOME/Pictures/wallpapers"
-HYPR_THEME_FILE="$HOME/.config/hypr/theme.conf"
+HYPR_THEME_FILE="$HOME/.config/hypr/theme.lua"
 ROFI_CONFIG="$HOME/.config/rofi/utilities/wallpaper-selector.rasi"
 CACHE_DIR="$HOME/.cache/wallpaper-thumbnails"
 MATUGEN_ARGS=(--prefer saturation)
@@ -19,31 +18,24 @@ ensure_dependencies() {
     local missing_packages=()
     local seen_packages=" "
     local cmd pkg
-
     for dep in "${deps[@]}"; do
         cmd="${dep%%:*}"
         pkg="${dep#*:}"
-
         if command -v "$cmd" >/dev/null 2>&1; then
             continue
         fi
-
         if [[ "$seen_packages" != *" $pkg "* ]]; then
             missing_packages+=("$pkg")
             seen_packages+="$pkg "
         fi
     done
-
     [ "${#missing_packages[@]}" -eq 0 ] && return 0
-
     notify-send "Wallpaper Selector" "Installing missing dependencies: ${missing_packages[*]}" 2>/dev/null
-
     if [ -t 0 ] || [ -t 1 ]; then
         install_dependencies "${missing_packages[@]}"
     else
         install_dependencies_in_terminal "${missing_packages[@]}"
     fi
-
     for dep in "${deps[@]}"; do
         cmd="${dep%%:*}"
         if ! command -v "$cmd" >/dev/null 2>&1; then
@@ -82,11 +74,9 @@ fi
 echo
 read -r -p "Press Enter to close..."
 '
-
     for candidate in "${TERMINAL:-}" kitty ghostty alacritty foot wezterm; do
         [ -n "$candidate" ] && command -v "$candidate" >/dev/null 2>&1 && terminal="$candidate" && break
     done
-
     case "$terminal" in
     kitty)
         kitty --title "Wallpaper Selector Dependencies" bash -lc "$install_script" _ "$@"
@@ -112,7 +102,9 @@ read -r -p "Press Enter to close..."
 
 ensure_dependencies
 
-CURRENT_SOURCE=$(grep "source =" "$HYPR_THEME_FILE" | awk '{print $3}')
+# --- Parse theme.lua for dofile(...) path ---
+CURRENT_SOURCE=$(grep 'dofile(' "$HYPR_THEME_FILE" | sed 's/.*dofile("\(.*\)").*/\1/')
+
 if [[ "$CURRENT_SOURCE" == *"matugen"* ]]; then
     THEME_MODE="dynamic"
     TARGET_DIR="$WALLPAPER_BASE/wallpapers"
@@ -130,20 +122,15 @@ generate_thumb() {
     img="$1"
     cache_dir="$2"
     thumb="$cache_dir/$(basename "${img%.*}.png")"
-
     [ -s "$thumb" ] && return
-
     ext="${img##*.}"
     ext_lower=$(echo "$ext" | tr '[:upper:]' '[:lower:]')
-
     if [ "$ext_lower" = "gif" ]; then
-        # Count frames and pick the middle one for a representative thumbnail
         frame_count=$(ffprobe -v error -select_streams v:0 \
             -count_packets -show_entries stream=nb_read_packets \
             -of csv=p=0 "$img" 2>/dev/null)
         frame_count=${frame_count:-1}
         mid_frame=$((frame_count / 2))
-
         ffmpeg -v error -i "$img" \
             -vf "select=eq(n\,$mid_frame),scale=400:225:force_original_aspect_ratio=decrease,pad=400:225:(ow-iw)/2:(oh-ih)/2" \
             -frames:v 1 "$thumb"
@@ -151,7 +138,6 @@ generate_thumb() {
         vipsthumbnail "$img[0]" --size 400x225 --smartcrop=attention -o "$thumb"
     fi
 }
-
 export -f generate_thumb
 
 FIND_PATTERNS=(-iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif")
@@ -159,27 +145,22 @@ FIND_PATTERNS=(-iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.
 if [ "$1" = "gui" ]; then
     find "$TARGET_DIR" -maxdepth 1 -type f \( "${FIND_PATTERNS[@]}" \) |
         xargs -P "$(nproc)" -I {} bash -c 'generate_thumb "$@"' _ {} "$THEME_CACHE"
-
     SELECTED_FILE=$(
         find "$TARGET_DIR" -maxdepth 1 -type f \( "${FIND_PATTERNS[@]}" \) | sort |
             while read -r img; do
                 base=$(basename "$img")
                 ext_lower=$(echo "${img##*.}" | tr '[:upper:]' '[:lower:]')
                 thumb="$THEME_CACHE/$(basename "${img%.*}.png")"
-
                 if [ "$ext_lower" = "gif" ]; then
                     label="▶ $base"
                 else
                     label="$base"
                 fi
-
                 echo -en "${label}\0icon\x1f${thumb}\n"
             done |
             rofi -dmenu -i -show-icons -p " " -theme "$ROFI_CONFIG"
     )
-
     SELECTED_FILE="${SELECTED_FILE#▶ }"
-
 else
     SELECTED_PATH=$(find "$TARGET_DIR" -maxdepth 1 -type f \( "${FIND_PATTERNS[@]}" \) | shuf -n 1)
     [ -n "$SELECTED_PATH" ] && SELECTED_FILE=$(basename "$SELECTED_PATH")

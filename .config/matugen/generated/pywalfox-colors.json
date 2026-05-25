@@ -1,8 +1,8 @@
 {
-  "wallpaper": "/home/axosis/Pictures/wallpapers/wallpapers/wallpaper_011.png",
+  "wallpaper": "/home/axosis/Pictures/wallpapers/wallpapers/wallpaper_023.png",
   "alpha": "100",
   "colors": {
-    "color0": "#19120d",
+    "color0": "#191113",
     "color1": "",
     "color2": "",
     "color3": "",
@@ -12,11 +12,11 @@
     "color7": "",
     "color8": "",
     "color9": "",
-    "color10": "#ffb787",
+    "color10": "#ffb1c5",
     "color11": "",
     "color12": "",
-    "color13": "#413731",
+    "color13": "#413739",
     "color14": "",
-    "color15": "#f0dfd7"
+    "color15": "#efdfe1"
   }
 }

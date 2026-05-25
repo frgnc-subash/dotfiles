@@ -1,10 +1,11 @@
 @import "/home/axosis/.config/waybar/theme.css";
 
 * {
+  all: unset;
   border: none;
-  font-family: "DepartureMonoNerdFontMono", "JetBrainsMono Nerd Font", monospace;
+  font-family: "Geist", "JetBrainsMono Nerd Font", monospace;
   font-weight: 700;
-  font-size: 11px;
+  font-size: 10px;
   min-height: 0;
 }
 
@@ -79,18 +80,19 @@ window#waybar {
 }
 
 #workspaces {
-  background-color: @background;
+  background-color: transparent;
   border-radius: 8px;
-  padding: 6px 5px;
-  margin: 0 2px;
+  padding: 8px 10px;
+  margin: -4px 10px;
 }
 
 #workspaces button {
-  padding: 0;
-  margin: 0 3px;
+  padding: 0 6px;
+  margin: 4px 2px;
+  border-radius: 100px;
   background-color: @secondary;
   opacity: 0.4;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #workspaces button:hover {
@@ -109,7 +111,7 @@ window#waybar {
 }
 
 #custom-swaync {
-  background-color: @background;
+  background-color: transparent;
   color: @primary;
   border-radius: 8px;
   margin: 0 2px;

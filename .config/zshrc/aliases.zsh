@@ -1,10 +1,14 @@
+alias search='yay -Ss'
+alias update='sudo pacman -Syyu'
+alias ping='ping -c 5'
+
 alias ls='ls --color'
 alias cat='bat --paging=never'
 alias ls='eza --icons'
 
 alias ll='eza -l --icons'                # Long format
-alias la='eza -la --icons'               # Long + hidden files
-alias lah='eza -lah --icons'             # Long + all + human-readable sizes
+alias la='eza -lah --color=always --group-directories-first'
+alias lah='eza -lah --icons --group-directories-first'             # Long + all + human-readable sizes
 alias l.='eza -la --icons | grep "^\."'  # Only dotfiles
 alias ..='cd ..'
 alias rm='rm -i'

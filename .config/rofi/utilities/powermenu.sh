@@ -51,7 +51,7 @@ run_cmd() {
         elif [[ $1 == '--suspend' ]]; then
             systemctl suspend
         elif [[ $1 == '--logout' ]]; then
-            hyprctl dispatch exit
+            loginctl terminate-session $XDG_SESSION_ID
         fi
     else
         exit 0
