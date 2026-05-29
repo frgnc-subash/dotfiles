@@ -9,3 +9,6 @@ vim.opt.cursorline = true
 vim.opt.relativenumber = true
 vim.opt.shiftwidth = 4
 vim.g.autoformat = true
+
+-- vim.opt.colorcolumn = ""
+vim.opt.colorcolumn = "80"

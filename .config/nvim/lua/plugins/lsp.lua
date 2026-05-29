@@ -1,4 +1,4 @@
 return {
-  "neovim/nvim-lspconfig",
+  require("lspconfig").qmlls.setup({}),
   require("lspconfig").gopls.setup({}),
 }
