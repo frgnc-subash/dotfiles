@@ -1,27 +1,28 @@
 @import "/home/axosis/.config/waybar/theme.css";
 
 * {
-  all: unset;
-  border: none;
-  font-family: "Geist", "JetBrainsMono Nerd Font", monospace;
-  font-weight: 700;
-  font-size: 10px;
-  min-height: 0;
+    all: unset;
+    border: none;
+    font-family: "Geist", "JetBrainsMono Nerd Font", monospace;
+    font-weight: 700;
+    font-size: 10px;
+    min-height: 0;
 }
 
 window#waybar {
-  background-color: @background;
-  color: @on_surface;
-  border: none;
-  border-radius: 8px;
+    background-color: @background;
+    color: @on_surface;
+    border: none;
+    transition: none;
+    animation: none;
 }
 
 .modules-left,
 .modules-right,
 .modules-center {
-  background: transparent;
-  padding: 0;
-  margin: 0;
+    background: transparent;
+    padding: 0;
+    margin: 0;
 }
 
 #pulseaudio,
@@ -29,109 +30,127 @@ window#waybar {
 #custom-cava,
 #custom-hour,
 #custom-minute,
-#custom-swaync {
-  background: transparent;
-  color: @on_surface;
-  padding: 0 4px;
-  margin: 0;
+#custom-swaync,
+#network {
+    background: transparent;
+    color: @on_surface;
+    padding: 0 4px;
+    margin: 0;
 }
 
 #pulseaudio,
-#battery {
-  color: @primary;
-  font-size: 10px;
-  padding: 0 12px;
+#battery,
+#network {
+    color: @primary;
+    font-size: 10px;
+    padding: 0 12px;
+}
+
+#network {
+    min-width: 80px;
+}
+
+#network.wifi {
+    color: @primary;
+}
+
+#network.ethernet {
+    color: @tertiary;
+}
+
+#network.disconnected {
+    color: @error;
 }
 
 #pulseaudio.muted,
 #battery.critical {
-  color: @error;
+    color: @error;
 }
 
 #battery.charging,
 #battery.plugged {
-  color: @tertiary;
+    color: @tertiary;
 }
 
 #battery.warning {
-  color: @on_error_container;
+    color: @on_error_container;
 }
 
 #custom-cava {
-  color: @primary;
-  font-family: "CaskaydiaCove Nerd Font", monospace;
-  font-size: 10px;
-  min-width: 92px;
+    color: @primary;
+    font-family: "CaskaydiaCove Nerd Font", monospace;
+    font-size: 10px;
+    min-width: 92px;
 }
 
 #custom-hour,
 #custom-minute {
-  color: @on_surface;
-  font-size: 11px;
-  min-width: 18px;
+    color: @on_surface;
+    font-size: 11px;
+    min-width: 18px;
 }
 
 #custom-hour {
-  margin-right: 12px;
+    margin-right: 12px;
 }
 
 #custom-minute {
-  margin-left: 12px;
+    margin-left: 12px;
 }
 
 #workspaces {
-  background-color: transparent;
-  border-radius: 8px;
-  padding: 8px 10px;
-  margin: -4px 10px;
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 7px;
+    margin: 0px 4px;
 }
 
 #workspaces button {
-  padding: 0 6px;
-  margin: 4px 2px;
-  border-radius: 100px;
-  background-color: @secondary;
-  opacity: 0.4;
-  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 5px;
+    margin: 0 2px;
+    border-radius: 100px;
+    background-color: @secondary;
+    opacity: 0.4;
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #workspaces button:hover {
-  opacity: 0.8;
+    opacity: 0.8;
 }
 
 #workspaces button.active {
-  min-width: 32px;
-  background-color: @primary;
-  opacity: 1;
+    min-width: 24px;
+    background-color: @primary;
+    opacity: 1;
 }
 
 #workspaces button.urgent {
-  background-color: @error;
-  opacity: 1;
+    background-color: @error;
+    opacity: 1;
 }
 
 #custom-swaync {
-  background-color: transparent;
-  color: @primary;
-  border-radius: 8px;
-  margin: 0 2px;
-  padding: 0 10px;
-  min-width: 7px;
-  opacity: 1;
-  transition: all 0.2s ease;
+    background-color: transparent;
+    color: @primary;
+    border-radius: 8px;
+    margin: 0 2px;
+    padding: 0 10px;
+    min-width: 7px;
+    opacity: 1;
+    transition: all 0.2s ease;
 }
 
 #custom-swaync.dnd-enabled {
-  color: @on_error_container;
+    color: @on_error_container;
 }
 
 #custom-swaync.empty {
-  opacity: 0.5;
+    opacity: 0.5;
 }
 
 tooltip {
-  background-color: @surface_container_highest;
-  color: @on_surface;
-  border: 1px solid @outline_variant;
-  border-radius: 8px;
+    background-color: @surface_container_highest;
+    color: @on_surface;
+    border: 1px solid @outline_variant;
+    border-radius: 8px;
 }

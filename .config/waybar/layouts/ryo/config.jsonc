@@ -73,17 +73,18 @@
     "tooltip": false,
   },
   "network": {
-    // "interface": "enp4s0f1",
     "format": "{ifname}",
     "format-wifi": "{essid}",
     "format-ethernet": "ethernet",
     "format-disconnected": "offline",
     "max-length": 50,
+    "min-length": 14,
+    "tooltip": false,
   },
   "battery": {
     "format": "󰁹 {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
     "format-full": "󰁹 {capacity}%",
     "states": {
       "warning": 30,
@@ -91,5 +92,6 @@
     },
     "tooltip": false,
     "interval": 5,
+    "min-length": 8,
   },
 }

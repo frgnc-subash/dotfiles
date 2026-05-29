@@ -28,7 +28,7 @@ window#waybar {
   background-color: @background;
   border-radius: 8px;
   padding: 7px;
-  margin: 0 3px;
+  margin: 0 4px;
 }
 
 #workspaces button {
@@ -45,7 +45,7 @@ window#waybar {
 }
 
 #workspaces button.active {
-  min-width: 32px;
+  min-width: 28px;
   background-color: @primary;
   opacity: 1;
 }
@@ -101,8 +101,7 @@ window#waybar {
   margin: 0 2px;
 }
 
-#tray menu{
-  
+#tray menu {
 }
 /* #idle_inhibitor { */
 /*   border: 1px solid @outline; */
