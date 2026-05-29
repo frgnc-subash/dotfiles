@@ -81,7 +81,8 @@ hl.window_rule({
 -- -------------------
 -- Layer Rules
 -- -------------------
-
+-- hl.layer_rule({ match = { namespace = "waybar" }, rounding = 8 })
+-- hl.layer_rule({ match = { namespace = "waybar" }, ignorezero = true })
 hl.layer_rule({
 	name = "waybar-no-blur",
 	match = {
@@ -129,3 +130,10 @@ hl.layer_rule({
 -- 	match = { namespace = "swaync-control-center" },
 -- 	animation = "slide top",
 -- })
+
+hl.window_rule({
+	name = "move-kitty",
+	match = { class = "kitty" },
+	move = { 100, 100 },
+	animation = "popin",
+})
