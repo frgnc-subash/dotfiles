@@ -5,62 +5,63 @@
   <a href="https://archlinux.org/" target="_blank" style="text-decoration:none;">
     <img src="https://img.shields.io/badge/Arch%20Linux-000000?style=for-the-badge&logo=arch-linux&logoColor=1793D1" alt="Arch Linux">
   </a>
-  <a href="https://hypr.land/" target="_blank"    style="text-decoration:none;">
+  <a href="https://hypr.land/" target="_blank" style="text-decoration:none;">
     <img src="https://img.shields.io/badge/Hyprland-000000?style=for-the-badge&logo=hyprland&logoColor=00FFD1" alt="Hyprland">
   </a>
-    <sub><sup><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Activity/Sparkles.webp" alt="Sparkles" width="25" height="25"/></sup></sub>
+  <sub><sup><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Activity/Sparkles.webp" alt="Sparkles" width="25" height="25"/></sup></sub>
   </p>
 </p>
 
 <p align='center'>
 <img src='/.assets/previews/prev.png' alt='preview' width=100%>
 </p>
-    
+
+## Showcase
+
+<p align="center">
+  <table>
+    <tr>
+      <td><img src='/.assets/showcase/wall-selector.png' alt='showcase' width='100%'></td>
+      <td><img src='/.assets/showcase/theme-selector.png' alt='showcase' width='100%'></td>
+    </tr>
+    <tr>
+      <td><img src='/.assets/showcase/2.png' alt='showcase' width='100%'></td>
+      <td><img src='/.assets/showcase/3.png' alt='showcase' width='100%'></td>
+    </tr>
+  </table>
+</p>
+
 ## Themes
 
 #### Dynamic
-
 - Dynamic theming is done through matugen.
 
-<p align="center">
- <img src='/.assets/showcase/1.png' alt='showcase' width=100%>
- <img src='/.assets/showcase/2.png' alt='showcase' width=100%>
-  <img src='/.assets/showcase/3.png' alt='showcase' width=100%>
-  <img src='/.assets/showcase/4.png' alt='showcase' width=100%>
-</p>
-
 #### Monochrome
-
 <p>
 <img src='/.assets/showcase/monochrome.png' alt='monochrome'>
 </p>
 
 #### Gruvbox
-
 <p>
 <img src='/.assets/showcase/gruvbox.png' alt='gruvbox'>
 </p>
 
 #### Catppuccin Mocha
-
 <p>
 <img src='/.assets/showcase/mocha.png' alt='mocha'>
 </p>
 
 #### Moonfly
-
 <p>
 <img src='/.assets/showcase/moonfly.png' alt='moonfly'>
 </p>
 
 #### Tokyonight
-
 <p>
 <img src='/.assets/showcase/tokyonight.png' alt='tokyonight'>
 </p>
 
 ### Fonts
-
 - <a href='https://madmalik.github.io/mononoki/' style="text-decoration:none">mononoki</a>
 - <a href='https://www.nerdfonts.com/font-downloads' style="text-decoration:none">Nerd Fonts</a>
 
